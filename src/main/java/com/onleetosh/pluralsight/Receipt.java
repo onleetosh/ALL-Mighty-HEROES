@@ -1,6 +1,6 @@
 package com.onleetosh.pluralsight;
 
-public class Sandwich {
+public class Receipt {
 
 
 }

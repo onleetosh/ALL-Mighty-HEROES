@@ -1,4 +1,4 @@
-package com.onleetosh.pluralsight;
+package com.onleetosh.pluralsight.util;
 
 public class UI {
 

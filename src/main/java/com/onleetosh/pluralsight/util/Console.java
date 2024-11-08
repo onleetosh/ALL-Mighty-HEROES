@@ -1,4 +1,4 @@
-package com.onleetosh.pluralsight;
+package com.onleetosh.pluralsight.util;
 
 import java.util.Scanner;
 
@@ -88,5 +88,6 @@ public class Console {
         byte number = Byte.parseByte(stringNumber);
         return number;
     }
+
 
 }
