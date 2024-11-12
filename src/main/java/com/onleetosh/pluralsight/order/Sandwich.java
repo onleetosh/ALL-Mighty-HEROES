@@ -89,10 +89,10 @@ public class Sandwich {
     }
 
     public String toString() {
+
         return "Sandwich [Size: " + sizeOfBread +
                 "\" Bread (" + typeOfBread + ")" +
-                ", Regular Topping: " + toppings.equals("regular") +
-                ", Premium Topping: " + toppings.equals("premium") +
-                ", Sauce: " + toppings.equals("sauce") + ", Price: $" + String.format("%.2f", getTotalCost());
+                ", Toppings: " + toppings +
+                ", Price: $" + String.format("%.2f", getTotalCost());
     }
 }

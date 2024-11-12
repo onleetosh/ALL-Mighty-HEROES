@@ -11,7 +11,7 @@ public class PromptOrder {
 
     public static ArrayList<Sandwich> promptForSandwich() {
 
-        Order.sandwichOrders = new ArrayList<>();
+        Order.sandwichesList = new ArrayList<>();
 
         ArrayList<Topping> selectedToppings;
 
@@ -36,13 +36,15 @@ public class PromptOrder {
             selectedToppings = promptForToppings(sandwichSize);
 
             wantToasted = Console.PromptForYesNo("Do you want to toast?");
-            Order.sandwichOrders.add(new Sandwich(sandwichSize, selectedBread, selectedToppings, wantToasted));
+            Order.sandwichesList.add(new Sandwich(sandwichSize, selectedBread, selectedToppings, wantToasted));
 
 
             System.out.println("Adding " + i + "sandwich");
+
             // Print the final order
             System.out.println("Your order:");
             System.out.println("Bread: " + selectedBread.getTypeOfBread() + " | Size: " + sandwichSize + "\"");
+
             for (Topping topping : selectedToppings) {
                 System.out.println(topping);
             }
@@ -54,7 +56,7 @@ public class PromptOrder {
             }
         }
 
-        return Order.sandwichOrders;
+        return Order.sandwichesList;
     }
 
     // Helper method to prompt for bread selection
@@ -63,7 +65,12 @@ public class PromptOrder {
         for (int i = 1; i < UI.listOfBread.size(); i++) {
             System.out.println(i + ": " + UI.listOfBread.get(i).getTypeOfBread() + " (" + UI.listOfBread.get(i).getSizeOfBread() + "\")");
         }
-        return Console.PromptForInt("Enter bread choice (1-" + (UI.listOfBread.size() - 1) + "): ");
+
+        int bread = Console.PromptForInt("Enter bread choice (1-" + (UI.listOfBread.size() - 1) + ")");
+        System.out.println("Bread selected : " + UI.listOfBread.get(bread));
+        return bread;
+
+        //return Console.PromptForInt("Enter bread choice (1-" + (UI.listOfBread.size() - 1) + "): ");
     }
 
 
@@ -79,6 +86,7 @@ public class PromptOrder {
             }
 
             int toppingChoice = Console.PromptForInt("Enter topping choice (0-" + (UI.listOfSandwichTopping.size() - 1) + "): ");
+            System.out.println("Adding " + UI.listOfSandwichTopping.get(toppingChoice));
             Topping selectedTopping = UI.listOfSandwichTopping.get(toppingChoice);
 
             if (selectedTopping instanceof PremiumTopping) {
@@ -130,7 +138,7 @@ public class PromptOrder {
 
         for (int i = 1; i <= numberOfChips; i++) {
             // Loop through the arraylist and display chips options
-            for (int j = 0; j < UI.listOfChips.size(); j++) {
+            for (int j = 1; j < UI.listOfChips.size(); j++) {
                 System.out.println(j + ": " + UI.listOfChips.get(j).getBagOfChips());
             }
 

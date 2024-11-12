@@ -68,6 +68,7 @@ public class InitializeObject {
         return UI.listOfBread ;
     }
 
+
     // Initialize topping options
     public static ArrayList<Topping> initializeToppings() {
         UI.listOfSandwichTopping = new ArrayList<>();
@@ -89,16 +90,16 @@ public class InitializeObject {
         UI.listOfSandwichTopping.add(new Sauce("ketchup", "sauce", 0.0)); //10
 
         // Premium toppings (Meats and Cheese)
-        UI.listOfSandwichTopping.add(new PremiumTopping("grill chicken", "meat", 1.00)); //11
-        UI.listOfSandwichTopping.add(new PremiumTopping("bacon", "meat", 1.00)); //12
-        UI.listOfSandwichTopping.add(new PremiumTopping("roast beef", "meat", 1.00)); //13
-        UI.listOfSandwichTopping.add(new PremiumTopping("salami", "meat", 1.00)); //14
-        UI.listOfSandwichTopping.add(new PremiumTopping("ham", "meat", 1.00)); //15
-        UI.listOfSandwichTopping.add(new PremiumTopping("steak", "meat", 1.00)); //16
-        UI.listOfSandwichTopping.add(new PremiumTopping("provolone", "cheese", 1.00)); //17
-        UI.listOfSandwichTopping.add(new PremiumTopping("cheddar", "cheese", 1.00)); //18
-        UI.listOfSandwichTopping.add(new PremiumTopping("swiss", "cheese", 1.00)); //19
-        UI.listOfSandwichTopping.add(new PremiumTopping("american", "cheese", 1.00)); //20
+        UI.listOfSandwichTopping.add(new PremiumTopping("grill chicken", "meat", 1.00, true)); //11
+        UI.listOfSandwichTopping.add(new PremiumTopping("bacon", "meat", 1.00, true)); //12
+        UI.listOfSandwichTopping.add(new PremiumTopping("roast beef", "meat", 1.00, true)); //13
+        UI.listOfSandwichTopping.add(new PremiumTopping("salami", "meat", 1.00,true)); //14
+        UI.listOfSandwichTopping.add(new PremiumTopping("ham", "meat", 1.00,true)); //15
+        UI.listOfSandwichTopping.add(new PremiumTopping("steak", "meat", 1.00,true)); //16
+        UI.listOfSandwichTopping.add(new PremiumTopping("provolone", "cheese", 0.70,true)); //17
+        UI.listOfSandwichTopping.add(new PremiumTopping("cheddar", "cheese", 0.70,true)); //18
+        UI.listOfSandwichTopping.add(new PremiumTopping("swiss", "cheese", 0.70,true)); //19
+        UI.listOfSandwichTopping.add(new PremiumTopping("american", "cheese", 0.70,true)); //20
 
         return UI.listOfSandwichTopping;
     }

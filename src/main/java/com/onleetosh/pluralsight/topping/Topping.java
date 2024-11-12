@@ -36,20 +36,22 @@ public class Topping {
     private double price; // meat or cheese are consider premium and price based on sandwich size (4", 8", 12") . all other toppings are free
     private double extra;
 
+    private boolean isPremium;
+
     // Constructor
     public Topping(String topping, String type, double price) {
         this.topping = topping;
         this.type = type;
         this.price = price;
-        this.extra = 0;  // Default extra to 0
+        this.isPremium = false;
     }
 
     // Constructor with extra
-    public Topping(String topping, String type, double price, double extra) {
+    public Topping(String topping, String type, double price, boolean isPremium) {
         this.topping = topping;
         this.type = type;
         this.price = price;
-        this.extra = extra;
+        this.isPremium = isPremium;
     }
 
     // Getters and setters
@@ -144,41 +146,41 @@ public class Topping {
     }
 
     // Initialize topping options
-    public static ArrayList<Topping> initializeToppings() {
-        sandwichTopping = new ArrayList<>();
-
-        // Regular toppings
-        sandwichTopping.add(new RegularTopping("lettuce", "regular", 0.0));
-        sandwichTopping.add(new RegularTopping("peppers", "regular", 0.0));
-        sandwichTopping.add(new RegularTopping("red onions", "regular", 0.0));
-        sandwichTopping.add(new RegularTopping("jalapenos", "regular", 0.0));
-        sandwichTopping.add(new RegularTopping("cucumber", "regular", 0.0));
-        sandwichTopping.add(new RegularTopping("pickles", "regular", 0.0));
-
-        // Sauces
-        sandwichTopping.add(new Sauce("honey mustard", "sauce", 0.0));
-        sandwichTopping.add(new Sauce("ranch", "sauce", 0.0));
-        sandwichTopping.add(new Sauce("mayo", "sauce", 0.0));
-        sandwichTopping.add(new Sauce("mustard", "sauce", 0.0));
-        sandwichTopping.add(new Sauce("ketchup", "sauce", 0.0));
-
-        // Premium toppings (Meats and Cheese)
-        sandwichTopping.add(new PremiumTopping("grill chicken", "meat", 1.00));
-        sandwichTopping.add(new PremiumTopping("bacon", "meat", 1.00));
-        sandwichTopping.add(new PremiumTopping("roast beef", "meat", 1.00));
-        sandwichTopping.add(new PremiumTopping("salami", "meat", 1.00));
-        sandwichTopping.add(new PremiumTopping("ham", "meat", 1.00));
-        sandwichTopping.add(new PremiumTopping("steak", "meat", 1.00));
-        sandwichTopping.add(new PremiumTopping("provolone", "cheese", 1.00));
-        sandwichTopping.add(new PremiumTopping("cheddar", "cheese", 1.00));
-        sandwichTopping.add(new PremiumTopping("swiss", "cheese", 1.00));
-        sandwichTopping.add(new PremiumTopping("american", "cheese", 1.00));
-
-        return sandwichTopping;
-    }
+//    public static ArrayList<Topping> initializeToppings() {
+//        sandwichTopping = new ArrayList<>();
+//
+//        // Regular toppings
+//        sandwichTopping.add(new RegularTopping("lettuce", "regular", 0.0));
+//        sandwichTopping.add(new RegularTopping("peppers", "regular", 0.0));
+//        sandwichTopping.add(new RegularTopping("red onions", "regular", 0.0));
+//        sandwichTopping.add(new RegularTopping("jalapenos", "regular", 0.0));
+//        sandwichTopping.add(new RegularTopping("cucumber", "regular", 0.0));
+//        sandwichTopping.add(new RegularTopping("pickles", "regular", 0.0));
+//
+//        // Sauces
+//        sandwichTopping.add(new Sauce("honey mustard", "sauce", 0.0));
+//        sandwichTopping.add(new Sauce("ranch", "sauce", 0.0));
+//        sandwichTopping.add(new Sauce("mayo", "sauce", 0.0));
+//        sandwichTopping.add(new Sauce("mustard", "sauce", 0.0));
+//        sandwichTopping.add(new Sauce("ketchup", "sauce", 0.0));
+//
+//        // Premium toppings (Meats and Cheese)
+//        sandwichTopping.add(new PremiumTopping("grill chicken", "meat", 1.00));
+//        sandwichTopping.add(new PremiumTopping("bacon", "meat", 1.00));
+//        sandwichTopping.add(new PremiumTopping("roast beef", "meat", 1.00));
+//        sandwichTopping.add(new PremiumTopping("salami", "meat", 1.00));
+//        sandwichTopping.add(new PremiumTopping("ham", "meat", 1.00));
+//        sandwichTopping.add(new PremiumTopping("steak", "meat", 1.00));
+//        sandwichTopping.add(new PremiumTopping("provolone", "cheese", 1.00));
+//        sandwichTopping.add(new PremiumTopping("cheddar", "cheese", 1.00));
+//        sandwichTopping.add(new PremiumTopping("swiss", "cheese", 1.00));
+//        sandwichTopping.add(new PremiumTopping("american", "cheese", 1.00));
+//
+//        return sandwichTopping;
+//    }
 
     @Override
     public String toString() {
-        return "Topping: " + topping + " | Type: " + type + " | Price: $" + price;
+        return "Topping: " + topping + " | Price: $" + price + ((extra > 0.70) ? " (extra: $" + extra + ")" : "");
     }
 }

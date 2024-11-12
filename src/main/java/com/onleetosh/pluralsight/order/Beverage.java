@@ -83,19 +83,6 @@ public class Beverage {
         }
     }
 
-    /***
-     * Adjust the price of cup based on size
-     */
-    public double getPrice() {
-        switch (this.sizeOfCup) {
-            case "S": return priceOfSmallBeverage;
-            case "M": return priceOfMediumBeverage; // Example price adjustment for Medium
-            case "L": return priceOfLargeBeverage; // Example price adjustment for Large
-            default: throw new IllegalArgumentException("Invalid size: " + sizeOfCup);
-
-        }
-    }
-
     @Override
     public String toString(){
         return "One " + this.sizeOfCup +

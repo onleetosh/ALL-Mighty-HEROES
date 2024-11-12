@@ -22,7 +22,7 @@ public class Program {
 
     public static void main(String[] args) {
 
-        sandwichTopping = initializeToppings();
+      //  sandwichTopping = initializeToppings();
         bread = initializeBread();
         beverages = initializeBeverage();
         chips = initializeChips();
@@ -48,6 +48,7 @@ public class Program {
         for (Topping topping : addToppings) {
             System.out.println(topping);
         }
+
         System.out.println("Toast: " + (wantToast ? "Yes" : "No"));
 
         Sandwich newSandwich = new Sandwich(sandwichSize, breadChoice, addToppings, wantToast);
@@ -220,39 +221,39 @@ public class Program {
     /**
      * Initialize condiment objects and add them to an ArrayList of Condiments
      */
-    public static ArrayList<Topping> initializeToppings() {
-        sandwichTopping = new ArrayList<>();
-        sandwichTopping.add(new Topping(" "," ", 0 )); //hold position 0
-        // Regular toppings
-        sandwichTopping.add(new RegularTopping("lettuce", "regular", 0.0));
-        sandwichTopping.add(new RegularTopping("peppers", "regular", 0.0));
-        sandwichTopping.add(new RegularTopping("red onions", "regular", 0.0));
-        sandwichTopping.add(new RegularTopping("jalapenos", "regular", 0.0));
-        sandwichTopping.add(new RegularTopping("cucumber", "regular", 0.0));
-        sandwichTopping.add(new RegularTopping("pickles", "regular", 0.0));
+//    public static ArrayList<Topping> initializeToppings() {
+//        sandwichTopping = new ArrayList<>();
+//        sandwichTopping.add(new Topping(" "," ", 0 )); //hold position 0
+//        // Regular toppings
+//        sandwichTopping.add(new RegularTopping("lettuce", "regular", 0.0));
+//        sandwichTopping.add(new RegularTopping("peppers", "regular", 0.0));
+//        sandwichTopping.add(new RegularTopping("red onions", "regular", 0.0));
+//        sandwichTopping.add(new RegularTopping("jalapenos", "regular", 0.0));
+//        sandwichTopping.add(new RegularTopping("cucumber", "regular", 0.0));
+//        sandwichTopping.add(new RegularTopping("pickles", "regular", 0.0));
+//
+//        //TODO: change name to condiments
+//        // Sauces
+//        sandwichTopping.add(new Sauce("honey mustard", "sauce", 0.0));
+//        sandwichTopping.add(new Sauce("ranch", "sauce", 0.0));
+//        sandwichTopping.add(new Sauce("mayo", "sauce", 0.0));
+//        sandwichTopping.add(new Sauce("mustard", "sauce", 0.0));
+//        sandwichTopping.add(new Sauce("ketchup", "sauce", 0.0));
+//
+//        // Premium toppings (Meats and Cheese)
+//        sandwichTopping.add(new PremiumTopping("grill chicken", "meat", 1.00));
+//        sandwichTopping.add(new PremiumTopping("bacon", "meat", 1.00));
+//        sandwichTopping.add(new PremiumTopping("roast beef", "meat", 1.00));
+//        sandwichTopping.add(new PremiumTopping("salami", "meat", 1.00));
+//        sandwichTopping.add(new PremiumTopping("ham", "meat", 1.00));
+//        sandwichTopping.add(new PremiumTopping("steak", "meat", 1.00));
+//        sandwichTopping.add(new PremiumTopping("provolone", "cheese", 1.00));
+//        sandwichTopping.add(new PremiumTopping("cheddar", "cheese", 1.00));
+//        sandwichTopping.add(new PremiumTopping("swiss", "cheese", 1.00));
+//        sandwichTopping.add(new PremiumTopping("american", "cheese", 1.00));
 
-        //TODO: change name to condiments
-        // Sauces
-        sandwichTopping.add(new Sauce("honey mustard", "sauce", 0.0));
-        sandwichTopping.add(new Sauce("ranch", "sauce", 0.0));
-        sandwichTopping.add(new Sauce("mayo", "sauce", 0.0));
-        sandwichTopping.add(new Sauce("mustard", "sauce", 0.0));
-        sandwichTopping.add(new Sauce("ketchup", "sauce", 0.0));
-
-        // Premium toppings (Meats and Cheese)
-        sandwichTopping.add(new PremiumTopping("grill chicken", "meat", 1.00));
-        sandwichTopping.add(new PremiumTopping("bacon", "meat", 1.00));
-        sandwichTopping.add(new PremiumTopping("roast beef", "meat", 1.00));
-        sandwichTopping.add(new PremiumTopping("salami", "meat", 1.00));
-        sandwichTopping.add(new PremiumTopping("ham", "meat", 1.00));
-        sandwichTopping.add(new PremiumTopping("steak", "meat", 1.00));
-        sandwichTopping.add(new PremiumTopping("provolone", "cheese", 1.00));
-        sandwichTopping.add(new PremiumTopping("cheddar", "cheese", 1.00));
-        sandwichTopping.add(new PremiumTopping("swiss", "cheese", 1.00));
-        sandwichTopping.add(new PremiumTopping("american", "cheese", 1.00));
-
-        return sandwichTopping;
-    }
+     //   return sandwichTopping;
+   // }
     /**
      * Initialize beverage objects and add them to an ArrayList of Drinks
      */

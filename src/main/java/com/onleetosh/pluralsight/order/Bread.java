@@ -72,7 +72,7 @@ public class Bread {
 
     @Override
     public String toString() {
-        return sizeOfBread + "\" " + typeOfBread + " bread ($" + String.format("%.2f", price);
+        return sizeOfBread + "\" " + typeOfBread + " bread ($" + String.format("%.2f", price) +")";
     }
 }
 
