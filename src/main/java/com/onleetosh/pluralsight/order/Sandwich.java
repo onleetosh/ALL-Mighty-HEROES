@@ -4,6 +4,10 @@
 
 package com.onleetosh.pluralsight.order;
 
+import com.onleetosh.pluralsight.topping.Topping;
+
+import java.util.ArrayList;
+
 public class Sandwich {
 
 
@@ -11,15 +15,17 @@ public class Sandwich {
     private int sizeOfBread;
     // bread price 4"($5.50), 8"(7.00), or 12" (8.50)
     // white, wheat, rye, wrap
-    private String typeOfBread;
+    private Bread typeOfBread;
     //lettuce, peppers, onions, tomatoes, jalapenos, cucumber, pickles, banana peppers, mushrooms, guacamole
     // topping price - included
-    private String regularTopping;
+
+    private ArrayList<Topping> toppings;
+    //private String topping;
     // Meats(steak, ham, salami, roast beef, chicken, bacon)  Cheese(american, provolone, cheddar, swiss)
     // premium price - 4"($1.00 extra meat .50), 8"(2.00 extra meat 1.00), or 12" (3.00 extra meat 1.50);
-    private String premiumTopping; //
+    private ArrayList<Topping> premiumTopping; //
     // Sauce ( Mayo, Mustard, Honey Mustard, Buffalo, Spicy Chiplote, Ketchup, Ranch, vinaigrette, thousand islands
-    private String sauce;
+    private ArrayList<Topping> sauce;
 
     private boolean isToast;
 
@@ -27,75 +33,34 @@ public class Sandwich {
      * Constructor for regular sandwich object
      */
     public Sandwich(int sizeOfBread,
-                    String typeOfBread,
-                    String regularTopping,
-                    String sauce,
+                    Bread typeOfBread,
+                    ArrayList<Topping> toppings,
                     boolean isToast) {
         this.sizeOfBread = sizeOfBread;
         this.typeOfBread = typeOfBread;
-        this.regularTopping = regularTopping;
-        this.sauce = sauce;
+        this.toppings = toppings;
         this.isToast = isToast;
     }
+
+
 
     /**
      * Constructor for premium sandwich object
      */
     public Sandwich(int sizeOfBread,
-                    String sauce,
-                    String regularTopping,
-                    String premiumTopping,
-                    String typeOfBread,
+                    Bread typeOfBread,
+                    ArrayList<Topping> toppings,
+                    ArrayList<Topping> premiumTopping,
                     boolean isToast) {
         this.sizeOfBread = sizeOfBread;
-        this.sauce = sauce;
-        this.regularTopping = regularTopping;
-        this.premiumTopping = premiumTopping;
         this.typeOfBread = typeOfBread;
+        this.toppings = toppings;
+        this.premiumTopping = premiumTopping;
         this.isToast = isToast;
     }
 
 
-    public int getSizeOfBread() {
 
-        return sizeOfBread;
-    }
-
-    public void setSizeOfBread(int sizeOfBread) {
-        this.sizeOfBread = sizeOfBread;
-    }
-
-    public String getTypeOfBread() {
-        return typeOfBread;
-    }
-
-    public void setTypeOfBread(String typeOfBread) {
-        this.typeOfBread = typeOfBread;
-    }
-
-    public String getRegularTopping() {
-        return regularTopping;
-    }
-
-    public void setRegularTopping(String regularTopping) {
-        this.regularTopping = regularTopping;
-    }
-
-    public String getPremiumTopping() {
-        return premiumTopping;
-    }
-
-    public void setPremiumTopping(String premiumTopping) {
-        this.premiumTopping = premiumTopping;
-    }
-
-    public String getSauce() {
-        return sauce;
-    }
-
-    public void setSauce(String sauce) {
-        this.sauce = sauce;
-    }
 
 
     public double getTotalCost(){
@@ -124,8 +89,10 @@ public class Sandwich {
     }
 
     public String toString() {
-        return "Sandwich [Size: " + sizeOfBread + "\" Bread (" + typeOfBread + "), Regular Topping: "
-                + regularTopping + ", Premium Topping: " + premiumTopping
-                + ", Sauce: " + sauce + ", Price: $" + getTotalCost() + "]";
+        return "Sandwich [Size: " + sizeOfBread +
+                "\" Bread (" + typeOfBread + ")" +
+                ", Regular Topping: " + toppings.equals("regular") +
+                ", Premium Topping: " + toppings.equals("premium") +
+                ", Sauce: " + toppings.equals("sauce") + ", Price: $" + String.format("%.2f", getTotalCost());
     }
 }

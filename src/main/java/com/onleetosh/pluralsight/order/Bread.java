@@ -1,8 +1,14 @@
-package com.onleetosh.pluralsight;
+package com.onleetosh.pluralsight.order;
+
+import com.onleetosh.pluralsight.util.Console;
+
+import java.util.ArrayList;
 
 public class Bread {
-    // white, wheat, rye, wrap
-    private String typeOfBread;
+
+    //TODO : rename bread to type of heroes
+
+    private String typeOfBread;    // white, wheat, rye, wrap
     private int sizeOfBread; // 4, 8, or 12 inches
     private double price;
 
@@ -52,9 +58,21 @@ public class Bread {
         return price;
     }
 
+
+
+//    // Helper method to prompt for bread selection
+//    public static int promptForBread() {
+//        System.out.println("Select a bread:");
+//        for (int i = 1; i < bread.size(); i++) {
+//            System.out.println(i + ": " + bread.get(i).getTypeOfBread() + " (" + bread.get(i).getSizeOfBread() + "\")");
+//        }
+//        return Console.PromptForInt("Enter bread choice (1-" + (bread.size() - 1) + "): ");
+//    }
+
+
     @Override
     public String toString() {
-        return sizeOfBread + "\" " + typeOfBread + " bread ($" + price + ")";
+        return sizeOfBread + "\" " + typeOfBread + " bread ($" + String.format("%.2f", price);
     }
 }
 
