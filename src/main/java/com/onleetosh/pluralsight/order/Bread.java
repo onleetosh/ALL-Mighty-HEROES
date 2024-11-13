@@ -60,16 +60,6 @@ public class Bread {
 
 
 
-//    // Helper method to prompt for bread selection
-//    public static int promptForBread() {
-//        System.out.println("Select a bread:");
-//        for (int i = 1; i < bread.size(); i++) {
-//            System.out.println(i + ": " + bread.get(i).getTypeOfBread() + " (" + bread.get(i).getSizeOfBread() + "\")");
-//        }
-//        return Console.PromptForInt("Enter bread choice (1-" + (bread.size() - 1) + "): ");
-//    }
-
-
     @Override
     public String toString() {
         return sizeOfBread + "\" " + typeOfBread + " bread ($" + String.format("%.2f", price) +")";
