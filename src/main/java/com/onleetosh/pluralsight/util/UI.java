@@ -153,6 +153,8 @@ public class UI {
             // Display total cost
             System.out.println("\nTotal Price: $" + totalCost);
 
+            System.out.println("Thank you for ordering with ALL MIGHTY HEROES!\n");
+
         }
     }
 

@@ -1,4 +1,5 @@
-<img alt="Logo.jpg" src="../../../../Desktop/Logo.jpg"/>
+
+
 ALL MIGHTY HEROES is a command-line Java application that allows users 
 to place a food order consisting of sandwiches, chips, and beverages. 
 The application provides an intuitive way to add multiple items to the
@@ -15,23 +16,21 @@ Java Development Kit (JDK) 8 or higher.
 
 # Installation
 
-Clone the repository:
+- Clone the repository:
 
-bash
-Copy code
+- Copy and paste code in terminal
 git clone https://github.com/your-username/ALL-MIGHTY-HEROES.git
-Navigate into the project directory:
 
-bash
-Copy code
-cd ALL-MIGHTY-HEROES
-Compile the Java program:
+- Navigate into the project directory:
 
-bash
-Copy code
-javac Main.java
-Run the application:
+- cd ALL-MIGHTY-HEROES
 
-bash
-Copy code
-java Main
+- open project 
+
+# Usage
+Start the program and follow the on-screen instructions to place an order.
+Select between the following options:
+- Sandwich
+- Chips
+- Beverage
+After making your selections, view the final receipt with a complete summary of your order and the total amount due.
