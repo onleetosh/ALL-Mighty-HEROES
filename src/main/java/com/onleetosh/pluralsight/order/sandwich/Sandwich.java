@@ -4,8 +4,6 @@
 
 package com.onleetosh.pluralsight.order.sandwich;
 
-import com.onleetosh.pluralsight.util.Calculation;
-
 import java.util.ArrayList;
 
 public class Sandwich {
@@ -62,6 +60,9 @@ public class Sandwich {
                 return 0;
         }
 
+        //calculate for topping to get bread size price plus all toppings
+
+        //this method need to be debugges
         // Calculate total cost of toppings
         for (Topping topping : toppings) {
             toppingCost += topping.getPrice();
@@ -96,6 +97,7 @@ public class Sandwich {
                 System.out.println("Invalid size.");
                 return 0;
         }
+
 
         if(premiumTopping != null && !premiumTopping.isEmpty()) {
             basePrice += premiumCost;

@@ -1,12 +1,16 @@
 package com.onleetosh.pluralsight.util;
 
 import com.onleetosh.pluralsight.order.*;
+import com.onleetosh.pluralsight.order.sandwich.Bread;
 import com.onleetosh.pluralsight.order.sandwich.Topping;
 import com.onleetosh.pluralsight.order.sandwich.Sandwich;
 
 import java.util.ArrayList;
 
 public class PromptOrder {
+
+    private static Bread selectedBread;
+    private static ArrayList<Topping> selectedToppings;
 
 
     /**
@@ -34,23 +38,21 @@ public class PromptOrder {
 
             //prompt for type bread and size
             breadChoice = promptForBread();
-            Order.selectedBread = UI.listOfBread.get(breadChoice);
-            sandwichSize = Order.selectedBread.getSizeOfBread();
-            Order.selectedToppings = promptForToppings(sandwichSize);
+            selectedBread = UI.listOfBread.get(breadChoice);
+            sandwichSize = selectedBread.getSizeOfBread();
+            selectedToppings = promptForToppings(sandwichSize);
 
             wantToasted = Console.PromptForYesNo("Do you want to toast?");
-            UI.sandwichOrder.add(new Sandwich(sandwichSize, Order.selectedBread, Order.selectedToppings, wantToasted));
 
-
-
+            // Create a new Sandwich object that calculates and stores the total cost
+            Sandwich newSandwich = new Sandwich(sandwichSize, selectedBread, selectedToppings, wantToasted);
+            UI.sandwichOrder.add(newSandwich);
             System.out.println("Adding sandwich " + i);
 
-            double price = Calculation.totalCostOfSandwich(Order.selectedBread, Order.selectedToppings);
-
             // display sandwich(es) ordered
-            System.out.println("Bread: " + Order.selectedBread.getTypeOfBread() + " | Size: " + sandwichSize + "\"");
-            System.out.println("COST OF SANDWICH: " + price );
-            for (Topping topping : Order.selectedToppings) {
+            System.out.println("Bread: " + selectedBread.getTypeOfBread() + " | Size: " + sandwichSize + "\"");
+            System.out.println("Sandwich" + i  +" " + newSandwich.calculateTotalCost());
+            for (Topping topping : selectedToppings) {
                 System.out.println(topping);
             }
             System.out.println("Toast: " + (wantToasted ? "Yes" : "No"));
@@ -58,7 +60,6 @@ public class PromptOrder {
             if (i == sandwiches) {
                 break; // Exit the loop after creating the requested number of sandwiches
             }
-
         }
         return UI.sandwichOrder;
     }
@@ -70,22 +71,19 @@ public class PromptOrder {
     public static int promptForBread() {
 
         System.out.println("Select a bread:");
-
-        //loop through array
+        //loop through  and display bread as a list # 1 - 12 (size of the ArrayList)
         for (int i = 1; i < UI.listOfBread.size(); i++) {
             System.out.println(i + ": " + UI.listOfBread.get(i).getTypeOfBread() + " (" + UI.listOfBread.get(i).getSizeOfBread() + "\")");
         }
 
         int bread = Console.PromptForInt("Enter bread choice (1-" + (UI.listOfBread.size() - 1) + ")");
-        System.out.println("Bread selected : " + UI.listOfBread.get(bread));
+
+        System.out.println("Confirmation: " + UI.listOfBread.get(bread));
         return bread;
 
         //return Console.PromptForInt("Enter bread choice (1-" + (UI.listOfBread.size() - 1) + "): ");
     }
 
-
-
-    //TODO: ADD EXTRA OPTION TO SAUCE AND REGULAR TOPPING
     /**
      * Loop through an ArrayList of objects to display a list of toppings  available
      * then prompt user for toppings to add and return the result
@@ -98,7 +96,7 @@ public class PromptOrder {
         while (addMore) {
             System.out.println("Select a topping:");
 
-            // Display all toppings
+            //loop through  and display toppings as a list # 1 - (size of the ArrayList)
             for (int i = 1; i < UI.listOfSandwichTopping.size(); i++) {  // Changed to start at 0
                 Topping addTopping = UI.listOfSandwichTopping.get(i);
                 System.out.println(i + ": " + addTopping.getTopping() + " " + addTopping);
@@ -118,7 +116,6 @@ public class PromptOrder {
             // Add the selected topping to the list
             selectedToppings.add(selectedTopping);
 
-            // Debug print to check if prices are being adjusted correctly
             System.out.println("Topping: " + selectedTopping.getTopping() + ", Current Price: " + selectedTopping.getPrice());
 
             // Ask if the user wants to add more toppings
@@ -139,7 +136,8 @@ public class PromptOrder {
             //prompt for number of chips to add
             int numberOfChips = Console.PromptForInt("How many Chips are you adding?  ");
 
-            for (int i = 1; i <= numberOfChips; i++) {
+        //loop through and display a list of chips # 1 - (size of the ArrayList)
+        for (int i = 1; i <= numberOfChips; i++) {
                 // Loop through the arraylist and display chips options
                 for (int j = 1; j < UI.listOfChips.size(); j++) {
                     System.out.println(j + ": " + UI.listOfChips.get(j).getBagOfChips());
@@ -206,7 +204,7 @@ public class PromptOrder {
             selectedBeverage.setSizeOfCup(cupSize);
             UI.drinkOrder.add(selectedBeverage);
 
-            System.out.println(" Adding " + selectedBeverage.getTypeOfBeverage() + " (" + cupSize + ") " + selectedBeverage.getPriceOfBeverage());
+            System.out.println(" Adding: " + selectedBeverage.getTypeOfBeverage() + " (" + cupSize + ") " + selectedBeverage.getPriceOfBeverage());
         }
         return UI.drinkOrder;
     }

@@ -1,8 +1,0 @@
-Receipt Date: 2024-11-12 23:24:04
-=================================
-Order placed:
-Sandwich: []
-Beverage: [One S size, Coke beverage. Total: $2.00, One L size, Fruit Punch beverage. Total: $3.00]
-Chips: []
-Total Price: $5.0
-=================================

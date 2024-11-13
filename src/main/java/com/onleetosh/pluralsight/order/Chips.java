@@ -38,6 +38,6 @@ public class Chips {
 
     @Override
     public String toString() {
-        return "Updating order .. " + bagOfChips + " $" + String.format("%.2f", priceOfChips);
+        return  bagOfChips + " $" + String.format("%.2f", priceOfChips);
     }
 }

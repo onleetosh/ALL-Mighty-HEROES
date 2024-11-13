@@ -147,40 +147,26 @@ public class UI {
             System.out.println("----------------------------");
             System.out.println("       Order Summary");
             System.out.println("----------------------------");
+
             // Display sandwiches
-            System.out.println("\n Sandwich(es) ");
-
-//            for (int i = 0; i < sandwichOrder.size(); i++) {
-//                for(Sandwich sandwich : sandwiches){
-//                    System.out.println(sandwich);
-//                    totalCost += sandwichOrder.get(i).
-//
-//                }
-//            }
-
-
-            for (Sandwich sandwich : sandwichOrder) {
+            for (Sandwich sandwich : sandwiches) {
                 System.out.println(sandwich);
-                totalCost += sandwich.getTotalCost(); // TODO: fix
-
-                //totalCost += Sandwich.totalCostOfSandwich(Order.selectedBread, Order.selectedToppings );
+                totalCost += sandwich.getTotalCostOfSandwich(); // TODO: fix
             }
 
             // Display drinks
-            System.out.println("\n Beverage(s) ");
             for (Beverage drink : drinks) {
                 System.out.println(drink);
                 totalCost += drink.getPriceOfBeverage();
             }
             // Display chips
-            System.out.println("\n Chips ");
             for (Chips chip : chips) {
                 System.out.println(chip);
                 totalCost += chip.getPriceOfChips();
             }
             System.out.println("----------------------------");
             // Display total cost
-            System.out.println("\nTotal Price: $" + totalCost);
+            System.out.printf("\nTotal Price: $%.2f", totalCost);
 
         }
     }

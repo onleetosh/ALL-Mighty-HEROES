@@ -12,15 +12,13 @@ public class Order {
     private ArrayList<Beverage> beverages;
     private ArrayList<Chips> chips;
 
-    public static Bread selectedBread;
-    public static ArrayList<Topping> selectedToppings;
 
 
 
     public Order(ArrayList<Sandwich> sandwiches, ArrayList<Beverage> beverages, ArrayList<Chips> chips) {
-        this.sandwiches = sandwiches != null ? sandwiches : new ArrayList<>();
-        this.beverages = beverages != null ? beverages : new ArrayList<>();
-        this.chips = chips != null ? chips : new ArrayList<>();
+        this.sandwiches = new ArrayList<>();
+        this.beverages = new ArrayList<>();
+        this.chips = new ArrayList<>();
     }
 
     // Methods to add sandwiches, drinks, and chips
@@ -52,8 +50,7 @@ public class Order {
     public double getTotalCost() {
         double totalCost = 0.0;
         for (Sandwich sandwich : sandwiches) {
-            totalCost += sandwich.getTotalCost();
-
+            totalCost += sandwich.getTotalCostOfSandwich();
         }
         for (Beverage beverage : beverages) {
             totalCost += beverage.getPriceOfBeverage();
@@ -64,4 +61,44 @@ public class Order {
         return totalCost;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder formatOrder = new StringBuilder();
+
+        formatOrder.append("TRACE ORDER STRING BUILDER");
+        formatOrder.append("---------------------------------\n");
+        formatOrder.append("        Order Summary:\n");
+        formatOrder.append("---------------------------------\n");
+
+        // Display sandwiches
+        if (sandwiches != null && !sandwiches.isEmpty()) {
+            formatOrder.append("Sandwiches:\n");
+            for (Sandwich sandwich : sandwiches) {
+                formatOrder.append(sandwich.toString()).append("\n");
+            }
+        }
+
+        // Display beverages
+        if (beverages != null && !beverages.isEmpty()) {
+            formatOrder.append("Beverages:\n");
+            for (Beverage beverage : beverages) {
+                formatOrder.append(beverage.toString()).append("\n");
+            }
+        }
+
+        // Display chips
+        if (chips != null && !chips.isEmpty()) {
+            formatOrder.append("Chips:\n");
+            for (Chips chip : chips) {
+                formatOrder.append(chip.toString()).append("\n");
+            }
+        }
+
+        // Display total cost
+        formatOrder.append("---------------------------------\n");
+        formatOrder.append("Total Price: $").append(String.format("%.2f", getTotalCost())).append("\n");
+        formatOrder.append("---------------------------------\n");
+
+        return formatOrder.toString();
+    }
 }

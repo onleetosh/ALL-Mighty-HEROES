@@ -35,7 +35,8 @@ public class Receipt {
             wtr.close();  // Close the file writer
 
             System.out.println("Receipt created successfully: " + date + ".txt");
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             System.out.println("An error occurred while writing the receipt: " + e.getMessage());
         }
 
