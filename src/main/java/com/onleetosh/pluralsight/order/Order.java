@@ -53,6 +53,7 @@ public class Order {
         double totalCost = 0.0;
         for (Sandwich sandwich : sandwiches) {
             totalCost += sandwich.getTotalCost();
+
         }
         for (Beverage beverage : beverages) {
             totalCost += beverage.getPriceOfBeverage();

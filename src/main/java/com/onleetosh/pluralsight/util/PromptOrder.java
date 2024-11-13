@@ -2,7 +2,6 @@ package com.onleetosh.pluralsight.util;
 
 import com.onleetosh.pluralsight.order.*;
 import com.onleetosh.pluralsight.order.sandwich.Topping;
-import com.onleetosh.pluralsight.order.sandwich.Bread;
 import com.onleetosh.pluralsight.order.sandwich.Sandwich;
 
 import java.util.ArrayList;
@@ -37,7 +36,6 @@ public class PromptOrder {
             breadChoice = promptForBread();
             Order.selectedBread = UI.listOfBread.get(breadChoice);
             sandwichSize = Order.selectedBread.getSizeOfBread();
-
             Order.selectedToppings = promptForToppings(sandwichSize);
 
             wantToasted = Console.PromptForYesNo("Do you want to toast?");
@@ -47,27 +45,21 @@ public class PromptOrder {
 
             System.out.println("Adding sandwich " + i);
 
-            double price = Sandwich.totalCostOfSandwich(Order.selectedBread, Order.selectedToppings);
-
-            System.out.println("COST OF SANDWICH: " + price );
+            double price = Calculation.totalCostOfSandwich(Order.selectedBread, Order.selectedToppings);
 
             // display sandwich(es) ordered
-            System.out.println("Your order:");
             System.out.println("Bread: " + Order.selectedBread.getTypeOfBread() + " | Size: " + sandwichSize + "\"");
-
+            System.out.println("COST OF SANDWICH: " + price );
             for (Topping topping : Order.selectedToppings) {
                 System.out.println(topping);
             }
             System.out.println("Toast: " + (wantToasted ? "Yes" : "No"));
-
 
             if (i == sandwiches) {
                 break; // Exit the loop after creating the requested number of sandwiches
             }
 
         }
-
-
         return UI.sandwichOrder;
     }
 

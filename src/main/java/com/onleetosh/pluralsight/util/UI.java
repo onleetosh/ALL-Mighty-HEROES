@@ -125,6 +125,7 @@ public class UI {
 
 
         public void processConfirmOrder() {
+
             Receipt.recordOrderTransaction(currentOrder);
             currentOrder = new Order(null, null, null); // start a new order
 
@@ -148,9 +149,20 @@ public class UI {
             System.out.println("----------------------------");
             // Display sandwiches
             System.out.println("\n Sandwich(es) ");
-            for (Sandwich sandwich : sandwiches) {
+
+//            for (int i = 0; i < sandwichOrder.size(); i++) {
+//                for(Sandwich sandwich : sandwiches){
+//                    System.out.println(sandwich);
+//                    totalCost += sandwichOrder.get(i).
+//
+//                }
+//            }
+
+
+            for (Sandwich sandwich : sandwichOrder) {
                 System.out.println(sandwich);
                 totalCost += sandwich.getTotalCost(); // TODO: fix
+
                 //totalCost += Sandwich.totalCostOfSandwich(Order.selectedBread, Order.selectedToppings );
             }
 

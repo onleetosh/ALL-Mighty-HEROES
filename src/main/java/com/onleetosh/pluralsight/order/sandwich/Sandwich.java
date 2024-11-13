@@ -4,6 +4,8 @@
 
 package com.onleetosh.pluralsight.order.sandwich;
 
+import com.onleetosh.pluralsight.util.Calculation;
+
 import java.util.ArrayList;
 
 public class Sandwich {
@@ -22,6 +24,8 @@ public class Sandwich {
     private ArrayList<Topping> premiumTopping; //
     // Sauce ( Mayo, Mustard, Honey Mustard, Buffalo, Spicy Chiplote, Ketchup, Ranch, vinaigrette, thousand islands
 
+    private double totalCostOfSandwich;
+
     private boolean isToast;
 
     /**
@@ -35,8 +39,40 @@ public class Sandwich {
         this.typeOfBread = typeOfBread;
         this.toppings = toppings;
         this.isToast = isToast;
+        this.totalCostOfSandwich = calculateTotalCost();
     }
 
+    public double calculateTotalCost() {
+        double basePrice = 0.0;
+        double toppingCost = 0.0;
+
+        // Calculate base price based on bread size
+        switch (sizeOfBread) {
+            case 4:
+                basePrice = 5.50;
+                break;
+            case 8:
+                basePrice = 7.00;
+                break;
+            case 12:
+                basePrice = 8.50;
+                break;
+            default:
+                System.out.println("Invalid size.");
+                return 0;
+        }
+
+        // Calculate total cost of toppings
+        for (Topping topping : toppings) {
+            toppingCost += topping.getPrice();
+        }
+
+        return basePrice + toppingCost;
+    }
+
+    public double getTotalCostOfSandwich() {
+        return this.totalCostOfSandwich; // Return stored total cost
+    }
 
     /**
      * return the total cost of a single sandwich
@@ -67,23 +103,10 @@ public class Sandwich {
         return basePrice;
     }
 
-    // Calculate the total cost of the sandwich, including bread and toppings
-    public static double totalCostOfSandwich(Bread selectedBread,
-                                             ArrayList<Topping> toppings) {
-        double totalCost = selectedBread.getPrice();  // Start with the price of the bread
-
-        // Add the cost of each topping (regular or premium)
-        for (Topping topping : toppings) {
-            totalCost += topping.getPrice();
-        }
-
-        return totalCost;
-    }
-
     public String toString() {
+        String isToasted = this.isToast ? "YES" : "NO";
+        return "Sandwich :  " + typeOfBread + ", with " + toppings +
+                ", Toast: " + isToasted + ",  $" + String.format("%.2f", totalCostOfSandwich);
 
-        return  this.typeOfBread  +
-                "\n Toppings: " + this.toppings +
-                "\n Price: $" + String.format("%.2f", getTotalCost());
     }
 }

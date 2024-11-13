@@ -129,6 +129,6 @@ public class Topping {
     public String toString() {
 
         String isPremium = this.isPremium ? "PREMIUM" : "REGULAR";
-        return "Topping: " + topping + "    (" + isPremium + ")" ;
+        return "Topping : " + topping + " (" + isPremium + ")" ;
     }
 }
