@@ -1,0 +1,18 @@
+Receipt Date: 2024-11-13 15:30:33
+=================================
+=================================
+        Order Summary:
+=================================
+Sandwiches:
+Sandwich :  4" white bread ($5.50), with [Topping  lettuce (REGULAR), Topping  cheddar (PREMIUM)], Toast: YES,  $6.55
+Beverages:
+L  Mango Lemonade  $2.00
+S  Strawberry Lemonade  $2.00
+Chips:
+Rap Snacks, Bar-B-Que $1.50
+Zapp's Voodoo $1.50
+=================================
+Total Price: $13.55
+=================================
+
+=================================

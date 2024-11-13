@@ -1,8 +1,6 @@
 package com.onleetosh.pluralsight.order;
 
-import com.onleetosh.pluralsight.order.sandwich.Bread;
 import com.onleetosh.pluralsight.order.sandwich.Sandwich;
-import com.onleetosh.pluralsight.order.sandwich.Topping;
 
 import java.util.ArrayList;
 
@@ -11,9 +9,6 @@ public class Order {
     private ArrayList<Sandwich> sandwiches;
     private ArrayList<Beverage> beverages;
     private ArrayList<Chips> chips;
-
-
-
 
     public Order(ArrayList<Sandwich> sandwiches, ArrayList<Beverage> beverages, ArrayList<Chips> chips) {
         this.sandwiches = new ArrayList<>();
@@ -64,12 +59,9 @@ public class Order {
     @Override
     public String toString() {
         StringBuilder formatOrder = new StringBuilder();
-
-        formatOrder.append("TRACE ORDER STRING BUILDER");
-        formatOrder.append("---------------------------------\n");
+        formatOrder.append("=================================\n");
         formatOrder.append("        Order Summary:\n");
-        formatOrder.append("---------------------------------\n");
-
+        formatOrder.append("=================================\n");
         // Display sandwiches
         if (sandwiches != null && !sandwiches.isEmpty()) {
             formatOrder.append("Sandwiches:\n");
@@ -77,7 +69,6 @@ public class Order {
                 formatOrder.append(sandwich.toString()).append("\n");
             }
         }
-
         // Display beverages
         if (beverages != null && !beverages.isEmpty()) {
             formatOrder.append("Beverages:\n");
@@ -85,7 +76,6 @@ public class Order {
                 formatOrder.append(beverage.toString()).append("\n");
             }
         }
-
         // Display chips
         if (chips != null && !chips.isEmpty()) {
             formatOrder.append("Chips:\n");
@@ -95,9 +85,9 @@ public class Order {
         }
 
         // Display total cost
-        formatOrder.append("---------------------------------\n");
+        formatOrder.append("=================================\n");
         formatOrder.append("Total Price: $").append(String.format("%.2f", getTotalCost())).append("\n");
-        formatOrder.append("---------------------------------\n");
+        formatOrder.append("=================================\n");
 
         return formatOrder.toString();
     }

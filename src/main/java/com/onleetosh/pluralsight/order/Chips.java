@@ -23,17 +23,8 @@ public class Chips {
         return bagOfChips;
     }
 
-    public void setBagOfChips(String bagOfChips) {
-        this.bagOfChips = bagOfChips;
-    }
-
     public double getPriceOfChips() {
         return priceOfChips;
-    }
-
-
-    public void setPriceOfChips(double priceOfChips) {
-        this.priceOfChips = priceOfChips;
     }
 
     @Override

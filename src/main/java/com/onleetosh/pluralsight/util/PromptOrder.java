@@ -38,7 +38,7 @@ public class PromptOrder {
 
             //prompt for type bread and size
             breadChoice = promptForBread();
-            selectedBread = UI.listOfBread.get(breadChoice);
+            selectedBread = UI.breadList.get(breadChoice);
             sandwichSize = selectedBread.getSizeOfBread();
             selectedToppings = promptForToppings(sandwichSize);
 
@@ -70,16 +70,27 @@ public class PromptOrder {
      */
     public static int promptForBread() {
 
-        System.out.println("Select a bread:");
-        //loop through  and display bread as a list # 1 - 12 (size of the ArrayList)
-        for (int i = 1; i < UI.listOfBread.size(); i++) {
-            System.out.println(i + ": " + UI.listOfBread.get(i).getTypeOfBread() + " (" + UI.listOfBread.get(i).getSizeOfBread() + "\")");
+        //loop to prompt a valid input
+        while(true) {
+            try {
+                System.out.println("Select a bread:");
+                //loop through  and display bread as a list # 1 - 12 (size of the ArrayList)
+                for (int i = 1; i < UI.breadList.size(); i++) {
+                    System.out.println(i + ": " + UI.breadList.get(i).getTypeOfBread() + " (" + UI.breadList.get(i).getSizeOfBread() + "\")");
+                }
+
+                int bread = Console.PromptForInt("Enter bread choice (1-" + (UI.breadList.size() - 1) + ")");
+
+                System.out.println("Confirmation: " + UI.breadList.get(bread));
+
+                return bread;
+            }
+            catch (Exception e){
+                System.out.println("Please try again... \n");
+            }
+
         }
 
-        int bread = Console.PromptForInt("Enter bread choice (1-" + (UI.listOfBread.size() - 1) + ")");
-
-        System.out.println("Confirmation: " + UI.listOfBread.get(bread));
-        return bread;
 
         //return Console.PromptForInt("Enter bread choice (1-" + (UI.listOfBread.size() - 1) + "): ");
     }
@@ -92,22 +103,21 @@ public class PromptOrder {
         ArrayList<Topping> selectedToppings = new ArrayList<>();
         boolean addMore = true;
 
-
         while (addMore) {
             System.out.println("Select a topping:");
 
             //loop through  and display toppings as a list # 1 - (size of the ArrayList)
-            for (int i = 1; i < UI.listOfSandwichTopping.size(); i++) {  // Changed to start at 0
-                Topping addTopping = UI.listOfSandwichTopping.get(i);
+            for (int i = 1; i < UI.heroToppingList.size(); i++) {  // Changed to start at 0
+                Topping addTopping = UI.heroToppingList.get(i);
                 System.out.println(i + ": " + addTopping.getTopping() + " " + addTopping);
             }
 
-            // Prompt user to select a topping
-            int toppingChoice = Console.PromptForInt("Enter topping choice (0-" + (UI.listOfSandwichTopping.size() - 1) + "): ");
-            Topping selectedTopping = UI.listOfSandwichTopping.get(toppingChoice);
+            // Prompt user for topping to add
+            int toppingChoice = Console.PromptForInt("Enter topping choice (0-" + (UI.heroToppingList.size() - 1) + "): ");
+            Topping selectedTopping = UI.heroToppingList.get(toppingChoice);
             System.out.println("Adding " + selectedTopping.getTopping());
 
-            // Always prompt if the user wants extra
+            // Always prompt for extra topping
             boolean isExtra = Console.PromptForYesNo("Do you want extra " + selectedTopping.getTopping() + "?");
 
             // Adjust the price if necessary (based on your business logic)
@@ -139,8 +149,8 @@ public class PromptOrder {
         //loop through and display a list of chips # 1 - (size of the ArrayList)
         for (int i = 1; i <= numberOfChips; i++) {
                 // Loop through the arraylist and display chips options
-                for (int j = 1; j < UI.listOfChips.size(); j++) {
-                    System.out.println(j + ": " + UI.listOfChips.get(j).getBagOfChips());
+                for (int j = 1; j < UI.chipsList.size(); j++) {
+                    System.out.println(j + ": " + UI.chipsList.get(j).getBagOfChips());
                 }
 
                 int chipChoice;
@@ -148,16 +158,16 @@ public class PromptOrder {
 
                 // Prompt user for chip selection and validate input
                 while (!validChoice) {
-                    chipChoice = Console.PromptForInt("Select a Chip (0-" + (UI.listOfChips.size() - 1) + "): ");
+                    chipChoice = Console.PromptForInt("Select a Chip (0-" + (UI.chipsList.size() - 1) + "): ");
 
                     // Check if the input is within the valid range
-                    if (chipChoice >= 0 && chipChoice < UI.listOfChips.size()) {
-                        Chips selectedChip = UI.listOfChips.get(chipChoice);
+                    if (chipChoice >= 0 && chipChoice < UI.chipsList.size()) {
+                        Chips selectedChip = UI.chipsList.get(chipChoice);
                         System.out.println("Added: " + selectedChip);
                         UI.chipOrder.add(selectedChip);
                         validChoice = true;  // Exit loop after valid selection
                     } else {
-                        System.out.println("Invalid selection. Please enter a valid number between 0 and " + (UI.listOfChips.size() - 1) + ".");
+                        System.out.println("Invalid selection. Please enter a valid number between 0 and " + (UI.chipsList.size() - 1) + ".");
                     }
                 }
             }
@@ -177,13 +187,13 @@ public class PromptOrder {
 
         for (int i = 1; i <= numberOfDrinks; i++) {
             // Loop through the arraylist and display beverage options
-            for (int j = 1; j < UI.listOfBeverages.size(); j++) {
-                System.out.println(j + ": " + UI.listOfBeverages.get(j).getTypeOfBeverage());
+            for (int j = 1; j < UI.beveragesList.size(); j++) {
+                System.out.println(j + ": " + UI.beveragesList.get(j).getTypeOfBeverage());
             }
 
             // Get user selection for beverage
-            int beverageChoice = Console.PromptForInt("Select a beverage (1 -" + (UI.listOfBeverages.size() - 1) + "): ");
-            Beverage selectedBeverage = UI.listOfBeverages.get(beverageChoice);
+            int beverageChoice = Console.PromptForInt("Select a beverage (1 -" + (UI.beveragesList.size() - 1) + "): ");
+            Beverage selectedBeverage = UI.beveragesList.get(beverageChoice);
 
             // Prompt for cup size
             String cupSize;

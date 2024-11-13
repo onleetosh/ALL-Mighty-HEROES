@@ -14,7 +14,7 @@ public class Receipt {
 
 
     /**
-     * Method designed to write a receipt file with a single order summary
+     * recorderOrderTransaction() is used to create a receipt file of ordering being placed
      */
     public static void recordOrderTransaction(Order order){
 
@@ -23,23 +23,24 @@ public class Receipt {
             String date = current.format(fmtDT);
 
             // Create a file with the date as part of the name
-            BufferedWriter wtr = new BufferedWriter(new FileWriter("Receipt-" + date + ".txt"));
+            BufferedWriter bwt = new BufferedWriter(new FileWriter("Receipt-" + date + ".txt"));
 
             // Write the order details into the file
-            wtr.write("Receipt Date: " + current.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) + "\n");
-            wtr.write("=================================\n");
-            wtr.write(order.toString());  // Assuming Order has a proper toString method
-            wtr.write("\nTotal Price: $" + order.getTotalCost());  // Write total price
-            wtr.write("\n=================================\n");
+            bwt.write("Receipt Date: " + current.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) + "\n");
+            bwt.write("====================================\n");
+            bwt.write("            All Might Heroes");
+            bwt.write("           Egghead, New World");
+            bwt.write("         Phone: (68) 1058-1125 ");
+            bwt.write(order.toString());  // write order using toString()
+           // wtr.write("\nTotal Price: $" + order.getTotalCost());  // Write total price
+            bwt.write("\n==================================\n");
 
-            wtr.close();  // Close the file writer
+            bwt.close();  // Close the file writer
 
-            System.out.println("Receipt created successfully: " + date + ".txt");
+            System.out.println("\n Receipt created successfully: " + date + ".txt");
         }
         catch (IOException e) {
-            System.out.println("An error occurred while writing the receipt: " + e.getMessage());
+            System.out.println("\nAn error occurred while writing the receipt: " + e.getMessage());
         }
-
     }
-
 }

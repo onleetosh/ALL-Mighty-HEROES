@@ -1,0 +1,19 @@
+Receipt Date: 2024-11-13 16:35:21
+=================================
+=================================
+        Order Summary:
+=================================
+Sandwiches:
+Sandwich :  4" white bread ($5.50), with [Topping  lettuce (REGULAR), Topping  salami (PREMIUM), Topping  provolone (PREMIUM)], Toast: YES,  $8.05
+Sandwich :  12" white bread ($8.50), with [Topping  roast beef (PREMIUM), Topping  cheddar (PREMIUM)], Toast: NO,  $16.15
+Beverages:
+L  Coke  $2.00
+L  Fruit Punch  $2.00
+Chips:
+Rap Snacks, Bar-B-Que $1.50
+Rap Snacks, Bar-B-Que $1.50
+=================================
+Total Price: $31.20
+=================================
+
+=================================
