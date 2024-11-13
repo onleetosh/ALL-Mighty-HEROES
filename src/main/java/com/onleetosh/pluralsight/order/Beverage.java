@@ -23,7 +23,7 @@ public class Beverage {
      */
     public Beverage(String typeOfBeverage) {
         this.typeOfBeverage = typeOfBeverage;
-        this.sizeOfCup = "s";
+        this.sizeOfCup = "Small";
         this.priceOfBeverage = adjustPriceOfCup(this.sizeOfCup);
     }
 
@@ -60,22 +60,19 @@ public class Beverage {
         this.priceOfBeverage = adjustPriceOfCup(sizeOfCup); // update price
     }
 
-    public void setPriceOfBeverage(double priceOfBeverage) {
-        this.priceOfBeverage = priceOfBeverage;
-    }
 
     /***
      * Adjust the price of cup based on size
      */
     private double adjustPriceOfCup(String size) {
-        if(size.equalsIgnoreCase("S")){
+        if(size.equalsIgnoreCase("Small")){
             return  priceOfSmallBeverage;
         }
 
-        else if (size.equalsIgnoreCase("M")){
+        else if (size.equalsIgnoreCase("Medium")){
             return priceOfMediumBeverage;
         }
-        else if (size.equalsIgnoreCase("L")) {
+        else if (size.equalsIgnoreCase("Large")) {
             return priceOfLargeBeverage;
         }
         else {
@@ -85,8 +82,9 @@ public class Beverage {
 
     @Override
     public String toString(){
-        return "One " + this.sizeOfCup +
-                " size, " + this.typeOfBeverage +
-                " beverage. Total: $" + String.format("%.2f", priceOfBeverage);
+
+        return  this.sizeOfCup +
+                "  " + this.typeOfBeverage +
+                "  $" + String.format("%.2f", priceOfBeverage);
     }
 }

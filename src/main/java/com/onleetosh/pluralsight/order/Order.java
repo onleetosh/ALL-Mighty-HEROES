@@ -1,5 +1,9 @@
 package com.onleetosh.pluralsight.order;
 
+import com.onleetosh.pluralsight.order.sandwich.Bread;
+import com.onleetosh.pluralsight.order.sandwich.Sandwich;
+import com.onleetosh.pluralsight.order.sandwich.Topping;
+
 import java.util.ArrayList;
 
 public class Order {
@@ -7,6 +11,11 @@ public class Order {
     private ArrayList<Sandwich> sandwiches;
     private ArrayList<Beverage> beverages;
     private ArrayList<Chips> chips;
+
+    public static Bread selectedBread;
+    public static ArrayList<Topping> selectedToppings;
+
+
 
     public Order(ArrayList<Sandwich> sandwiches, ArrayList<Beverage> beverages, ArrayList<Chips> chips) {
         this.sandwiches = sandwiches != null ? sandwiches : new ArrayList<>();
@@ -38,6 +47,7 @@ public class Order {
     public ArrayList<Chips> getChips() {
         return chips;
     }
+
     // Method to calculate the total cost
     public double getTotalCost() {
         double totalCost = 0.0;
@@ -51,25 +61,6 @@ public class Order {
             totalCost += chip.getPriceOfChips();
         }
         return totalCost;
-    }
-
-    @Override
-    public String toString(){
-        StringBuilder orderSummary = new StringBuilder("Order placed:\n");
-
-        orderSummary.append("Sandwich: ")
-                .append(sandwiches != null ? sandwiches : "No sandwich")
-                .append("\n");
-
-        orderSummary.append("Beverage: ")
-                .append(beverages != null ? beverages : "No beverage")
-                .append("\n");
-
-        orderSummary.append("Chips: ")
-                .append(chips != null ? chips : "No chips");
-
-        return orderSummary.toString();
-
     }
 
 }

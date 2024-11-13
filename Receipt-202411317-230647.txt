@@ -1,0 +1,8 @@
+Receipt Date: 2024-11-12 23:06:47
+=================================
+Order placed:
+Sandwich: []
+Beverage: []
+Chips: []
+Total Price: $0.0
+=================================

@@ -4,9 +4,11 @@
 package com.onleetosh.pluralsight.util;
 
 
-import com.onleetosh.pluralsight.Receipt;
+import com.onleetosh.pluralsight.order.Receipt;
 import com.onleetosh.pluralsight.order.*;
-import com.onleetosh.pluralsight.topping.Topping;
+import com.onleetosh.pluralsight.order.sandwich.Topping;
+import com.onleetosh.pluralsight.order.sandwich.Bread;
+import com.onleetosh.pluralsight.order.sandwich.Sandwich;
 
 import java.util.ArrayList;
 
@@ -21,19 +23,14 @@ public class UI {
     public static ArrayList<Beverage> listOfBeverages;
 
     public static ArrayList<Order> orderPlace;  // Keep track of placed orders
-
-
-    private Order currentOrder; // Track the current order being built
-
-
-    //TODO : move declared ArrayList to UI class
+    public Order currentOrder; // Track the current order being built
 
 
         public UI() {
-            UI.listOfBread = InitializeObject.initializeBread();
+            UI.listOfBread = InitializeObject.listOfBreadObjects();
             UI.listOfChips = InitializeObject.listOfChipObjects();
             UI.listOfBeverages = InitializeObject.listOfBeverageObjects();
-            UI.listOfSandwichTopping = InitializeObject.initializeToppings();
+            UI.listOfSandwichTopping = InitializeObject.listOfToppingObjects();
             UI.orderPlace = new ArrayList<>();
             // default to null and wait for order details
             currentOrder = new Order(null, null, null);
@@ -65,7 +62,7 @@ public class UI {
                     System.out.println("----------------------------");
                     System.out.println("        Place Order ");
                     System.out.println("----------------------------");
-                    System.out.println(" 1) Sandwich \n 2) Drink \n 3) Chips \n 4) Checkout\n 5) Cancel Order\n 6) Go Back");
+                    System.out.println(" 1) Sandwich \n 2) Drink \n 3) Chips \n 4) Order \n \n 0) Go Back");
                     System.out.println("----------------------------");
 
                     int command = Console.PromptForInt(" Enter [1 - 6] to continue: ");
@@ -73,10 +70,8 @@ public class UI {
                         case 1 -> processAddSandwich();
                         case 2 -> processAddBeverage();
                         case 3 -> processAddChip();
-                        case 4 -> processOrderCheckout();
-                        case 5 -> processCancelOrder();
-
-                        case 6 -> {
+                        case 4 -> viewOrder();
+                        case 0 -> {
                             return;
                         }
                     }
@@ -106,10 +101,33 @@ public class UI {
                 currentOrder.addChip(chip);
             }
         }
-
-        public void processOrderCheckout() {
+        public void viewOrder(){
             displayOrderSummary(currentOrder.getSandwiches(), currentOrder.getBeverages(), currentOrder.getChips());
+
+            while(true) {
+                try {
+                    System.out.println(" ");
+                    int command = Console.PromptForInt("\"1) [Confirm] " +
+                            "\n 2) [Cancel order] " +
+                            "\n 3) [Add More] ");
+
+                    switch (command) {
+                        case 1 -> processConfirmOrder();
+                        case 2 -> processCancelOrder();
+                        case 3 -> displayOrderScreen();
+                    }
+                }
+                catch (Exception e) {
+                    System.out.println("Invalid input. Please enter a valid number.");
+                }
+            }
+        }
+
+
+        public void processConfirmOrder() {
             Receipt.recordOrderTransaction(currentOrder);
+            currentOrder = new Order(null, null, null); // start a new order
+
         }
 
         public void processCancelOrder() {
@@ -118,8 +136,9 @@ public class UI {
                 currentOrder = new Order(null, null, null);  // Reset the order
                 System.out.println("Order canceled.");
             }
-
         }
+
+
 
         public void displayOrderSummary(ArrayList<Sandwich> sandwiches, ArrayList<Beverage> drinks, ArrayList<Chips> chips) {
             double totalCost = 0.0;
@@ -128,32 +147,28 @@ public class UI {
             System.out.println("       Order Summary");
             System.out.println("----------------------------");
             // Display sandwiches
-            System.out.println("\n--- Sandwiches ---");
+            System.out.println("\n Sandwich(es) ");
             for (Sandwich sandwich : sandwiches) {
                 System.out.println(sandwich);
-                totalCost += sandwich.getTotalCost();
+                totalCost += sandwich.getTotalCost(); // TODO: fix
+                //totalCost += Sandwich.totalCostOfSandwich(Order.selectedBread, Order.selectedToppings );
             }
 
             // Display drinks
-            System.out.println("\n--- Drinks ---");
+            System.out.println("\n Beverage(s) ");
             for (Beverage drink : drinks) {
                 System.out.println(drink);
                 totalCost += drink.getPriceOfBeverage();
             }
-
             // Display chips
-            System.out.println("\n--- Chips ---");
+            System.out.println("\n Chips ");
             for (Chips chip : chips) {
                 System.out.println(chip);
                 totalCost += chip.getPriceOfChips();
             }
-
             System.out.println("----------------------------");
-
             // Display total cost
             System.out.println("\nTotal Price: $" + totalCost);
-
-            System.out.println("Thank you for ordering with ALL MIGHTY HEROES!\n");
 
         }
     }

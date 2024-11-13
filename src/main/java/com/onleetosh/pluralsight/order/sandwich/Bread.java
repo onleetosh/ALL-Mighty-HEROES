@@ -2,7 +2,7 @@
  * Bread encapsulates the data required to initialize a bread object.
  */
 
-package com.onleetosh.pluralsight.order;
+package com.onleetosh.pluralsight.order.sandwich;
 
 public class Bread {
 

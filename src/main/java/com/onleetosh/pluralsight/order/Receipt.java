@@ -1,6 +1,4 @@
-package com.onleetosh.pluralsight;
-
-import com.onleetosh.pluralsight.order.Order;
+package com.onleetosh.pluralsight.order;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

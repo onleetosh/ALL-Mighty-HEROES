@@ -2,9 +2,8 @@
  * Sandwich encapsulates the data required to initialize a sandwich object.
  */
 
-package com.onleetosh.pluralsight.order;
+package com.onleetosh.pluralsight.order.sandwich;
 
-import com.onleetosh.pluralsight.topping.Topping;
 import java.util.ArrayList;
 
 public class Sandwich {
@@ -68,11 +67,23 @@ public class Sandwich {
         return basePrice;
     }
 
+    // Calculate the total cost of the sandwich, including bread and toppings
+    public static double totalCostOfSandwich(Bread selectedBread,
+                                             ArrayList<Topping> toppings) {
+        double totalCost = selectedBread.getPrice();  // Start with the price of the bread
+
+        // Add the cost of each topping (regular or premium)
+        for (Topping topping : toppings) {
+            totalCost += topping.getPrice();
+        }
+
+        return totalCost;
+    }
+
     public String toString() {
 
-        return "Sandwich [Size: " + sizeOfBread +
-                "\" Bread (" + typeOfBread + ")" +
-                ", \n Toppings: " + toppings +
-                ", \n Price: $" + String.format("%.2f", getTotalCost());
+        return  this.typeOfBread  +
+                "\n Toppings: " + this.toppings +
+                "\n Price: $" + String.format("%.2f", getTotalCost());
     }
 }
