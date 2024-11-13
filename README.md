@@ -1,4 +1,4 @@
-<img alt="Logo" height="200" src="https://github.com/user-attachments/assets/ab71a379-bf21-451f-877b-18b91840038b" width="200"/>
+<img alt="Logo" height="400" src="https://github.com/user-attachments/assets/ab71a379-bf21-451f-877b-18b91840038b" width="800"/>
 
 ALL MIGHTY HEROES is a command-line Java application that allows users 
 to place a food order consisting of sandwiches, chips, and beverages. 
