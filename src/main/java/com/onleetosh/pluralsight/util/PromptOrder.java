@@ -1,6 +1,5 @@
 package com.onleetosh.pluralsight.util;
 
-import com.onleetosh.pluralsight.Main;
 import com.onleetosh.pluralsight.order.*;
 import com.onleetosh.pluralsight.topping.PremiumTopping;
 import com.onleetosh.pluralsight.topping.Topping;
@@ -9,9 +8,13 @@ import java.util.ArrayList;
 
 public class PromptOrder {
 
+
+    /**
+     *  Prompt user to create a sandwich object and add the result to Sandwich orders ArrayList
+     */
     public static ArrayList<Sandwich> promptForSandwich() {
 
-        Order.sandwichesList = new ArrayList<>();
+        UI.sandwichOrder = new ArrayList<>();
 
         ArrayList<Topping> selectedToppings;
 
@@ -36,10 +39,10 @@ public class PromptOrder {
             selectedToppings = promptForToppings(sandwichSize);
 
             wantToasted = Console.PromptForYesNo("Do you want to toast?");
-            Order.sandwichesList.add(new Sandwich(sandwichSize, selectedBread, selectedToppings, wantToasted));
+            UI.sandwichOrder.add(new Sandwich(sandwichSize, selectedBread, selectedToppings, wantToasted));
 
 
-            System.out.println("Adding " + i + "sandwich");
+            System.out.println("Adding sandwich " + i);
 
             // Print the final order
             System.out.println("Your order:");
@@ -56,12 +59,18 @@ public class PromptOrder {
             }
         }
 
-        return Order.sandwichesList;
+        return UI.sandwichOrder;
     }
 
-    // Helper method to prompt for bread selection
+    /**
+     * Loop through an ArrayList of objects to display a list of bread options
+     * then prompt user to select a bread and return the result
+     */
     public static int promptForBread() {
+
         System.out.println("Select a bread:");
+
+        //loop through array
         for (int i = 1; i < UI.listOfBread.size(); i++) {
             System.out.println(i + ": " + UI.listOfBread.get(i).getTypeOfBread() + " (" + UI.listOfBread.get(i).getSizeOfBread() + "\")");
         }
@@ -74,7 +83,12 @@ public class PromptOrder {
     }
 
 
-    // Helper method to prompt for toppings
+
+    //TODO: ADD EXTRA OPTION TO SAUCE AND REGULAR TOPPING
+    /**
+     * Loop through an ArrayList of objects to display a list of toppings  available
+     * then prompt user for toppings to add and return the result
+     */
     public static ArrayList<Topping> promptForToppings(int more) {
         ArrayList<Topping> selectedToppings = new ArrayList<>();
         boolean addMore = true;
@@ -99,36 +113,12 @@ public class PromptOrder {
         }
         return selectedToppings;
     }
-    // Helper method to prompt for toppings
-    public static ArrayList<Topping> promptForToppings2(int size) {
-        ArrayList<Topping> selectedToppings = new ArrayList<>();
-        boolean addMore = true;
-        while (addMore) {
-            System.out.println("Select a topping:");
-            for (int i = 1; i < UI.listOfSandwichTopping.size(); i++) {
-                System.out.println(i + ": " + UI.listOfSandwichTopping.get(i));
-            }
 
-            int toppingChoice = Console.PromptForInt("Enter topping choice (1-" + (UI.listOfSandwichTopping.size()) + "): ");
 
-            Topping selectedTopping = UI.listOfSandwichTopping.get(toppingChoice - 1);  // Adjust for 0-index
-
-            // Inside promptForToppings method
-            if (selectedTopping instanceof PremiumTopping) {
-                PremiumTopping selectedCondiment = (PremiumTopping) selectedTopping;
-
-                // Only adjust price if the topping is premium
-                if (selectedCondiment.equals("meat") || selectedCondiment.equals("cheese")) {
-                    boolean isExtra = Console.PromptForYesNo("Do you want extra " + selectedCondiment.getTopping() + "?");
-                    selectedCondiment.adjustPriceIfPremiumToppingAdd(size, isExtra);
-                }
-            }
-            selectedToppings.add(selectedTopping);
-            addMore = Console.PromptForYesNo("Add more toppings?");
-        }
-        return selectedToppings;
-    }
-
+    /**
+     * Loop through an ArrayList of objects to display a list of chips options
+     * then prompt user for chips and add the result to chipOrder ArrayList.
+     */
 
     public static ArrayList<Chips> promptForChips(){
         UI.chipOrder = new ArrayList<>();
@@ -146,13 +136,17 @@ public class PromptOrder {
             int chipChoice = Console.PromptForInt("Select a Chip (0-" + (UI.listOfChips.size() - 1) + "): ");
             Chips selectedChip = UI.listOfChips.get(chipChoice);
 
-            System.out.println("Order Update: Adding  " + selectedChip );
+            System.out.println(selectedChip);
 
             UI.chipOrder.add(selectedChip);
         }
         return UI.chipOrder;
     }
 
+    /**
+     * Loop through an ArrayList of objects to display a list of beverages options
+     * then prompt user for a beverage  and add the result to drinkOrder ArrayList
+     */
 
     public static ArrayList<Beverage> promptForBeverage(){
 
@@ -192,30 +186,6 @@ public class PromptOrder {
         }
         return UI.drinkOrder;
     }
-
-
-
-
-    public static String selectBeverageSize(){
-        String cupSize;
-        boolean validSize = false;
-
-        do {
-            cupSize = Console.PromptForString("Select cup size: [S]mall, [M]edium, [L]arge");
-            if (cupSize.equalsIgnoreCase("S") ||
-                    cupSize.equalsIgnoreCase("M") ||
-                    cupSize.equalsIgnoreCase("L")) {
-                validSize = true;
-            } else {
-                System.out.println("Invalid size. Please choose [S], [M], or [L].");
-            }
-        } while (!validSize);
-
-        return cupSize;  // Return the valid size choice (S, M, or L)
-
-    }
-
-
 
 
 }

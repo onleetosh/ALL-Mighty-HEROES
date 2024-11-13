@@ -4,92 +4,71 @@ import java.util.ArrayList;
 
 public class Order {
 
-    Sandwich sandwich;
-    Beverage beverage;
-    Chips chips;
+    private ArrayList<Sandwich> sandwiches;
+    private ArrayList<Beverage> beverages;
+    private ArrayList<Chips> chips;
 
-   // public static ArrayList<Sandwich> sandwichOrders;
-
-    public static ArrayList<Sandwich> sandwichesList;
-    public static ArrayList<Chips> chipList;
-    public static ArrayList<Beverage> beveragesList;
-
-    public Order(ArrayList<Beverage> beveragesList,
-                 ArrayList<Chips> chipList,
-                 ArrayList<Sandwich> sandwichesList) {
-        this.beveragesList = beveragesList;
-        this.chipList = chipList;
-        this.sandwichesList = sandwichesList;
+    public Order(ArrayList<Sandwich> sandwiches, ArrayList<Beverage> beverages, ArrayList<Chips> chips) {
+        this.sandwiches = sandwiches != null ? sandwiches : new ArrayList<>();
+        this.beverages = beverages != null ? beverages : new ArrayList<>();
+        this.chips = chips != null ? chips : new ArrayList<>();
     }
 
-    public ArrayList<Beverage> getBeveragesList() {
-        return beveragesList;
+    // Methods to add sandwiches, drinks, and chips
+    public void addSandwich(Sandwich sandwich) {
+        sandwiches.add(sandwich);
     }
 
-    public void setBeveragesList(ArrayList<Beverage> beveragesList) {
-        this.beveragesList = beveragesList;
+    public void addBeverage(Beverage beverage) {
+        beverages.add(beverage);
     }
 
-    public ArrayList<Sandwich> getSandwichesList() {
-        return sandwichesList;
+    public void addChip(Chips chip) {
+        chips.add(chip);
     }
 
-    public void setSandwichesList(ArrayList<Sandwich> sandwichesList) {
-        this.sandwichesList = sandwichesList;
+    public ArrayList<Sandwich> getSandwiches() {
+        return sandwiches;
     }
 
-    public ArrayList<Chips> getChipList() {
-        return chipList;
+    public ArrayList<Beverage> getBeverages() {
+        return beverages;
     }
 
-    public void setChipList(ArrayList<Chips> chipList) {
-        this.chipList = chipList;
-    }
-
-
-    public Order(Sandwich sandwich, Beverage beverage, Chips chips) {
-        this.sandwich = sandwich;
-        this.beverage = beverage;
-        this.chips = chips;
-    }
-
-    public Sandwich getSandwich() {
-        return sandwich;
-    }
-
-    public Beverage getBeverage() {
-        return beverage;
-    }
-
-    public Chips getChips() {
+    public ArrayList<Chips> getChips() {
         return chips;
     }
-
-    public void setSandwich(Sandwich sandwich) {
-        this.sandwich = sandwich;
+    // Method to calculate the total cost
+    public double getTotalCost() {
+        double totalCost = 0.0;
+        for (Sandwich sandwich : sandwiches) {
+            totalCost += sandwich.getTotalCost();
+        }
+        for (Beverage beverage : beverages) {
+            totalCost += beverage.getPriceOfBeverage();
+        }
+        for (Chips chip : chips) {
+            totalCost += chip.getPriceOfChips();
+        }
+        return totalCost;
     }
-
-    public void setBeverage(Beverage beverage) {
-        this.beverage = beverage;
-    }
-
-    public void setChips(Chips chips) {
-        this.chips = chips;
-    }
-
-    public double getTotalPrice() {
-        return (sandwich != null ? sandwich.getTotalCost() : 0) +
-                (beverage != null ? beverage.getPriceOfBeverage() : 0) +
-                (chips != null ? chips.getPriceOfChips() : 0);    }
 
     @Override
     public String toString(){
-        //return "Order place: Sandwich " + this.sandwich + " with " + this.beverage + " and a side of " + this.chips;
+        StringBuilder orderSummary = new StringBuilder("Order placed:\n");
 
-        return "Order placed: " +
-                "\nSandwich: " + (sandwich != null ? sandwich : "No sandwich") +
-                "\nBeverage: " + (beverage != null ? beverage : "No beverage") +
-                "\nChips: " + (chips != null ? chips : "No chips");
+        orderSummary.append("Sandwich: ")
+                .append(sandwiches != null ? sandwiches : "No sandwich")
+                .append("\n");
+
+        orderSummary.append("Beverage: ")
+                .append(beverages != null ? beverages : "No beverage")
+                .append("\n");
+
+        orderSummary.append("Chips: ")
+                .append(chips != null ? chips : "No chips");
+
+        return orderSummary.toString();
 
     }
 

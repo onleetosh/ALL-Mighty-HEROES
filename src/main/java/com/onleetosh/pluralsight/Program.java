@@ -5,8 +5,6 @@ import com.onleetosh.pluralsight.order.Bread;
 import com.onleetosh.pluralsight.order.Chips;
 import com.onleetosh.pluralsight.order.Sandwich;
 import com.onleetosh.pluralsight.topping.PremiumTopping;
-import com.onleetosh.pluralsight.topping.RegularTopping;
-import com.onleetosh.pluralsight.topping.Sauce;
 import com.onleetosh.pluralsight.topping.Topping;
 import com.onleetosh.pluralsight.util.Console;
 

@@ -145,40 +145,6 @@ public class Topping {
         return selectedToppings;
     }
 
-    // Initialize topping options
-//    public static ArrayList<Topping> initializeToppings() {
-//        sandwichTopping = new ArrayList<>();
-//
-//        // Regular toppings
-//        sandwichTopping.add(new RegularTopping("lettuce", "regular", 0.0));
-//        sandwichTopping.add(new RegularTopping("peppers", "regular", 0.0));
-//        sandwichTopping.add(new RegularTopping("red onions", "regular", 0.0));
-//        sandwichTopping.add(new RegularTopping("jalapenos", "regular", 0.0));
-//        sandwichTopping.add(new RegularTopping("cucumber", "regular", 0.0));
-//        sandwichTopping.add(new RegularTopping("pickles", "regular", 0.0));
-//
-//        // Sauces
-//        sandwichTopping.add(new Sauce("honey mustard", "sauce", 0.0));
-//        sandwichTopping.add(new Sauce("ranch", "sauce", 0.0));
-//        sandwichTopping.add(new Sauce("mayo", "sauce", 0.0));
-//        sandwichTopping.add(new Sauce("mustard", "sauce", 0.0));
-//        sandwichTopping.add(new Sauce("ketchup", "sauce", 0.0));
-//
-//        // Premium toppings (Meats and Cheese)
-//        sandwichTopping.add(new PremiumTopping("grill chicken", "meat", 1.00));
-//        sandwichTopping.add(new PremiumTopping("bacon", "meat", 1.00));
-//        sandwichTopping.add(new PremiumTopping("roast beef", "meat", 1.00));
-//        sandwichTopping.add(new PremiumTopping("salami", "meat", 1.00));
-//        sandwichTopping.add(new PremiumTopping("ham", "meat", 1.00));
-//        sandwichTopping.add(new PremiumTopping("steak", "meat", 1.00));
-//        sandwichTopping.add(new PremiumTopping("provolone", "cheese", 1.00));
-//        sandwichTopping.add(new PremiumTopping("cheddar", "cheese", 1.00));
-//        sandwichTopping.add(new PremiumTopping("swiss", "cheese", 1.00));
-//        sandwichTopping.add(new PremiumTopping("american", "cheese", 1.00));
-//
-//        return sandwichTopping;
-//    }
-
     @Override
     public String toString() {
         return "Topping: " + topping + " | Price: $" + price + ((extra > 0.70) ? " (extra: $" + extra + ")" : "");

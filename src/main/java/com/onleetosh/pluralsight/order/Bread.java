@@ -1,8 +1,8 @@
+/***
+ * Bread encapsulates the data required to initialize a bread object.
+ */
+
 package com.onleetosh.pluralsight.order;
-
-import com.onleetosh.pluralsight.util.Console;
-
-import java.util.ArrayList;
 
 public class Bread {
 

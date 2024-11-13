@@ -1,6 +1,8 @@
-package com.onleetosh.pluralsight.order;
+/**
+ *  Chips encapsulates the data required to initialize a chip object.
+ */
 
-import java.util.List;
+package com.onleetosh.pluralsight.order;
 
 public class Chips {
 
@@ -36,6 +38,6 @@ public class Chips {
 
     @Override
     public String toString() {
-        return "One bag of " + bagOfChips + " $" + String.format("%.2f", priceOfChips);
+        return "Updating order .. " + bagOfChips + " $" + String.format("%.2f", priceOfChips);
     }
 }

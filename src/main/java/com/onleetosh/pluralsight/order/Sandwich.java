@@ -1,31 +1,27 @@
-/**
- * This class encapsulates a sandwich
+/***
+ * Sandwich encapsulates the data required to initialize a sandwich object.
  */
 
 package com.onleetosh.pluralsight.order;
 
 import com.onleetosh.pluralsight.topping.Topping;
-
 import java.util.ArrayList;
 
 public class Sandwich {
-
 
     // 4", 8", or 12"
     private int sizeOfBread;
     // bread price 4"($5.50), 8"(7.00), or 12" (8.50)
     // white, wheat, rye, wrap
     private Bread typeOfBread;
+
     //lettuce, peppers, onions, tomatoes, jalapenos, cucumber, pickles, banana peppers, mushrooms, guacamole
     // topping price - included
-
     private ArrayList<Topping> toppings;
-    //private String topping;
     // Meats(steak, ham, salami, roast beef, chicken, bacon)  Cheese(american, provolone, cheddar, swiss)
     // premium price - 4"($1.00 extra meat .50), 8"(2.00 extra meat 1.00), or 12" (3.00 extra meat 1.50);
     private ArrayList<Topping> premiumTopping; //
     // Sauce ( Mayo, Mustard, Honey Mustard, Buffalo, Spicy Chiplote, Ketchup, Ranch, vinaigrette, thousand islands
-    private ArrayList<Topping> sauce;
 
     private boolean isToast;
 
@@ -43,26 +39,10 @@ public class Sandwich {
     }
 
 
-
     /**
-     * Constructor for premium sandwich object
+     * return the total cost of a single sandwich
+     * @return
      */
-    public Sandwich(int sizeOfBread,
-                    Bread typeOfBread,
-                    ArrayList<Topping> toppings,
-                    ArrayList<Topping> premiumTopping,
-                    boolean isToast) {
-        this.sizeOfBread = sizeOfBread;
-        this.typeOfBread = typeOfBread;
-        this.toppings = toppings;
-        this.premiumTopping = premiumTopping;
-        this.isToast = isToast;
-    }
-
-
-
-
-
     public double getTotalCost(){
         double basePrice = 0.0;
         double premiumCost = 0.0;
@@ -92,7 +72,7 @@ public class Sandwich {
 
         return "Sandwich [Size: " + sizeOfBread +
                 "\" Bread (" + typeOfBread + ")" +
-                ", Toppings: " + toppings +
-                ", Price: $" + String.format("%.2f", getTotalCost());
+                ", \n Toppings: " + toppings +
+                ", \n Price: $" + String.format("%.2f", getTotalCost());
     }
 }
