@@ -31,15 +31,15 @@ public class Topping {
     private String topping; // chicken / american / lettuce / presto
     private String type; //meat / cheese / fresh veg / condiments (sauce)
     private double price; // meat or cheese are consider premium and price based on sandwich size (4", 8", 12") . all other toppings are free
-    private double extra;  //TODO: change to boolean
 
     private boolean isPremium;
+
+
 
     // Constructor
     public Topping(String topping, String type) {
         this.topping = topping;
         this.type = type;
-        this.price = 0.0;
         this.isPremium = false;
     }
 
@@ -47,7 +47,7 @@ public class Topping {
         this.topping = topping;
         this.type = type;
         this.isPremium = isPremium;
-        this.price = 0;
+        this.price = price;
     }
 
     // Getters and setters
@@ -75,53 +75,50 @@ public class Topping {
         this.type = type;
     }
 
+
     // Method to adjust the price based on topping type and bread size
     public void adjustPriceIfPremiumToppingAdd(int sizeOfBread, boolean isExtra) {
-       if(isPremium) {
-           if (type.equalsIgnoreCase("meat")) {
-               switch (sizeOfBread) {
-                   case 4:
-                       price = fourInchMeatCost;
-                       if (isExtra) price += fourInchExtraMeatCost;
-                       break;
-                   case 8:
-                       price = eightInchMeatCost;
-                       if (isExtra) price += eightInchExtraMeatCost;
-                       break;
-                   case 12:
-                       price = footLongMeatCost;
-                       if (isExtra) price += footLongExtraMeatCost;
-                       break;
-                   default:
-                       price = fourInchMeatCost;
-               }
-           }
-
-           else if (type.equalsIgnoreCase("cheese")) {
-               switch (sizeOfBread) {
-                   case 4:
-                       price = fourInchCheeseCost;
-                       if (isExtra) price += fourInchExtraCheeseCost;
-                       break;
-                   case 8:
-                       price = eightInchCheeseCost;
-                       if (isExtra) price += eightInchExtraCheeseCost;
-                       break;
-                   case 12:
-                       price = footLongCheeseCost;
-                       if (isExtra) price += footLongExtraCheeseCost;
-                       break;
-                   default:
-                       price = fourInchCheeseCost;
-               }
-           }
-       }
-
-        // Add extra cost if present
-        if (isExtra) {
-            price += extra;
+        price = 0.0;
+        if(isPremium) {
+            if (type.equalsIgnoreCase("meat")) {
+                switch (sizeOfBread) {
+                    case 4:
+                        price = fourInchMeatCost;
+                        if (isExtra) price += fourInchExtraMeatCost;
+                        break;
+                    case 8:
+                        price = eightInchMeatCost;
+                        if (isExtra) price += eightInchExtraMeatCost;
+                        break;
+                    case 12:
+                        price = footLongMeatCost;
+                        if (isExtra) price += footLongExtraMeatCost;
+                        break;
+                    default:
+                        price = fourInchMeatCost;
+                }
+            }
+            else if (type.equalsIgnoreCase("cheese")) {
+                switch (sizeOfBread) {
+                    case 4:
+                        price = fourInchCheeseCost;
+                        if (isExtra) price += fourInchExtraCheeseCost;
+                        break;
+                    case 8:
+                        price = eightInchCheeseCost;
+                        if (isExtra) price += eightInchExtraCheeseCost;
+                        break;
+                    case 12:
+                        price = footLongCheeseCost;
+                        if (isExtra) price += footLongExtraCheeseCost;
+                        break;
+                    default:
+                        price = fourInchCheeseCost;
+                }
+            }
         }
     }
+
 
 
     /**
@@ -131,6 +128,6 @@ public class Topping {
     public String toString() {
 
         String isPremium = this.isPremium ? "PREMIUM" : "REGULAR";
-        return "Topping  " + topping + " (" + isPremium + ")" ;
+        return " " + topping + " (" + isPremium + ") " ;
     }
 }

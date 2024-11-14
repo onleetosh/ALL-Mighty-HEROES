@@ -5,9 +5,9 @@ public class Bread {
     private int sizeOfBread; // 4, 8, or 12 inches
     private double price;
 
-    private double fourInchCost = 5.50;
-    private double eightInchCost = 7.00;
-    private double footLongCost = 8.50;
+    private double fourInchBreadCost = 5.50;
+    private double eightInchBreadCost = 7.00;
+    private double footLongBreadCost = 8.50;
 
     // Constructor
     public Bread(String typeOfBread, int sizeOfBread) {
@@ -20,13 +20,14 @@ public class Bread {
     private double adjustPriceForSizeOfBread(int size) {
         switch (size) {
             case 4:
-                return fourInchCost;
+                return fourInchBreadCost;
             case 8:
-                return eightInchCost;
+                return eightInchBreadCost;
             case 12:
-                return footLongCost;
+                return footLongBreadCost;
             default:
-                throw new IllegalArgumentException("Invalid bread size: " + sizeOfBread);
+               // throw new IllegalArgumentException("Invalid bread size: " + size + ". Allowed sizes are 4, 8, or 12 inches.");
+                return fourInchBreadCost;
         }
     }
 

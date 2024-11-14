@@ -81,7 +81,7 @@ public class InitializeObject {
         UI.heroToppingList = new ArrayList<>();
 
         // Regular toppings
-        UI.heroToppingList.add(new Topping(" "," " ));
+        UI.heroToppingList.add(new Topping(" "," ",false, 0.0 ));
         UI.heroToppingList.add(new Topping("lettuce", "veggie",  false, 0.0));
         UI.heroToppingList.add(new Topping("tomato", "veggie", false, 0.0));
         UI.heroToppingList.add(new Topping("spinach", "veggie", false, 0.0));

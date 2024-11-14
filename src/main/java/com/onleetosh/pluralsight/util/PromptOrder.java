@@ -13,6 +13,7 @@ public class PromptOrder {
     private static ArrayList<Topping> selectedToppings;
 
 
+    private int bread;
     /**
      *  Prompt user to create a sandwich object and add the result to Sandwich orders ArrayList
      */
@@ -90,9 +91,6 @@ public class PromptOrder {
             }
 
         }
-
-
-        //return Console.PromptForInt("Enter bread choice (1-" + (UI.listOfBread.size() - 1) + "): ");
     }
 
     /**
@@ -108,35 +106,33 @@ public class PromptOrder {
                 System.out.println("Select a topping:");
 
                 //loop through  and display toppings as a list # 1 - (size of the ArrayList)
-                for (int i = 1; i < UI.heroToppingList.size(); i++) {  // Changed to start at 0
-                    Topping addTopping = UI.heroToppingList.get(i);
-                    System.out.println(i + ": " + addTopping.getTopping() + " " + addTopping);
+                for (int i = 1; i < UI.heroToppingList.size(); i++) {
+                    Topping getToppings = UI.heroToppingList.get(i);
+                    System.out.println( i + ": " + getToppings);
                 }
-
-                // Prompt user for topping to add
+                // Prompt user for a topping
                 int toppingChoice = Console.PromptForInt("Enter topping choice (0-" + (UI.heroToppingList.size() - 1) + "): ");
                 Topping selectedTopping = UI.heroToppingList.get(toppingChoice);
-                System.out.println("Adding " + selectedTopping.getTopping());
 
                 // Always prompt for extra topping
                 boolean isExtra = Console.PromptForYesNo("Do you want extra " + selectedTopping.getTopping() + "?");
 
-                // Adjust the price if necessary (based on your business logic)
+                // Adjust the price if topping is premium and extra
                 selectedTopping.adjustPriceIfPremiumToppingAdd(more, isExtra);
 
                 // Add the selected topping to the list
                 selectedToppings.add(selectedTopping);
 
-                System.out.println("Topping: " + selectedTopping.getTopping() + ", Current Price: " + selectedTopping.getPrice());
+                //confirm topping was added
+                System.out.println(" Got it!  " + selectedTopping.getTopping() + " has been added, $" + selectedTopping.getPrice());
 
-                // Ask if the user wants to add more toppings
+                // prompt for more toppings
                 addMore = Console.PromptForYesNo("Add more toppings?");
             }
             catch (Exception e) {
                 System.out.println("\nEntry not valid. Please Try again...");
             }
         }
-
         return selectedToppings;
     }
 
@@ -157,7 +153,6 @@ public class PromptOrder {
             for (int j = 1; j < UI.chipsList.size(); j++) {
                 System.out.println(j + ": " + UI.chipsList.get(j).getBagOfChips());
             }
-
             int chipChoice;
             boolean validChoice = false;
 
@@ -244,7 +239,7 @@ public class PromptOrder {
                 }
                 break;  // Exit the loop if valid input is provided
             } catch (Exception e) {
-                System.out.println("Invalid input. Please enter a valid number.");
+                System.out.println("Oops! Invalid entry. Please enter a valid number.");
             }
         }
 
@@ -265,10 +260,10 @@ public class PromptOrder {
                         if (beverageChoice >= 1 && beverageChoice < UI.beveragesList.size()) {
                             break;  // Exit the loop if valid selection is provided
                         } else {
-                            System.out.println("Invalid choice. Please select a number between 1 and " + (UI.beveragesList.size() - 1));
+                            System.out.println("Oops! Invalid entry. Please select a number between 1 and " + (UI.beveragesList.size() - 1));
                         }
                     } catch (Exception e) {
-                        System.out.println("Invalid input. Please enter a valid number.");
+                        System.out.println("Oops! Invalid entry... Please enter a valid number.");
                     }
                 }
 
@@ -286,23 +281,22 @@ public class PromptOrder {
                                 cupSize.equalsIgnoreCase("L")) {
                             validSize = true;
                         } else {
-                            System.out.println("Invalid size. Please choose [S], [M], or [L].");
+                            System.out.println("Oops! Invalid entry. Please choose [S], [M], or [L].");
                         }
                     } catch (Exception e) {
-                        System.out.println("Invalid input. Please enter a valid cup size (S, M, or L).");
+                        System.out.println("Oops! Invalid entry... Please enter a valid cup size (S, M, or L).");
                     }
                 } while (!validSize);
 
-                // Assign cup size to the selected beverage
                 UI.drinkOrder.add(selectedBeverage);
 
                 System.out.println("Adding: " + selectedBeverage.getTypeOfBeverage() + " (" + selectedBeverage + ") $" + selectedBeverage.getPriceOfBeverage());
 
-            } catch (Exception e) {
-                System.out.println("An error occurred while adding the beverage. Please try again.");
+            }
+            catch (Exception e) {
+                System.out.println("Error occurred... Please try again.");
             }
         }
-
         return UI.drinkOrder;
     }
 
