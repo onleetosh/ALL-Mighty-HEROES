@@ -11,29 +11,27 @@ public class PromptOrder {
 
     private static Bread selectedBread;
     private static ArrayList<Topping> selectedToppings;
+    public static ArrayList<Beverage> drinkOrder;
+    public static ArrayList<Chips> chipOrder;
+    public static ArrayList<Sandwich> sandwichOrder;
 
 
-    private int bread;
     /**
      *  Prompt user to create a sandwich object and add the result to Sandwich orders ArrayList
      */
     public static ArrayList<Sandwich> promptForSandwich() {
 
-        UI.sandwichOrder = new ArrayList<>();
-
-        //ArrayList<Topping> selectedToppings;
+        sandwichOrder = new ArrayList<>();
 
         double total = 0.0;
 
         //prompt for number of sandwiches to make
         int sandwiches = Console.PromptForInt("How many sandwiches are you ordering?");
         int breadChoice, sandwichSize;
-       // Bread selectedBread;
         boolean wantToasted;
 
         //output the number of sandwiches being made
         System.out.println("You are ordering " + sandwiches + " sandwiches.");
-
 
         for (int i = 1; i <= sandwiches; i++) {
 
@@ -47,7 +45,7 @@ public class PromptOrder {
 
             // Create a new Sandwich object that calculates and stores the total cost
             Sandwich newSandwich = new Sandwich(sandwichSize, selectedBread, selectedToppings, wantToasted);
-            UI.sandwichOrder.add(newSandwich);
+            sandwichOrder.add(newSandwich);
             System.out.println("Adding sandwich " + i);
 
             // display sandwich(es) ordered
@@ -62,7 +60,7 @@ public class PromptOrder {
                 break; // Exit the loop after creating the requested number of sandwiches
             }
         }
-        return UI.sandwichOrder;
+        return sandwichOrder;
     }
 
     /**
@@ -142,7 +140,7 @@ public class PromptOrder {
      */
 
     public static ArrayList<Chips> promptForChips(){
-        UI.chipOrder = new ArrayList<>();
+        chipOrder = new ArrayList<>();
 
         //prompt for number of chips to add
         int numberOfChips = Console.PromptForInt("How many Chips are you adding?  ");
@@ -164,7 +162,7 @@ public class PromptOrder {
                 if (chipChoice >= 0 && chipChoice < UI.chipsList.size()) {
                     Chips selectedChip = UI.chipsList.get(chipChoice);
                     System.out.println("Added: " + selectedChip);
-                    UI.chipOrder.add(selectedChip);
+                    chipOrder.add(selectedChip);
                     validChoice = true;  // Exit loop after valid selection
                 } else {
                     System.out.println("Invalid selection. Please enter a valid number between 0 and " + (UI.chipsList.size() - 1) + ".");
@@ -172,7 +170,7 @@ public class PromptOrder {
             }
         }
 
-        return UI.chipOrder;
+        return chipOrder;
     }
 
     /**
@@ -181,7 +179,7 @@ public class PromptOrder {
      */
     public static ArrayList<Beverage> promptForBeverage() {
 
-        UI.drinkOrder = new ArrayList<>();
+        drinkOrder = new ArrayList<>();
 
         // Prompt user for the number of drinks
         int numberOfDrinks;
@@ -243,7 +241,7 @@ public class PromptOrder {
                     }
                 } while (!validSize);
 
-                UI.drinkOrder.add(selectedBeverage);
+               drinkOrder.add(selectedBeverage);
 
                 System.out.println("Adding: " + selectedBeverage.getTypeOfBeverage() + " (" + selectedBeverage + ") $" + selectedBeverage.getPriceOfBeverage());
 
@@ -252,7 +250,7 @@ public class PromptOrder {
                 System.out.println("Error occurred... Please try again.");
             }
         }
-        return UI.drinkOrder;
+        return drinkOrder;
     }
 
 

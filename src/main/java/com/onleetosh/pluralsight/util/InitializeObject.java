@@ -2,14 +2,22 @@ package com.onleetosh.pluralsight.util;
 
 import com.onleetosh.pluralsight.order.Beverage;
 import com.onleetosh.pluralsight.order.Chips;
-import com.onleetosh.pluralsight.order.sandwich.Bread;
-import com.onleetosh.pluralsight.order.sandwich.Topping;
+import com.onleetosh.pluralsight.order.Cookie;
+import com.onleetosh.pluralsight.order.sandwich.*;
 
 import java.util.ArrayList;
 
 
 //TODO : initialize more soups, cookies, salad?
 public class InitializeObject {
+
+    public static ArrayList<Cookie> listOfCookieObjects(){
+        UI.cookieList = new ArrayList<Cookie>();
+        UI.cookieList.add(new Cookie("Chocolate Chip", 1.50));
+        UI.cookieList.add(new Cookie("Snickerdoodle", 1.50));
+
+        return  UI.cookieList;
+    }
 
     /**
      * Initialize beverage objects and add them to an ArrayList

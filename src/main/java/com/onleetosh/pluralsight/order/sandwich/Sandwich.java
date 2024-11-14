@@ -89,17 +89,24 @@ public class Sandwich {
         for (Topping topping : toppings) {
             toppingCost += topping.getPrice();
         }
-//        if(premiumTopping != null && !premiumTopping.isEmpty()) {
-//            basePrice += toppingCost;
-//        }
 
         return basePrice + toppingCost;
     }
 
+    // format string so that the toppings are printed on separate lines
+    @Override
     public String toString() {
-        String isToasted = this.isToast ? "YES" : "NO";
-        return "Sandwich :  " + typeOfBread + ", with " + toppings +
-                ", Toast: " + isToasted + ",  $" + String.format("%.2f", totalCostOfSandwich);
+        StringBuilder listTopping = new StringBuilder();
 
+        for (Topping topping : toppings) {
+            // Add each topping on a new line
+            listTopping.append(topping).append("\n");
+        }
+        String isToasted = this.isToast ? "YES" : "NO";
+
+        return "Sandwich: " + typeOfBread + "\n" +
+                "Toppings:\n" + listTopping +
+                "Toast: " + isToasted + "\n" +
+                "Total Cost: $" + String.format("%.2f", totalCostOfSandwich);
     }
 }

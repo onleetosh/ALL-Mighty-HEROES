@@ -9,6 +9,7 @@ public class Order {
     private ArrayList<Sandwich> sandwiches;
     private ArrayList<Beverage> beverages;
     private ArrayList<Chips> chips;
+    private ArrayList<Cookie> cookies;
 
     public Order(ArrayList<Sandwich> sandwiches, ArrayList<Beverage> beverages, ArrayList<Chips> chips) {
         this.sandwiches = new ArrayList<>();

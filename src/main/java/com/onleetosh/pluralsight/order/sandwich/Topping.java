@@ -132,7 +132,7 @@ public class Topping {
     @Override
     public String toString() {
 
-        String isPremium = this.isPremium ? "PREMIUM" : "REGULAR";
+        String isPremium = this.isPremium ? "PREMIUM" : "FREE";
         return " " + topping + " (" + isPremium + ") " ;
     }
 }

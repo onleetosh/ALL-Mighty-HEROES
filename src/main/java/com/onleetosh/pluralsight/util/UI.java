@@ -15,13 +15,12 @@ import java.util.ArrayList;
 
 public class UI {
 
-    public static ArrayList<Beverage> drinkOrder;
-    public static ArrayList<Chips> chipOrder;
-    public static ArrayList<Sandwich> sandwichOrder;
     public static ArrayList<Topping> heroToppingList;
     public static ArrayList<Bread> breadList;
     public static ArrayList<Chips> chipsList;
     public static ArrayList<Beverage> beveragesList;
+    public static ArrayList<Cookie> cookieList;
+
 
     public Order currentOrder; // Track the current order being built
 
@@ -239,7 +238,7 @@ public class UI {
 
         int command = Console.PromptForInt(" Enter [1 - 6] to continue: ");
         switch (command) {
-            case 1 -> SignatureSandwich.requestBLT();
+            //case 1 -> SignatureSandwich.requestBLT();
 //                case 2 -> SignatureSandwich.requestPhillyCheese();
 //                case 3 -> processAddChip();
 //                case 4 -> viewSignatureSandwiches();
