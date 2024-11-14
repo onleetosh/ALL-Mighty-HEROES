@@ -176,51 +176,6 @@ public class PromptOrder {
     }
 
     /**
-     * Loop through an ArrayList of objects to display a list of beverages options
-     * then prompt user for a beverage  and add the result to drinkOrder ArrayList
-     */
-
-    public static ArrayList<Beverage> promptForBeverageBeforeUpdate(){
-
-        UI.drinkOrder = new ArrayList<>();
-        int numberOfDrinks = Console.PromptForInt("How many drinks are you adding?");
-
-        for (int i = 1; i <= numberOfDrinks; i++) {
-            // Loop through the arraylist and display beverage options
-            for (int j = 1; j < UI.beveragesList.size(); j++) {
-                System.out.println(j + ": " + UI.beveragesList.get(j).getTypeOfBeverage());
-            }
-
-            // Get user selection for beverage
-            int beverageChoice = Console.PromptForInt("Select a beverage (1 -" + (UI.beveragesList.size() - 1) + "): ");
-            Beverage selectedBeverage = UI.beveragesList.get(beverageChoice);
-
-            // Prompt for cup size
-            String cupSize;
-            boolean validSize = false;
-
-            do {
-                cupSize = Console.PromptForString("Select cup size: [S]mall, [M]edium, [L]arge ").toUpperCase();
-                if (cupSize.equalsIgnoreCase("S") ||
-                        cupSize.equalsIgnoreCase("M") ||
-                        cupSize.equalsIgnoreCase("L")) {
-                    validSize = true;
-                } else {
-                    System.out.println("Invalid size. Please choose [S], [M], or [L]. ");
-                }
-            } while (!validSize);
-
-            // Assign cup size to the selected beverage
-            selectedBeverage.setSizeOfCup(cupSize);
-            UI.drinkOrder.add(selectedBeverage);
-
-            System.out.println(" Adding: " + selectedBeverage.getTypeOfBeverage() + " (" + cupSize + ") " + selectedBeverage.getPriceOfBeverage());
-        }
-        return UI.drinkOrder;
-    }
-
-
-    /**
      * Loop through an ArrayList of objects to display a list of beverage options,
      * then prompt user for a beverage and add the result to drinkOrder ArrayList.
      */

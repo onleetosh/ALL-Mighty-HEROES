@@ -36,7 +36,7 @@ public class Receipt {
             bwt.write("       Phone: (68) 1058-1125  ");
             bwt.write("\n ");
             bwt.write(order.toString());  // write order using toString()
-            bwt.write("        *** MUNCH MUNCH MUNCH *** ");
+            bwt.write("      *** MUNCH MUNCH MUNCH *** ");
             bwt.write("\n=================================\n");
 
             bwt.close();  // Close the file writer

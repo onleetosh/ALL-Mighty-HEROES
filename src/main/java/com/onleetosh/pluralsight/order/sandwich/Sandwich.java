@@ -40,6 +40,31 @@ public class Sandwich {
         this.totalCostOfSandwich = calculateTotalCost();
     }
 
+    /**
+     * Getter
+     */
+    public int getSizeOfBread() {
+        return sizeOfBread;
+    }
+
+    public Bread getTypeOfBread() {
+        return typeOfBread;
+    }
+
+
+    public double getTotalCostOfSandwich() {
+        return this.totalCostOfSandwich; // Return stored total cost
+    }
+
+    public void setTotalCostOfSandwich(double totalCostOfSandwich) {
+        this.totalCostOfSandwich = totalCostOfSandwich;
+    }
+
+
+    /**
+     * return the total cost of a single sandwich
+     * @return
+     */
     public double calculateTotalCost() {
         double basePrice = 0.0;
         double toppingCost = 0.0;
@@ -60,49 +85,15 @@ public class Sandwich {
                 return 0;
         }
 
-        //calculate for topping to get bread size price plus all toppings
-
-        //this method need to be debugges
-        // Calculate total cost of toppings
+        // loop through and increment toppings to get a total
         for (Topping topping : toppings) {
             toppingCost += topping.getPrice();
         }
+//        if(premiumTopping != null && !premiumTopping.isEmpty()) {
+//            basePrice += toppingCost;
+//        }
 
         return basePrice + toppingCost;
-    }
-
-    public double getTotalCostOfSandwich() {
-        return this.totalCostOfSandwich; // Return stored total cost
-    }
-
-    /**
-     * return the total cost of a single sandwich
-     * @return
-     */
-    public double getTotalCost(){
-        double basePrice = 0.0;
-        double premiumCost = 0.0;
-        //
-        switch (sizeOfBread) {
-            case 4: basePrice = 5.50;
-                    premiumCost = 1.00;
-                    break;
-            case 8: basePrice = 7.00;
-                    premiumCost = 2.00;
-                    break;
-            case 12: basePrice = 8.50;
-                    premiumCost = 3.00;
-                    break;
-            default:
-                System.out.println("Invalid size.");
-                return 0;
-        }
-
-
-        if(premiumTopping != null && !premiumTopping.isEmpty()) {
-            basePrice += premiumCost;
-        }
-        return basePrice;
     }
 
     public String toString() {

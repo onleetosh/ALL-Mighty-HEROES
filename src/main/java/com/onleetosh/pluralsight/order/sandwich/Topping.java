@@ -37,13 +37,17 @@ public class Topping {
 
 
     // Constructor
-    public Topping(String topping, String type) {
+    public Topping(String topping,
+                   String type) {
         this.topping = topping;
         this.type = type;
         this.isPremium = false;
     }
 
-    public Topping(String topping, String type, boolean isPremium, double price) {
+    public Topping(String topping,
+                   String type,
+                   boolean isPremium,
+                   double price) {
         this.topping = topping;
         this.type = type;
         this.isPremium = isPremium;
@@ -77,7 +81,8 @@ public class Topping {
 
 
     // Method to adjust the price based on topping type and bread size
-    public void adjustPriceIfPremiumToppingAdd(int sizeOfBread, boolean isExtra) {
+    public void adjustPriceIfPremiumToppingAdd(int sizeOfBread,
+                                               boolean isExtra) {
         price = 0.0;
         if(isPremium) {
             if (type.equalsIgnoreCase("meat")) {
