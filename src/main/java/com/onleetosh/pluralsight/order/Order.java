@@ -11,6 +11,17 @@ public class Order {
     private ArrayList<Chips> chips;
     private ArrayList<Cookie> cookies;
 
+
+    /**
+     * Constructor for empty order
+     */
+    public Order(){
+        this.sandwiches = new ArrayList<>();
+        this.beverages = new ArrayList<>();
+        this.chips = new ArrayList<>();
+       // this.cookies = new ArrayList<>();
+    }
+
     public Order(ArrayList<Sandwich> sandwiches, ArrayList<Beverage> beverages, ArrayList<Chips> chips) {
         this.sandwiches = new ArrayList<>();
         this.beverages = new ArrayList<>();
@@ -30,6 +41,9 @@ public class Order {
         chips.add(chip);
     }
 
+    /**
+     * Getter methods used to get an value
+     */
     public ArrayList<Sandwich> getSandwiches() {
         return sandwiches;
     }
@@ -42,7 +56,10 @@ public class Order {
         return chips;
     }
 
-    // Method to calculate the total cost
+
+    /**
+     * @return the total amount of an order by incrementing all objects created
+     */
     public double getTotalCost() {
         double totalCost = 0.0;
         for (Sandwich sandwich : sandwiches) {
@@ -57,6 +74,10 @@ public class Order {
         return totalCost;
     }
 
+    /**
+     * Use a StringBuilder to append all objects created for an order and
+     * @return the String format for a receipt
+     */
     @Override
     public String toString() {
         StringBuilder formatOrder = new StringBuilder();

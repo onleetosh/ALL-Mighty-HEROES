@@ -10,24 +10,19 @@ public class Sandwich {
 
     // 4", 8", or 12"
     private int sizeOfBread;
-    // bread price 4"($5.50), 8"(7.00), or 12" (8.50)
-    // white, wheat, rye, wrap
+
     private Bread typeOfBread;
 
-    //lettuce, peppers, onions, tomatoes, jalapenos, cucumber, pickles, banana peppers, mushrooms, guacamole
-    // topping price - included
     private ArrayList<Topping> toppings;
-    // Meats(steak, ham, salami, roast beef, chicken, bacon)  Cheese(american, provolone, cheddar, swiss)
-    // premium price - 4"($1.00 extra meat .50), 8"(2.00 extra meat 1.00), or 12" (3.00 extra meat 1.50);
+
     private ArrayList<Topping> premiumTopping; //
-    // Sauce ( Mayo, Mustard, Honey Mustard, Buffalo, Spicy Chiplote, Ketchup, Ranch, vinaigrette, thousand islands
 
     private double totalCostOfSandwich;
 
     private boolean isToast;
 
     /**
-     * Constructor for regular sandwich object
+     * Constructor for sandwich object
      */
     public Sandwich(int sizeOfBread,
                     Bread typeOfBread,
@@ -41,7 +36,7 @@ public class Sandwich {
     }
 
     /**
-     * Getter
+     * Getter methods to get a value
      */
     public int getSizeOfBread() {
         return sizeOfBread;
@@ -62,8 +57,8 @@ public class Sandwich {
 
 
     /**
-     * return the total cost of a single sandwich
-     * @return
+     * @return the total cost of a single hero by adding
+     * the base price of select bread + the total cost of selected toppings
      */
     public double calculateTotalCost() {
         double basePrice = 0.0;
@@ -93,7 +88,10 @@ public class Sandwich {
         return basePrice + toppingCost;
     }
 
-    // format string so that the toppings are printed on separate lines
+
+    /**
+     * Use a StringBuilder to append toppings selected into a list @return a String format to display sandwich
+     */
     @Override
     public String toString() {
         StringBuilder listTopping = new StringBuilder();

@@ -9,23 +9,25 @@ import java.time.format.DateTimeFormatter;
 
 public class Receipt {
 
-    private static final LocalDateTime current = LocalDateTime.now();
+
+    /**
+     * Declare the LocalDateTime variable as present time and set format as "yyyyMMDD-HHmmss"
+     */
+    private static final LocalDateTime presentDateTime = LocalDateTime.now();
     private static final DateTimeFormatter fmtDT = DateTimeFormatter.ofPattern("yyyyMMDD-HHmmss");
 
     /**
-     * recorderOrderTransaction() is used to create a receipt file of ordering being placed
+     * Method used to generate a receipt file with order details
      */
     public static void recordOrderTransaction(Order order){
 
         try {
             // Format the date and time for the receipt file name
-            String date = current.format(fmtDT);
-
+            String date = presentDateTime.format(fmtDT);
             // Create a file with the date as part of the name
             BufferedWriter bwt = new BufferedWriter(new FileWriter("Receipt-" + date + ".txt"));
-
             // Write the order details into the file
-            bwt.write("Receipt Date: " + current.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) + "\n");
+            bwt.write("Receipt Date: " + presentDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) + "\n");
             bwt.write("===================================\n");
             bwt.write("       >> ALL Mighty Hero <<");
             bwt.write("\n ");
@@ -36,9 +38,8 @@ public class Receipt {
             bwt.write("       Phone: (68) 1058-1125  ");
             bwt.write("\n ");
             bwt.write(order.toString());  // write order using toString()
-            bwt.write("      *** MUNCH MUNCH MUNCH *** ");
+            bwt.write("     *** MUNCH MUNCH MUNCH *** ");
             bwt.write("\n=================================\n");
-
             bwt.close();  // Close the file writer
             System.out.println("\n Receipt created successfully: " + date + ".txt");
         }

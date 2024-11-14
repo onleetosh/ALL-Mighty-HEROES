@@ -46,15 +46,15 @@ public class PromptOrder {
             // Create a new Sandwich object that calculates and stores the total cost
             Sandwich newSandwich = new Sandwich(sandwichSize, selectedBread, selectedToppings, wantToasted);
             sandwichOrder.add(newSandwich);
-            System.out.println("Adding sandwich " + i);
+            System.out.println("\nSandwich " + i + " confirmed");
 
-            // display sandwich(es) ordered
             System.out.println("Bread: " + selectedBread.getTypeOfBread() + " | Size: " + sandwichSize + "\"");
             System.out.println("Sandwich" + i  +" " + newSandwich.calculateTotalCost());
             for (Topping topping : selectedToppings) {
                 System.out.println(topping);
             }
             System.out.println("Toast: " + (wantToasted ? "Yes" : "No"));
+            System.out.printf("Amount: $%.2f\n",newSandwich.getTotalCostOfSandwich());
 
             if (i == sandwiches) {
                 break; // Exit the loop after creating the requested number of sandwiches
@@ -68,7 +68,6 @@ public class PromptOrder {
      * then prompt user to select a bread and return the result
      */
     public static int promptForBread() {
-
         //loop to prompt a valid input
         while(true) {
             try {
@@ -77,15 +76,12 @@ public class PromptOrder {
                 for (int i = 1; i < UI.breadList.size(); i++) {
                     System.out.println(i + ": " + UI.breadList.get(i).getTypeOfBread() + " (" + UI.breadList.get(i).getSizeOfBread() + "\")");
                 }
-
                 int bread = Console.PromptForInt("Enter bread choice (1-" + (UI.breadList.size() - 1) + ")");
-
                 System.out.println("Confirmation: " + UI.breadList.get(bread));
-
                 return bread;
             }
             catch (Exception e){
-                System.out.println("Please try again... \n");
+                System.out.println("Enter a (1-" + (UI.breadList.size() - 1)+") \n");
             }
 
         }
@@ -106,9 +102,9 @@ public class PromptOrder {
                 //loop through  and display toppings as a list # 1 - (size of the ArrayList)
                 for (int i = 1; i < UI.heroToppingList.size(); i++) {
                     Topping getToppings = UI.heroToppingList.get(i);
-                    System.out.println( i + ": " + getToppings);
+                    System.out.println( i + ": " + getToppings.displayToppings());
                 }
-                // Prompt user for a topping
+                // Prompt user for  topping
                 int toppingChoice = Console.PromptForInt("Enter topping choice (0-" + (UI.heroToppingList.size() - 1) + "): ");
                 Topping selectedTopping = UI.heroToppingList.get(toppingChoice);
 
@@ -118,6 +114,9 @@ public class PromptOrder {
                 // Adjust the price if topping is premium and extra
                 selectedTopping.adjustPriceIfPremiumToppingAdd(more, isExtra);
 
+                if(isExtra){
+                    selectedTopping.setExtra(true);
+                }
                 // Add the selected topping to the list
                 selectedToppings.add(selectedTopping);
 
@@ -128,8 +127,7 @@ public class PromptOrder {
                 addMore = Console.PromptForYesNo("Add more toppings?");
             }
             catch (Exception e) {
-                System.out.println("\nEntry not valid. Please Try again...");
-            }
+                System.out.println("Enter a (1-" + (UI.heroToppingList.size() - 1)+") \n");            }
         }
         return selectedToppings;
     }

@@ -31,11 +31,11 @@ public class UI {
             UI.beveragesList = InitializeObject.listOfBeverageObjects();
             UI.heroToppingList = InitializeObject.listOfToppingObjects();
             // default to null and wait for order details
-            currentOrder = new Order(null, null, null);
+            currentOrder = new Order();
 
         }
     /**
-     * displayHomeScreen() provides the main screen for starting a new order or exiting.
+     * Method used to display the main screen and prompts the user for a command
      */
     public void displayHomeScreen() {
             while (true) {
@@ -47,10 +47,7 @@ public class UI {
                     int startOrder = Console.PromptForInt("\n 1 - New Order \n 2 - Quit ");
                     switch (startOrder) {
                         case 1 -> displayOrderScreen();
-                        case 2 -> {
-                            System.out.println("Returning to the previous menu.");
-                            return;
-                        }
+                        case 2 -> System.exit(0);
                         default -> System.out.println("Invalid input. Please enter a number between 0 and 4.");
                     }
                 } catch (Exception e) {
@@ -69,9 +66,9 @@ public class UI {
                     System.out.println("----------------------------------");
                     System.out.println(" 1) Sandwich \n " +
                                         "2) Drink \n " +
-                                        "3) Chips \n " +
-                                        "4) Try a Signature Sandwich \n " +
-                                        "5) View Order \n \n " +
+                                        "3) Add On \n " +
+                                        "4) View Order \n " +
+                                        "5) Exit \n \n " +
                                         "0) Go Back");
                     System.out.println("---------------------------------");
 
@@ -79,14 +76,15 @@ public class UI {
                     switch (command) {
                         case 1 -> processAddSandwich();
                         case 2 -> processAddBeverage();
-                        case 3 -> processAddChip();
-                        case 4 -> viewSignatureSandwiches();
-                        case 5 -> viewOrder();
+                        case 3 -> viewAddOn();
+                        case 4 -> viewOrder();
+                        case 5 -> System.exit(0);
+                        case 6 -> viewSignatureSandwiches();  //secret menu
                         case 0 -> {
-                            System.out.println("Returning to the menu pricing.");
+                            System.out.println("Returning to Price Menu");
                             return;
                         }
-                        default -> System.out.println("Invalid input. Please enter a number between 0 and 4.");
+                        default -> System.out.println("Invalid entry. Please enter [0 and 5]");
                     }
                 } catch (Exception e) {
                     System.out.println("Invalid input. Please enter a valid number.");
@@ -107,63 +105,13 @@ public class UI {
         System.out.println("Drinks:            $2.00             $2.50              $3.00");
         System.out.println("Chips:             $1.50");
         System.out.println("---------------------------------------------------------------");
+        System.out.println("              Enter # when prompted to process order ");
         System.out.println("---------------------------------------------------------------");
     }
 
     /**
-     * processAddSandwich() used to collect sandwiches from the user and adds them to the current order.
-     */
-        private void processAddSandwich() {
-            ArrayList<Sandwich> sandwiches = PromptOrder.promptForSandwich();
-            for (Sandwich sandwich : sandwiches) {
-                currentOrder.addSandwich(sandwich);
-            }
-        }
-
-    /**
-     * processAddBev() used to collect beverages from the user and adds them to the current order.
-     */
-        private void processAddBeverage() {
-            ArrayList<Beverage> beverages = PromptOrder.promptForBeverage();
-            for (Beverage beverage : beverages) {
-                currentOrder.addBeverage(beverage);
-            }
-        }
-
-    /**
-     * processAddChip() used to collect chips from the user and adds them to the current order.
-     */
-    private void processAddChip() {
-            ArrayList<Chips> chips = PromptOrder.promptForChips();
-            for (Chips chip : chips) {
-                currentOrder.addChip(chip);
-            }
-        }
-
-
-    private void processConfirmOrder() {
-
-            Receipt.recordOrderTransaction(currentOrder);
-            currentOrder = new Order(null, null, null); // start a new order
-
-            System.out.println("Enjoy the Almighty Hero!");
-
-        }
-
-    /**
-     * processCancelOrder() used remove all objects and reset an order
-     */
-    private void processCancelOrder() {
-            System.out.println("----------------------------");
-            if (Console.PromptForYesNo("Are you sure you want to cancel the order?")) {
-                currentOrder = new Order(null, null, null);  // Reset the order
-                System.out.println("Order canceled.");
-            }
-        }
-
-    /**
-     * viewOrder() uses displayOrderSummary() to show a order created and prompts user to
-     * either confirm and checkout, cancel or add more to order
+     * This method uses displayOrderSummary() to display order details and prompts user to
+     * either confirm, cancel, or add more to order
      */
     private void viewOrder(){
         displayOrderSummary(currentOrder.getSandwiches(), currentOrder.getBeverages(), currentOrder.getChips());
@@ -187,40 +135,160 @@ public class UI {
     }
 
     /**
-     * displayOrderSummary() used to outputs a confirmation of an order created
+     * Method used to display a confirmation for an order created with added items
      */
-
     private void displayOrderSummary(ArrayList<Sandwich> sandwiches, ArrayList<Beverage> drinks, ArrayList<Chips> chips) {
 
         double totalCost = 0.0;
-
-            System.out.println("----------------------------");
-            System.out.println("       Order Summary");
-            System.out.println("----------------------------");
-            // Display sandwiches
+        System.out.println("----------------------------");
+        System.out.println("       Order Summary");
+        System.out.println("----------------------------");
+        // Display sandwiches
         System.out.println(" --- Confirm Sandwich----");
         for (Sandwich sandwich : sandwiches) {
-                System.out.println(sandwich);
-                totalCost += sandwich.getTotalCostOfSandwich(); //add and get sandwich total
-            }
-            // Display drinks
+            System.out.println(sandwich);
+            totalCost += sandwich.getTotalCostOfSandwich(); //add and get sandwich total
+        }
+        // Display drinks
         System.out.println(" --- Confirm Beverage----");
         for (Beverage drink : drinks) {
-                System.out.println(drink);
-                totalCost += drink.getPriceOfBeverage(); //add and get beverage total
-            }
-            // Display chips
+            System.out.println(drink);
+            totalCost += drink.getPriceOfBeverage(); //add and get beverage total
+        }
+        // Display chips
         System.out.println(" --- Confirm Chips----");
         for (Chips chip : chips) {
-                System.out.println(chip);
-                totalCost += chip.getPriceOfChips(); //add and get total chip total
-            }
-            System.out.println("----------------------------");
-            // Display the amount due
-            System.out.printf("\nAmount due: $%.2f", totalCost);
-
-
+            System.out.println(chip);
+            totalCost += chip.getPriceOfChips(); //add and get total chip total
         }
+        System.out.println("----------------------------");
+        // Display the amount due
+        System.out.printf("\nAmount due: $%.2f", totalCost);
+
+
+    }
+
+
+    private void viewAddOn(){
+
+        while (true) {
+            try {
+                System.out.println("----------------------------------");
+                System.out.println("              Add-On");
+                System.out.println("----------------------------------");
+                System.out.println(" 1) Chip \n " +
+                                    "2) Cookie \n " +
+                                    "3) View Order \n \n " +
+                                    "0) Go Back");
+                System.out.println("---------------------------------");
+
+                int command = Console.PromptForInt(" Enter [0 - 3] to continue: ");
+                switch (command) {
+                    case 1 -> processAddChip();
+                    //case 2 -> processAddCookie();
+                    case 3 -> viewOrder();
+                    case 0 -> {
+                        System.out.println("Returning to the menu pricing.");
+                        return;
+                    }
+                    default -> System.out.println("Invalid input. Please enter a number between 0 and 3.");
+                }
+            } catch (Exception e) {
+                System.out.println("Invalid input. Please enter a valid number.");
+            }
+        }
+    }
+
+
+
+    /**
+     * Method used to process the request of adding an item to the current order by using the PromptOrder method to
+     * prompt for heroes then loops through the item or items requested and adds them to the current order
+     */
+    private void processAddSandwich() {
+            ArrayList<Sandwich> sandwiches = PromptOrder.promptForSandwich();
+            for (Sandwich sandwich : sandwiches) {
+                currentOrder.addSandwich(sandwich);
+            }
+        }
+
+    /**
+     * Method used to process the request of adding an item to the current order by using the PromptOrder method to
+     * prompt for beverage then loops through the item or items requested and adds them to the current order
+     */
+    private void processAddBeverage() {
+            ArrayList<Beverage> beverages = PromptOrder.promptForBeverage();
+            for (Beverage beverage : beverages) {
+                currentOrder.addBeverage(beverage);
+            }
+        }
+
+    /**
+     * Method used to process the request to add an item to the current order by using a PromptOrder class method to
+     * prompt for chips then loops through the item or items requested and adds them to the current order
+     */
+    private void processAddChip() {
+            ArrayList<Chips> chips = PromptOrder.promptForChips();
+            for (Chips chip : chips) {
+                currentOrder.addChip(chip);
+            }
+        }
+
+
+    /**
+     * This method is used confirms and generates a receipt for the object and prompts user to exit or start new order
+     */
+    private void processConfirmOrder() {
+        //process a receipt for order made
+        Receipt.recordOrderTransaction(currentOrder);
+        //remove previous order to create new order
+        currentOrder = new Order();
+        System.out.println("Enjoy the Almighty Hero!");
+        //prompt user for a new order and loop for valid input
+        boolean newOrder;
+        while (true){
+            try {
+                newOrder = Console.PromptForYesNo("\nWould you like to place a new order?");
+                if (newOrder) {
+                    displayOrderScreen();  // Start a new order process
+                } else {
+                    System.out.println("Thank you for using our service!");
+                    System.exit(0); //end program
+                }
+            }
+            catch (Exception e) {
+                System.out.println("Answer Y or N");
+            }
+        }
+    }
+
+    /**
+     * This method is used clear all item from an order and prompts user to exit or start new order
+     */
+    private void processCancelOrder() {
+        System.out.println("----------------------------");
+        if (Console.PromptForYesNo("Are you sure you want to cancel the order?")) {
+            currentOrder = new Order();
+            System.out.println("Order canceled.");
+        }
+
+        //prompt user for a new order and loop for valid input
+        while (true) {
+            try {
+                boolean newOrder = Console.PromptForYesNo("\nWould you like to place a new order?");
+                if (newOrder) {
+                    displayOrderScreen();  // Start a new order process
+                } else {
+                    System.out.println("Have a Mighty Day!");
+                    System.exit(0); //end program
+                }
+            }
+            catch (Exception e) {
+                System.out.println("Answer Y or N");
+            }
+        }
+    }
+
 
     //TODO : FINISH BONUS
     public void viewSignatureSandwiches(){

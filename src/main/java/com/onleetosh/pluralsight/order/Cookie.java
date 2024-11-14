@@ -2,16 +2,25 @@ package com.onleetosh.pluralsight.order;
 
 public class Cookie {
 
-    private String typeOfCookie; //chocolate chip, oatmeal, etc..
+    /**
+     * Information needed to create chip object
+     */
+    private String typeOfCookie;
     private double priceOfCookie;
 
-    private double priceOfCookieAmount = 1.50;
+    /**
+     * Value amount for chips
+     */
+    private double valueAmountForCookie = 1.50;
 
     private double totalCookieAmount;
 
+    /**
+     * Constructor used to initialize cookie object
+     */
     public Cookie(String typeOfCookie, double priceOfCookie) {
         this.typeOfCookie = typeOfCookie;
-        this.priceOfCookie = priceOfCookie;
+        this.priceOfCookie = valueAmountForCookie;
     }
 
 

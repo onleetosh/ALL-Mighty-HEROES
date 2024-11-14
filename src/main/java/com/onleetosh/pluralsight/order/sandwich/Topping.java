@@ -8,9 +8,9 @@ import java.util.ArrayList;
 
 public class Topping {
 
-    static ArrayList<Topping> sandwichTopping;
-
-    //values for meat
+    /**
+     *  Value amounts for meat based on size and extra
+     */
     private final double fourInchMeatCost = 1.00;
     private final double eightInchMeatCost = 2.00;
     private final double footLongMeatCost = 3.00;
@@ -18,8 +18,9 @@ public class Topping {
     private final double eightInchExtraMeatCost = 1.00;
     private final double footLongExtraMeatCost = 1.50 ;
 
-
-    //values for cheese
+    /**
+     *  Value amounts for cheese based on size and extra
+     */
     private final double fourInchCheeseCost = 0.75;
     private final double eightInchCheeseCost = 1.50;
     private final double footLongCheeseCost = 2.25;
@@ -27,23 +28,22 @@ public class Topping {
     private final double eightInchExtraCheeseCost = 0.60;
     private final double footLongExtraCheeseCost = 0.90 ;
 
-    //information
-    private String topping; // chicken / american / lettuce / presto
-    private String type; //meat / cheese / fresh veg / condiments (sauce)
-    private double price; // meat or cheese are consider premium and price based on sandwich size (4", 8", 12") . all other toppings are free
+
+    /**
+     * Information need to create topping object
+     */
+    private String topping;
+    private String type;
+    private double price;
 
     private boolean isPremium;
+    private boolean isExtra;
 
 
 
-    // Constructor
-    public Topping(String topping,
-                   String type) {
-        this.topping = topping;
-        this.type = type;
-        this.isPremium = false;
-    }
-
+    /**
+     * Constructor used to initialize topping object
+     */
     public Topping(String topping,
                    String type,
                    boolean isPremium,
@@ -53,26 +53,44 @@ public class Topping {
         this.isPremium = isPremium;
         this.price = price;
     }
+    public Topping(String topping,
+                   String type,
+                   boolean isPremium,
+                   double price,
+                   boolean isExtra) {
+        this.topping = topping;
+        this.type = type;
+        this.isPremium = isPremium;
+        this.price = price;
+        this.isExtra = isExtra;
 
-    // Getters and setters
+    }
+
+    /**
+     * Getter methods to get a value
+     */
     public double getPrice() {
         return price;
     }
-
     public String getTopping() {
         return topping;
     }
+    public boolean isPremium() {
+        return isPremium;
+    }
+    public String getType() {
+        return type;
+    }
 
+    /**
+     * Setter methods to set a value
+     */
     public void setTopping(String topping) {
         this.topping = topping;
     }
 
-    public boolean isPremium() {
-        return isPremium;
-    }
-
-    public String getType() {
-        return type;
+    public void setExtra(boolean extra) {
+        isExtra = extra;
     }
 
     public void setType(String type) {
@@ -80,7 +98,10 @@ public class Topping {
     }
 
 
-    // Method to adjust the price based on topping type and bread size
+    /**
+     * This method is used to adjust the price based on size (4", 8", 12") and premium topping
+     * with or without if extra after @param (size of bread) is filled
+     */
     public void adjustPriceIfPremiumToppingAdd(int sizeOfBread,
                                                boolean isExtra) {
         price = 0.0;
@@ -124,6 +145,14 @@ public class Topping {
         }
     }
 
+    /**
+     * displayTopping() is used to display topping list without the labeled "extra ++" that is applied
+     * to topping objects when promptForTopping after selectedTopping is to yes for extra
+     */
+    public String displayToppings() {
+        String ifPremium = this.isPremium ? "(PREMIUM)" : " ";
+        return " ["+type+"] " + topping + " " + ifPremium + " ";
+    }
 
 
     /**
@@ -131,8 +160,13 @@ public class Topping {
      */
     @Override
     public String toString() {
-
-        String isPremium = this.isPremium ? "PREMIUM" : "FREE";
-        return " " + topping + " (" + isPremium + ") " ;
+        //if extra is true mark as ++ else " REGUlAR AMOUNT "
+        String ifExtra = this.isExtra ? "++" : "    ";
+        //if premium then mark as Premium else " NOT PREMIUM "
+        String ifPremium = this.isPremium ? "(PREMIUM)" : "       ";
+        return "  " + this.topping + //topping name
+                " " + ifPremium + // Premium or Included
+                " " + ifExtra + // Extra or regular amount
+                " $" + String.format("%.2f", this.price);  //format price
     }
 }
