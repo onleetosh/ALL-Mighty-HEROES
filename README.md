@@ -43,4 +43,5 @@ After making a selections, user can see a final receipt with a complete summary 
 - https://stackoverflow.com/
 
 # Preview
-![img.png](img.png)
+
+<img alt="img.png" height="200" src="img.png" width="200"/>
