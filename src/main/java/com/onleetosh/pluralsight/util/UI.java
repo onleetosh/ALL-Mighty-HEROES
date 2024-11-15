@@ -15,7 +15,6 @@ public class UI {
     public static ArrayList<Beverage> beveragesList;
     public static ArrayList<Cookie> cookieList;
 
-
     public Order currentOrder; // Track the current order being built
 
 
@@ -74,7 +73,6 @@ public class UI {
                         case 3 -> viewAddOn();
                         case 4 -> viewOrder();
                         case 5 -> System.exit(0);
-                        case 6 -> viewSignatureSandwiches();  //secret menu
                         default -> System.out.println("Invalid entry. Please enter [0 and 5]");
                     }
                 } catch (Exception e) {
@@ -314,35 +312,6 @@ public class UI {
         }
     }
 
-    //TODO : FINISH BONUS
-    public void viewSignatureSandwiches(){
-
-        System.out.println("---------------------------------------------------------------");
-        System.out.println("           Signature Sandwich ");
-        System.out.println("---------------------------------------------------------------");
-        System.out.println(" 1) BLT \n " +
-                "2) PHILLY CHEESE \n " +
-                "3) ALL FOR ONE \n " +
-                "4) FLAT BUSH \n " +
-                "5) UPTOWN \n \n " +
-                "0) Go Back");
-        System.out.println("---------------------------------------------------------------");
-
-        int command = Console.PromptForInt(" Enter [1 - 6] to continue: ");
-        switch (command) {
-            //case 1 -> SignatureSandwich.requestBLT();
-//                case 2 -> SignatureSandwich.requestPhillyCheese();
-//                case 3 -> processAddChip();
-//                case 4 -> viewSignatureSandwiches();
-//                case 5 -> viewOrder();
-            case 0 -> {
-                System.out.println("Returning to the previous menu.");
-                return;
-            }
-            default -> System.out.println("Invalid input. Please enter a number between 0 and 4.");
-        }
-    }
-
-    }
+}
 
 

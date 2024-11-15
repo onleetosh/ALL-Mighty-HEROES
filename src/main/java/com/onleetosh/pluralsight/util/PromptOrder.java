@@ -265,8 +265,6 @@ public class PromptOrder {
                         Chips selectedChip = UI.chipsList.get(choice);
                         chipOrder.add(selectedChip);
                         System.out.println("Added: " + selectedChip.getBagOfChips());
-                    } else {
-                        System.out.println("Please enter [1 - " + (UI.chipsList.size() - 1) + "]");
                     }
                 } catch (Exception e) {
                     System.out.println(" Please enter [1 - " + (UI.chipsList.size() - 1) + "]");
