@@ -43,8 +43,8 @@ After making a selections, user can see a final receipt with a complete summary 
 - https://stackoverflow.com/
 
 # Preview
-<img width="800" alt="Screenshot 2024-11-15 at 8 04 14 AM" src="https://github.com/user-attachments/assets/03324abd-f075-481c-8b8e-2d6aa9839e28" height="600">
+<img width="600" alt="Screenshot 2024-11-15 at 8 04 14 AM" src="https://github.com/user-attachments/assets/03324abd-f075-481c-8b8e-2d6aa9839e28" height="600">
 
 # Structure 
-<img width="825" alt="Structure-For-Project" src="https://github.com/user-attachments/assets/0ed51c14-0b59-4953-ba3d-fbffe3871a19" height="500">
+<img width="825" alt="Structure-For-Project" src="https://github.com/user-attachments/assets/0ed51c14-0b59-4953-ba3d-fbffe3871a19" height="800">
 
