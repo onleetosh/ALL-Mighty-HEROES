@@ -24,7 +24,7 @@ git clone https://github.com/your-username/ALL-MIGHTY-HEROES.git
 - open project 
 
 # Built With
--Maven
+- Maven
 
 # Author
 Tosh
