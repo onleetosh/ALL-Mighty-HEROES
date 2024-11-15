@@ -27,7 +27,7 @@ public class PromptOrder {
         int request = -1, breadChoice, sandwichSize;
         boolean wantToasted;
 
-        while (request < 1) {
+        while (request < 0) {
             try {
                 request = Console.PromptForInt("How many sandwiches are you ordering?");
             } catch (Exception e) {
@@ -144,7 +144,79 @@ public class PromptOrder {
      * Method used to loop through an ArrayList of objects to display a list of beverage options,
      * then prompt user for a beverage and add the result to drinkOrder ArrayList.
      */
+
+
     public static ArrayList<Beverage> promptForBeverage() {
+        drinkOrder = new ArrayList<>();
+
+        int request = -1;
+        boolean validInput = false;
+        // Prompt for how many drinks are being added, with validation
+        while (!validInput) {
+            try {
+                request = Console.PromptForInt("How many drinks are you adding?");
+                if (request >= 0) {
+                    validInput = true;
+                }
+            } catch (Exception e) {
+                System.out.println("Please enter a valid number.");
+            }
+        }
+        // If user enters 0, return no beverage
+        if (request == 0) {
+            return drinkOrder;
+        }
+
+
+        for (int i = 1; i <= request; i++) {
+            // Loop through the arraylist and display beverage options
+            for (int j = 1; j < UI.beveragesList.size(); j++) {
+                System.out.println(j + ": " + UI.beveragesList.get(j).getTypeOfBeverage());
+            }
+
+            // Get user selection for beverage, with validation
+            Beverage selectedBeverage = null;
+            boolean validChoice = false;
+            while (!validChoice) {
+                try {
+                    int choice = Console.PromptForInt("Select a beverage (1-" + (UI.beveragesList.size() - 1) + "): ");
+                    if (choice >= 0 && choice < UI.beveragesList.size()) {
+                        selectedBeverage = UI.beveragesList.get(choice);
+                        validChoice = true;
+                    }
+                } catch (Exception e) {
+                    System.out.println("Please enter a (1-" + (UI.beveragesList.size() - 1) + ")");
+                }
+            }
+
+            String cupSize = " ";
+            boolean validSize = false;
+            do {
+                cupSize = Console.PromptForString("Select cup size: [S]mall, [M]edium, [L]arge");
+                if (cupSize.equalsIgnoreCase("S")) {
+                    cupSize = "Small";
+                    validSize = true;
+                } else if (cupSize.equalsIgnoreCase("M")) {
+                    cupSize = "Medium";
+                    validSize = true;
+                } else if (cupSize.equalsIgnoreCase("L")) {
+                    cupSize = "Large";
+                    validSize = true;
+                } else {
+                    System.out.println("Invalid size. Please choose [S], [M], or [L].");
+                }
+            } while (!validSize);
+
+
+            // Assign cup size to the selected beverage
+            selectedBeverage.setSizeOfCup(cupSize);
+            drinkOrder.add(selectedBeverage);
+            System.out.println("Update order: " + selectedBeverage);
+        }
+
+        return drinkOrder;
+    }
+    public static ArrayList<Beverage> promptForBeverage2() {
         drinkOrder = new ArrayList<>();
         int request = 0;
 
@@ -168,6 +240,7 @@ public class PromptOrder {
 
         return drinkOrder;
     }
+
 
     /**
      * Helper methods used to prompt user for beverage details
@@ -237,10 +310,10 @@ public class PromptOrder {
         chipOrder = new ArrayList<>();
         int prompt = -1; // user can enter 0 Chips
         // Prompt for the number of chips to add with error handling
-        while (prompt < 1) {
+        while (prompt < 0) {
             try {
                 prompt = Console.PromptForInt("How many chips are you adding? ");
-                if (prompt < 1) {
+                if (prompt < 0) {
                     System.out.println("Please enter a valid number.");
                 }
             } catch (Exception e) {
@@ -282,10 +355,10 @@ public class PromptOrder {
         cookieOrder = new ArrayList<>();
         int prompt = -1; // user can enter 0 Chips
         // Prompt for the number of chips to add with error handling
-        while (prompt < 1) {
+        while (prompt < 0) {
             try {
                 prompt = Console.PromptForInt("How many cookies are you adding? ");
-                if (prompt < 1) {
+                if (prompt < 0) {
                     System.out.println("Please enter a valid number.");
                 }
             } catch (Exception e) {

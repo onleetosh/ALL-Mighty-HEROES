@@ -101,9 +101,9 @@ public class Order {
     @Override
     public String toString() {
         StringBuilder formatOrder = new StringBuilder();
-        formatOrder.append("=================================\n");
+        formatOrder.append("===================================\n");
         formatOrder.append("        Order Summary:\n");
-        formatOrder.append("=================================\n");
+        formatOrder.append("===================================\n");
         // Display sandwiches
         if (sandwiches != null && !sandwiches.isEmpty()) {
             formatOrder.append("Sandwiches:\n");
@@ -133,9 +133,9 @@ public class Order {
         }
 
         // Display total cost
-        formatOrder.append("=================================\n");
+        formatOrder.append("===================================\n");
         formatOrder.append("Total Price: $").append(String.format("%.2f", getTotalCost())).append("\n");
-        formatOrder.append("=================================\n");
+        formatOrder.append("===================================\n");
 
         return formatOrder.toString();
     }

@@ -38,7 +38,7 @@ public class Cookie {
      */
     @Override
     public String toString(){
-        return typeOfCookie + " $" + String.format("%.2f", priceOfCookie);
+        return " " + typeOfCookie + " $" + String.format("%.2f", priceOfCookie);
     }
 
 

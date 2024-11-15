@@ -98,7 +98,7 @@ public class Sandwich {
         }
         String isToasted = this.isToast ? "YES" : "NO";
 
-        return "Sandwich: " + typeOfBread + "\n" +
+        return " Sandwich: " + typeOfBread + "\n" +
                 "Toppings:\n" + listTopping +
                 "Toast: " + isToasted + "\n" +
                 "Total Cost: $" + String.format("%.2f", totalCostOfSandwich);

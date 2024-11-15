@@ -37,6 +37,6 @@ public class Chips {
      */
     @Override
     public String toString() {
-        return  bagOfChips + " $" + String.format("%.2f", priceOfChips);
+        return " " + bagOfChips + " $" + String.format("%.2f", priceOfChips);
     }
 }

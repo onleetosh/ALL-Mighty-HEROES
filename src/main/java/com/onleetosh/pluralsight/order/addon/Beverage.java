@@ -77,7 +77,7 @@ public class Beverage {
     public String toString(){
 
         return  this.sizeOfCup +
-                "  " + this.typeOfBeverage +
+                " " + this.typeOfBeverage +
                 "  $" + String.format("%.2f", priceOfBeverage);
     }
 }

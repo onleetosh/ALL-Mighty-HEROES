@@ -14,6 +14,7 @@ Total cost of the order.
 # Requirements
 Java Development Kit (JDK) 8 or higher.
 
+
 # Installation
 - Clone the repository:
 - Copy and paste code in terminal
@@ -41,6 +42,8 @@ After making a selections, user can see a final receipt with a complete summary 
 # Acknowledgments
 - https://www.w3resource.com/index.php
 - https://stackoverflow.com/
+- https://www.canva.com/
+- https://logodesign.ai/
 
 # Preview
 <img width="600" alt="Screenshot 2024-11-15 at 8 04 14 AM" src="https://github.com/user-attachments/assets/03324abd-f075-481c-8b8e-2d6aa9839e28" height="600">
