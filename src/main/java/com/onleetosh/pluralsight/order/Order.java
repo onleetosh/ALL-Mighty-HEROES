@@ -7,6 +7,9 @@ import java.util.ArrayList;
 
 public class Order {
 
+    /**
+     * Information needed to create an Order object
+     */
     private ArrayList<Sandwich> sandwiches;
     private ArrayList<Beverage> beverages;
     private ArrayList<Chips> chips;
@@ -23,6 +26,10 @@ public class Order {
        this.cookies = new ArrayList<>();
     }
 
+
+    /**
+     * Constructor for initializing an order
+     */
     public Order(ArrayList<Sandwich> sandwiches,
                  ArrayList<Beverage> beverages,
                  ArrayList<Chips> chips,

@@ -3,7 +3,7 @@ package com.onleetosh.pluralsight.order.addon;
 public class Beverage {
 
     /**
-     * Information needed to create chip object
+     * Information needed to create beverage object
      */
     private String typeOfBeverage;
     private String sizeOfCup;
