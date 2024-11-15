@@ -1,4 +1,4 @@
-package com.onleetosh.pluralsight.order.addon;
+package com.onleetosh.pluralsight.addon;
 
 public class Cookie {
 
@@ -38,7 +38,8 @@ public class Cookie {
      */
     @Override
     public String toString(){
-        return " " + typeOfCookie + " $" + String.format("%.2f", priceOfCookie);
+        return " " + typeOfCookie +
+                " $" + String.format("%.2f", priceOfCookie);
     }
 
 

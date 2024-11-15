@@ -1,10 +1,13 @@
-/**
- * Topping class encapsulates regular, premium, and condiments for a sandwich object
- */
-
-package com.onleetosh.pluralsight.order.sandwich;
+package com.onleetosh.pluralsight.hero.topping;
 
 public class Topping {
+
+    private String type;
+    private String topping;
+
+    private double price;
+    private boolean isPremium;
+    private boolean isExtra;
 
     /**
      *  Value amounts for meat based on size and extra
@@ -27,17 +30,17 @@ public class Topping {
     private final double footLongExtraCheeseCost = 0.90 ;
 
 
-    /**
-     * Information need to create topping object
-     */
-    private String topping;
-    private String type;
-    private double price;
-    private boolean isPremium;
-    private boolean isExtra;
+
+
+    public Topping(String topping, String type, double price){
+        this.topping = topping;
+        this.type = type;
+        this.price = price;
+    }
+
 
     /**
-     * Constructor used to initialize topping object
+     * Constructor used to initialize premium object
      */
     public Topping(String topping,
                    String type,
@@ -48,6 +51,7 @@ public class Topping {
         this.isPremium = isPremium;
         this.price = price;
     }
+
 
     /**
      * Getter methods to get a value
@@ -64,6 +68,10 @@ public class Topping {
     public String getType() {
         return type;
     }
+    public boolean isExtra(){
+        return isExtra;
+    }
+
 
     /**
      * Setter methods to set a value
@@ -79,6 +87,7 @@ public class Topping {
     public void setType(String type) {
         this.type = type;
     }
+
 
     /**
      * This method is used to adjust the price based on size (4", 8", 12") and premium topping
@@ -127,6 +136,7 @@ public class Topping {
         }
     }
 
+
     /**
      * displayTopping() is used to display topping list without the labeled "extra ++" that is applied
      * to topping objects when promptForTopping after selectedTopping is to yes for extra
@@ -135,6 +145,7 @@ public class Topping {
         String ifPremium = this.isPremium ? "(PREMIUM)" : " ";
         return " ["+type+"] " + topping + " " + ifPremium + " ";
     }
+
 
     /**
      * Use toString() return a String format for topping when displayed
@@ -150,4 +161,5 @@ public class Topping {
                 " " + ifExtra + // Extra or regular amount
                 " $" + String.format("%.2f", this.price);  //format price
     }
+
 }

@@ -1,7 +1,8 @@
 package com.onleetosh.pluralsight.util;
 
-import com.onleetosh.pluralsight.order.addon.*;
-import com.onleetosh.pluralsight.order.sandwich.*;
+import com.onleetosh.pluralsight.addon.*;
+import com.onleetosh.pluralsight.hero.Bread;
+import com.onleetosh.pluralsight.hero.topping.*;
 
 import java.util.ArrayList;
 
@@ -66,19 +67,11 @@ public class InitializeObject {
      */
     public static ArrayList<Bread> listOfBreadObjects() {
         UI.breadList = new ArrayList<>();
-        UI.breadList .add(new Bread("Special Roll",8));
-        UI.breadList .add(new Bread("italian", 4));
-        UI.breadList.add(new Bread("italian", 8));
-        UI.breadList .add(new Bread("italian", 12));
-        UI.breadList .add(new Bread("honey wheat", 4));
-        UI.breadList .add(new Bread("honey wheat", 8));
-        UI.breadList .add(new Bread("honey wheat", 12));
-        UI.breadList .add(new Bread("wrap", 4));
-        UI.breadList .add(new Bread("wrap", 8));
-        UI.breadList .add(new Bread("wrap", 12));
-        UI.breadList .add(new Bread("rye", 4));
-        UI.breadList .add(new Bread("rye", 8));
-        UI.breadList .add(new Bread("rye", 12));
+        UI.breadList .add(new Bread("Special Roll"));
+        UI.breadList .add(new Bread("italian"));
+        UI.breadList .add(new Bread("honey wheat"));
+        UI.breadList .add(new Bread("wrap"));
+        UI.breadList .add(new Bread("rye"));
 
         return UI.breadList ;
     }
@@ -89,45 +82,42 @@ public class InitializeObject {
     public static ArrayList<Topping> listOfToppingObjects() {
         UI.heroToppingList = new ArrayList<>();
 
-        UI.heroToppingList.add(new Topping("spicy pepper ","veggie ",false, 0.0 ));
-        UI.heroToppingList.add(new Topping("lettuce", "veggie",  false, 0.0));
-        UI.heroToppingList.add(new Topping("tomato", "veggie", false, 0.0));
-        UI.heroToppingList.add(new Topping("spinach", "veggie", false, 0.0));
-        UI.heroToppingList.add(new Topping("banana peppers", "veggie", false, 0.0));
-        UI.heroToppingList.add(new Topping("red onions", "veggie", false, 0.0));
-        UI.heroToppingList.add(new Topping("jalapenos", "veggie", false, 0.0));
-        UI.heroToppingList.add(new Topping("cucumber", "veggie", false, 0.0));
-        UI.heroToppingList.add(new Topping("pickles", "veggie", false, 0.0));
+        UI.heroToppingList.add(new Veggie("spicy pepper ","veggie ", 0.0 ));
+        UI.heroToppingList.add(new Veggie("lettuce", "veggie", 0.0));
+        UI.heroToppingList.add(new Veggie("tomato", "veggie", 0.0));
+        UI.heroToppingList.add(new Veggie("spinach", "veggie", 0.0));
+        UI.heroToppingList.add(new Veggie("banana peppers", "veggie", 0.0));
+        UI.heroToppingList.add(new Veggie("red onions", "veggie", 0.0));
+        UI.heroToppingList.add(new Veggie("jalapenos", "veggie", 0.0));
+        UI.heroToppingList.add(new Veggie("cucumber", "veggie", 0.0));
+        UI.heroToppingList.add(new Veggie("pickles", "veggie", 0.0));
 
 
-        UI.heroToppingList.add(new Topping("honey mustard", "sauce", false, 0.0)); //5
-        UI.heroToppingList.add(new Topping("ranch", "dressing", false, 0.0)); //7
-        UI.heroToppingList.add(new Topping("mayo", "sauce", false, 0.0)); //8
-        UI.heroToppingList.add(new Topping("spicy mustard", "sauce", false, 0.0)); //9
-        UI.heroToppingList.add(new Topping("ketchup", "sauce", false, 0.0)); //10
-        UI.heroToppingList.add(new Topping("oil", "dressing", false, 0.0)); //10
-        UI.heroToppingList.add(new Topping("vinegar", "dressing", false, 0.0)); //10
-        UI.heroToppingList.add(new Topping("ranch", "dressing", false, 0.0)); //7
+        UI.heroToppingList.add(new Sauce("honey mustard", "sauce",  0.0)); //5
+        UI.heroToppingList.add(new Sauce("ranch", "sauce", 0.0)); //7
+        UI.heroToppingList.add(new Sauce("mayo", "sauce",  0.0)); //8
+        UI.heroToppingList.add(new Sauce("spicy mustard", "sauce",  0.0)); //9
+        UI.heroToppingList.add(new Sauce("ketchup", "sauce",  0.0)); //10
+        UI.heroToppingList.add(new Sauce("oil & vinegar", "sauce",  0.0)); //10
+        UI.heroToppingList.add(new Sauce("ranch", "sauce",  0.0)); //7
 
-        UI.heroToppingList.add(new Topping("prosciutto", "meat", true, 1.00)); //12
-        UI.heroToppingList.add(new Topping("honey turkey", "meat", true, 1.00)); //12
-        UI.heroToppingList.add(new Topping("grill chicken", "meat", true, 1.00)); //11
-        UI.heroToppingList.add(new Topping("bacon", "meat", true, 1.00)); //12
-        UI.heroToppingList.add(new Topping("roast beef", "meat", true, 1.00)); //13
-        UI.heroToppingList.add(new Topping("salami", "meat",true, 1.00)); //14
-        UI.heroToppingList.add(new Topping("ham", "meat",true, 1.00)); //15
-        UI.heroToppingList.add(new Topping("steak", "meat",true, 1.00)); //16
-        UI.heroToppingList.add(new Topping("provolone", "cheese", true, 0.70)); //17
-        UI.heroToppingList.add(new Topping("cheddar", "cheese",true, 0.70)); //18
-        UI.heroToppingList.add(new Topping("swiss", "cheese", true, 0.70)); //19
-        UI.heroToppingList.add(new Topping("muenster", "cheese",true, 0.70)); //20
-        UI.heroToppingList.add(new Topping("white american", "cheese",true, 0.70)); //20
-        UI.heroToppingList.add(new Topping("chipotle gouda", "cheese",true, 0.70)); //18
+        UI.heroToppingList.add(new Meat("prosciutto", "meat", true, 1.00)); //12
+        UI.heroToppingList.add(new Meat("honey turkey", "meat", true, 1.00)); //12
+        UI.heroToppingList.add(new Meat("grill chicken", "meat", true, 1.00)); //11
+        UI.heroToppingList.add(new Meat("bacon", "meat", true, 1.00)); //12
+        UI.heroToppingList.add(new Meat("roast beef", "meat", true, 1.00)); //13
+        UI.heroToppingList.add(new Meat("salami", "meat",true, 1.00)); //14
+        UI.heroToppingList.add(new Meat("ham", "meat",true, 1.00)); //15
+        UI.heroToppingList.add(new Meat("steak", "meat",true, 1.00)); //16
+        UI.heroToppingList.add(new Cheese("provolone", "cheese", true, 0.70)); //17
+        UI.heroToppingList.add(new Cheese("cheddar", "cheese",true, 0.70)); //18
+        UI.heroToppingList.add(new Cheese("swiss", "cheese", true, 0.70)); //19
+        UI.heroToppingList.add(new Cheese("muenster", "cheese",true, 0.70)); //20
+        UI.heroToppingList.add(new Cheese("white american", "cheese",true, 0.70)); //20
+        UI.heroToppingList.add(new Cheese("chipotle gouda", "cheese",true, 0.70)); //18
 
         return UI.heroToppingList;
     }
-
-
 
 
 }

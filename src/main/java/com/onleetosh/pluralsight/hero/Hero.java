@@ -1,12 +1,10 @@
-/***
- * Sandwich encapsulates the data required to initialize a sandwich object.
- */
+package com.onleetosh.pluralsight.hero;
 
-package com.onleetosh.pluralsight.order.sandwich;
+import com.onleetosh.pluralsight.hero.topping.Topping;
 
 import java.util.ArrayList;
 
-public class Sandwich {
+public class Hero {
 
     /**
      * Information need to create bread object
@@ -20,7 +18,7 @@ public class Sandwich {
     /**
      * Constructor for sandwich object
      */
-    public Sandwich(int sizeOfBread,
+    public Hero(int sizeOfBread,
                     Bread typeOfBread,
                     ArrayList<Topping> toppings,
                     boolean isToast) {
@@ -101,6 +99,6 @@ public class Sandwich {
         return " Heroes: " + typeOfBread + "\n" +
                 " Toppings:\n" + listTopping +
                 " Toast: " + isToasted + "\n" +
-                " Total Cost: $" + String.format("%.2f", totalCostOfSandwich);
+                " Total Cost: $" + String.format("%.2f", totalCostOfSandwich) + "\n" ;
     }
 }

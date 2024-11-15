@@ -1,144 +1,210 @@
 package com.onleetosh.pluralsight.util;
 
-import com.onleetosh.pluralsight.order.addon.*;
-import com.onleetosh.pluralsight.order.sandwich.*;
-;
+import com.onleetosh.pluralsight.addon.Beverage;
+import com.onleetosh.pluralsight.addon.Chips;
+import com.onleetosh.pluralsight.addon.Cookie;
+import com.onleetosh.pluralsight.hero.Bread;
+import com.onleetosh.pluralsight.hero.Hero;
+import com.onleetosh.pluralsight.hero.topping.Topping;
+import com.onleetosh.pluralsight.hero.topping.*;
 
 import java.util.ArrayList;
 
 public class PromptOrder {
 
+
     private static Bread selectedBread;
     private static ArrayList<Topping> selectedToppings;
     private static ArrayList<Beverage> drinkOrder;
     private static ArrayList<Chips> chipOrder;
-    private static ArrayList<Sandwich> sandwichOrder;
+    private static ArrayList<Hero> sandwichOrder;
     private static ArrayList<Cookie> cookieOrder;
+
+
 
 
     /**
      *  Prompt user to create a sandwich object and add the result to Sandwich orders ArrayList
      */
-    public static ArrayList<Sandwich> promptForSandwich() {
 
-        sandwichOrder = new ArrayList<>();
+    public static ArrayList<Hero> promptForSandwich() {
+        ArrayList<Hero> sandwichOrder = new ArrayList<>();
+        int request = -1;
 
-        double total = 0.0;
-        int request = -1, breadChoice, sandwichSize;
-        boolean wantToasted;
-
+        // Prompt for the number of heroes
         while (request < 0) {
             try {
                 request = Console.PromptForInt("How many heroes are you ordering? ");
+                if (request < 1) throw new IllegalArgumentException("You must order at least 1 hero.");
             } catch (Exception e) {
-                System.out.println("Please enter valid number ");
+                System.out.println("Please enter a valid number (1 or more).");
+                request = -1;
             }
         }
-        //output requested number of sandwiches to build
-        System.out.println("You are ordering " + request + " heroes.");
 
-        //loop through and build sandwich <= requested amount
+        // Output the requested number of sandwiches
+        System.out.println("You are ordering " + request + " heroes.\n");
+
+        // Loop through to build each sandwich
         for (int i = 1; i <= request; i++) {
+            System.out.println("Building Hero " + i + ":");
 
-            //retrieve the information need to construct sandwich
-            breadChoice = getBreadForPrompt();
-            selectedBread = UI.breadList.get(breadChoice);
-            sandwichSize = selectedBread.getSizeOfBread();
-            selectedToppings = getToppingForPrompt(sandwichSize);
+            // Get bread choice
+            Bread selectedBread = getBreadSelection();
 
-            wantToasted = Console.PromptForYesNo("Do you want to toast? ");
+            // Get sandwich size
+            int sandwichSize = selectedBread.getSizeOfBread();
 
-            // initialize new Sandwich and add to sandwich order
-            Sandwich newSandwich = new Sandwich(sandwichSize, selectedBread, selectedToppings, wantToasted);
+            // Get toppings
+            ArrayList<Topping> selectedToppings = getToppingForPrompt(sandwichSize);
+
+            // Ask if user wants the sandwich toasted
+            boolean wantToasted = Console.PromptForYesNo("Do you want to toast this hero? ");
+
+            // Create a new Hero sandwich object
+            Hero newSandwich = new Hero(sandwichSize, selectedBread, selectedToppings, wantToasted);
             sandwichOrder.add(newSandwich);
 
-            //confirm sandwich was created
-            System.out.println("\nHero " + i + " confirmed");
+            // Confirm sandwich creation
+            System.out.println("\nHero " + i + " confirmed:");
             System.out.println("Bread: " + selectedBread.getTypeOfBread() +
-                            " | Size: " + sandwichSize + "\"" +
-                            " $" + selectedBread.getPrice());
-            for (Topping topping : selectedToppings) {
-                System.out.println(topping);
-            }
-            System.out.println("Toast: " + (wantToasted ? "Yes" : "No"));
-            System.out.printf("Amount: $%.2f\n",newSandwich.getTotalCostOfSandwich());
+                    " | Size: " + sandwichSize + "\"" +
+                    " | $" + String.format("%.2f", selectedBread.getPrice(sandwichSize)));
 
-            if (i == request) {
-                break; // Exit the loop after creating the requested number of sandwiches
+            // Display selected toppings
+            System.out.println("Toppings:");
+            for (Topping topping : selectedToppings) {
+                System.out.println("- " + topping.getTopping() +
+                        (topping.isExtra() ? " (extra)" : "") +
+                        " | $" + String.format("%.2f", topping.getPrice()));
             }
+
+            // Toast status
+            System.out.println("Toasted: " + (wantToasted ? "Yes" : "No"));
+
+            // Display total cost of the sandwich
+            System.out.printf("Total Cost: $%.2f\n\n", newSandwich.getTotalCostOfSandwich());
         }
+
         return sandwichOrder;
     }
 
-    /**
-     * Loop through an ArrayList of objects to display a list of bread options
-     * then prompt user to select a bread and return the result
-     */
-    public static int getBreadForPrompt() {
-        //loop to prompt a valid input
-        while(true) {
+    public static Bread getBreadSelection() {
+        while (true) {
             try {
+                // Display available bread types
                 System.out.println("Select a bread:");
-                //loop through  and display bread as a list # 1 - 12 (size of the ArrayList)
-                for (int i = 1; i < UI.breadList.size(); i++) {
-                    System.out.println(i + ": " + UI.breadList.get(i).getTypeOfBread() + " (" + UI.breadList.get(i).getSizeOfBread() + "\")");
+                for (int i = 0; i < UI.breadList.size(); i++) {
+                    System.out.println((i + 1) + ": " + UI.breadList.get(i).getTypeOfBread());
                 }
-                int input = Console.PromptForInt("Enter bread choice (1-" + (UI.breadList.size() - 1) + ") ");
-                System.out.println("Confirmation: " + UI.breadList.get(input));
-                return input;
-            }
-            catch (Exception e){
-                System.out.println("Enter a (1-" + (UI.breadList.size() - 1)+") \n");
+
+                // Prompt user for bread type
+                int breadChoice = Console.PromptForInt("Enter bread choice (1-" + UI.breadList.size() + "): ");
+                if (breadChoice < 1 || breadChoice > UI.breadList.size()) {
+                    throw new IllegalArgumentException("Invalid choice. Please select a valid bread option.");
+                }
+                Bread selectedBread = UI.breadList.get(breadChoice - 1);
+
+                // Prompt user for bread size
+                System.out.println("Available sizes: 4\" ($5.50), 8\" ($7.00), 12\" ($8.50)");
+                int sizeChoice = Console.PromptForInt("Enter bread size (4, 8, or 12): ");
+                if (sizeChoice != 4 && sizeChoice != 8 && sizeChoice != 12) {
+                    throw new IllegalArgumentException("Invalid size. Allowed sizes are 4, 8, or 12 inches.");
+                }
+
+                // Set size and cost for the selected bread
+                selectedBread.setSizeOfBread(sizeChoice);
+                double cost = selectedBread.getPrice(sizeChoice);
+                selectedBread.setPrice(cost);
+
+                // Confirm selection
+                System.out.println("You selected: " + selectedBread.getTypeOfBread() +
+                        " (" + sizeChoice + "\"), $" + cost);
+
+                return selectedBread;
+
+            } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage() + " Please try again.");
             }
         }
     }
-    /**
-     * Loop through an ArrayList of objects to display a list of toppings  available
-     * then prompt user for toppings to add and return the result
-     */
+
     public static ArrayList<Topping> getToppingForPrompt(int more) {
+        selectedToppings = new ArrayList<>();
+
+        // Filter the heroToppingList into categories
+        ArrayList<Topping> meatToppings = new ArrayList<>();
+        ArrayList<Topping> cheeseToppings = new ArrayList<>();
+        ArrayList<Topping> veggieToppings = new ArrayList<>();
+        ArrayList<Topping> sauceToppings = new ArrayList<>();
+
+
+        for (Topping topping : UI.heroToppingList) {
+            if (topping.getType().equalsIgnoreCase("meat")) {
+                meatToppings.add(topping);
+            } else if (topping.getType().equalsIgnoreCase("cheese")) {
+                cheeseToppings.add(topping);
+            } else if (topping.getType().equalsIgnoreCase("veggie")) {
+                veggieToppings.add(topping);
+            } else if (topping.getType().equalsIgnoreCase("sauce")) {
+                // Create a separate category for sauces if needed
+                sauceToppings.add(topping);
+            }
+        }
+
+        // Prompt user for toppings in each category
+        selectedToppings.addAll(promptForToppings("meat", meatToppings, more));
+        selectedToppings.addAll(promptForToppings("cheese", cheeseToppings, more));
+        selectedToppings.addAll(promptForToppings("veggie", veggieToppings, more));
+        selectedToppings.addAll(promptForToppings("sauce", sauceToppings, more));
+
+        return selectedToppings;
+    }
+
+    public static ArrayList<Topping> promptForToppings(String type, ArrayList<Topping> toppings, int more) {
         ArrayList<Topping> selectedToppings = new ArrayList<>();
         boolean addMore = true;
 
+        System.out.println("Select All " + type + " Toppings:");
+
         while (addMore) {
             try {
-                System.out.println("Select a topping:");
-
-                //loop through  and display toppings as a list # 1 - (size of the ArrayList)
-                for (int i = 1; i < UI.heroToppingList.size(); i++) {
-                    Topping getToppings = UI.heroToppingList.get(i);
-                    System.out.println( i + ": " + getToppings.displayToppings());
+                // Display the toppings for the given category
+                for (int i = 0; i < toppings.size(); i++) {
+                    Topping topping = toppings.get(i);
+                    System.out.println((i + 1) + ": " + topping.displayToppings());
                 }
-                // Prompt user for  topping
-                int input = Console.PromptForInt("Enter topping choice (1-" + (UI.heroToppingList.size() - 1) + "): ");
-                Topping selectedTopping = UI.heroToppingList.get(input);
 
-                boolean isExtra = false; //default extra topping to false
+                // Prompt user for topping choice
+                int input = Console.PromptForInt("Enter topping choice (1-" + toppings.size() + "): ");
+                Topping selectedTopping = toppings.get(input - 1);
+
+                boolean isExtra = false;
                 try {
                     // Always prompt for extra topping
-                     isExtra = Console.PromptForYesNo("Do you want extra " + selectedTopping.getTopping() + "? ");
+                    isExtra = Console.PromptForYesNo("Do you want extra " + selectedTopping.getTopping() + "? ");
+                } catch (Exception e) {
+                    System.out.println("Please enter Y or N");
                 }
-                catch (Exception e){
-                    System.out.println("Please enter Y or N ");
 
-                }
                 // Adjust the price if topping is premium and extra
                 selectedTopping.adjustPriceIfPremiumToppingAdd(more, isExtra);
 
-                if(isExtra){
+                if (isExtra) {
                     selectedTopping.setExtra(true);
                 }
+
                 // Add the selected topping to the list
                 selectedToppings.add(selectedTopping);
-                //confirm topping was added
-                System.out.println(" Got it!  " + selectedTopping.getTopping() +
-                        " has been added, $" + selectedTopping.getPrice());
-                // prompt for more toppings
-                addMore = Console.PromptForYesNo("Add more toppings?");
+                System.out.println("Got it! " + selectedTopping.getTopping() + " has been added, $" + selectedTopping.getPrice());
+
+                // Prompt for more toppings from this category
+                addMore = Console.PromptForYesNo("Add more " + type + " toppings?");
+            } catch (Exception e) {
+                System.out.println("Please enter a valid choice (1-" + toppings.size() + ")");
             }
-            catch (Exception e) {
-                System.out.println("Please Enter a (1-" + (UI.heroToppingList.size() - 1)+") \n");            }
         }
+
         return selectedToppings;
     }
 
@@ -146,7 +212,6 @@ public class PromptOrder {
      * Method used to loop through an ArrayList of objects to display a list of beverage options,
      * then prompt user for a beverage and add the result to drinkOrder ArrayList.
      */
-
 
     public static ArrayList<Beverage> promptForBeverage() {
         drinkOrder = new ArrayList<>();
@@ -310,5 +375,4 @@ public class PromptOrder {
 
 
 
-}
-
+    }

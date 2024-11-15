@@ -1,4 +1,4 @@
-package com.onleetosh.pluralsight.order.addon;
+package com.onleetosh.pluralsight.addon;
 
 public class Beverage {
 
@@ -78,6 +78,6 @@ public class Beverage {
 
         return  " " + this.sizeOfCup +
                 " " + this.typeOfBeverage +
-                "  $" + String.format("%.2f", priceOfBeverage);
+                "  $" + String.format("%.2f", priceOfBeverage) ;
     }
 }

@@ -1,9 +1,11 @@
 package com.onleetosh.pluralsight.util;
 
-
-import com.onleetosh.pluralsight.order.*;
-import com.onleetosh.pluralsight.order.addon.*;
-import com.onleetosh.pluralsight.order.sandwich.*;
+import com.onleetosh.pluralsight.addon.*;
+import com.onleetosh.pluralsight.hero.Bread;
+import com.onleetosh.pluralsight.hero.Hero;
+import com.onleetosh.pluralsight.hero.topping.Topping;
+import com.onleetosh.pluralsight.order.Order;
+import com.onleetosh.pluralsight.order.Receipt;
 
 import java.util.ArrayList;
 
@@ -19,66 +21,66 @@ public class UI {
 
 
     public UI() {
-            UI.breadList = InitializeObject.listOfBreadObjects();
-            UI.chipsList = InitializeObject.listOfChipObjects();
-            UI.beveragesList = InitializeObject.listOfBeverageObjects();
-            UI.heroToppingList = InitializeObject.listOfToppingObjects();
-            UI.cookieList = InitializeObject.listOfCookieObjects();
-            // default to null and wait for order details
-            currentOrder = new Order();
-        }
+        UI.breadList = InitializeObject.listOfBreadObjects();
+        UI.chipsList = InitializeObject.listOfChipObjects();
+        UI.beveragesList = InitializeObject.listOfBeverageObjects();
+       UI.heroToppingList = InitializeObject.listOfToppingObjects();
+        UI.cookieList = InitializeObject.listOfCookieObjects();
+        // default to null and wait for order details
+        currentOrder = new Order();
+    }
     /**
      * Method used to display the main screen and prompts the user for a command
      */
     public void displayHomeScreen() {
-            while (true) {
-                try {
-                    System.out.println("---------------------------------------------------------------\n");
-                    System.out.println("               Welcome to the ALL-Mighty HEROES \n");
-                    printMenu();
-                    int startOrder = Console.PromptForInt("\n 1 - New Order " +
-                                                          "\n 2 - Quit ");
-                    switch (startOrder) {
-                        case 1 -> displayOrderScreen();
-                        case 2 -> System.exit(0);
-                        default -> System.out.println("Please enter a valid number");
-                    }
-                }
-                catch (Exception e) {
-                    System.out.println("Please enter a valid number. ");
+        while (true) {
+            try {
+                System.out.println("---------------------------------------------------------------\n");
+                System.out.println("               Welcome to the ALL-Mighty HEROES \n");
+                printMenu();
+                int startOrder = Console.PromptForInt("\n 1 - New Order " +
+                        "\n 2 - Quit ");
+                switch (startOrder) {
+                    case 1 -> displayOrderScreen();
+                    case 2 -> System.exit(0);
+                    default -> System.out.println("Please enter a valid number");
                 }
             }
+            catch (Exception e) {
+                System.out.println("Please enter a valid number. ");
+            }
         }
+    }
 
     /**
      * Method used to display request and prompts for order input
      */
     public void displayOrderScreen() {
-            while (true) {
-                try {
-                    System.out.println("-----------------------------------------------");
-                    System.out.println("                Place Order ");
-                    System.out.println("-----------------------------------------------");
-                    System.out.println(" 1 - [Hero] \n " +
-                                        "2 - [Beverage] \n " +
-                                        "3 - [Add On] \n " +
-                                        "4 - [View Order] \n \n" +
-                                        "5 - [Exit] " );
-                    System.out.println("-----------------------------------------------");
-                    int command = Console.PromptForInt(" Enter [1 - 5] to continue: ");
-                    switch (command) {
-                        case 1 -> processAddSandwich();
-                        case 2 -> processAddBeverage();
-                        case 3 -> viewAddOn();
-                        case 4 -> viewOrder();
-                        case 5 -> System.exit(0);
-                        default -> System.out.println("Invalid entry. Please enter [0 and 5]");
-                    }
-                } catch (Exception e) {
-                    System.out.println("Invalid input. Please enter a valid number.");
+        while (true) {
+            try {
+                System.out.println("-----------------------------------------------");
+                System.out.println("                Place Order ");
+                System.out.println("-----------------------------------------------");
+                System.out.println(" 1 - [Hero] \n " +
+                        "2 - [Beverage] \n " +
+                        "3 - [Add On] \n " +
+                        "4 - [View Order] \n \n" +
+                        "5 - [Exit] " );
+                System.out.println("-----------------------------------------------");
+                int command = Console.PromptForInt(" Enter [1 - 5] to continue: ");
+                switch (command) {
+                    case 1 -> processAddSandwich();
+                    case 2 -> processAddBeverage();
+                    case 3 -> viewAddOn();
+                    case 4 -> viewOrder();
+                    case 5 -> System.exit(0);
+                    default -> System.out.println("Invalid entry. Please enter [0 and 5]");
                 }
+            } catch (Exception e) {
+                System.out.println("Invalid input. Please enter a valid number.");
             }
         }
+    }
 
     private void printMenu() {
         System.out.println("---------------------------------------------------------------");
@@ -130,7 +132,7 @@ public class UI {
     /**
      * Method used to display a confirmation for an order created with added items
      */
-    private void displayOrderSummary(ArrayList<Sandwich> sandwiches,
+    private void displayOrderSummary(ArrayList<Hero> sandwiches,
                                      ArrayList<Beverage> drinks,
                                      ArrayList<Chips> chips,
                                      ArrayList<Cookie> cookies) {
@@ -144,7 +146,7 @@ public class UI {
         if (sandwiches.isEmpty()) {
             System.out.println("No sandwiches added.");
         } else {
-            for (Sandwich sandwich : sandwiches) {
+            for (Hero sandwich : sandwiches) {
                 System.out.println(sandwich);
                 totalCost += sandwich.getTotalCostOfSandwich(); // Add and get sandwich total
             }
@@ -194,9 +196,9 @@ public class UI {
                 System.out.println("                    Add-Ons");
                 System.out.println("-----------------------------------------------");
                 System.out.println(" 1 - [Chip] \n " +
-                                    "2 - [Cookie] \n " +
-                                    "3 - [View Order] \n \n " +
-                                    "4 - [Go Back]");
+                        "2 - [Cookie] \n " +
+                        "3 - [View Order] \n \n " +
+                        "4 - [Go Back]");
                 System.out.println("-----------------------------------------------");
                 int command = Console.PromptForInt(" Enter [0 - 3] to continue: ");
                 switch (command) {
@@ -217,33 +219,33 @@ public class UI {
      * prompt for heroes then loops through the item or items requested and adds them to the current order
      */
     private void processAddSandwich() {
-            ArrayList<Sandwich> request = PromptOrder.promptForSandwich();
-            for (Sandwich sandwich : request) {
-                currentOrder.addSandwich(sandwich);
-            }
+        ArrayList<Hero> request = PromptOrder.promptForSandwich();
+        for (Hero sandwich : request) {
+            currentOrder.addSandwich(sandwich);
         }
+    }
 
     /**
      * Method used to process the request of adding an item to the current order by using the PromptOrder method to
      * prompt for beverage then loops through the item or items requested and adds them to the current order
      */
     private void processAddBeverage() {
-            ArrayList<Beverage> request = PromptOrder.promptForBeverage();
-            for (Beverage beverage : request) {
-                currentOrder.addBeverage(beverage);
-            }
+        ArrayList<Beverage> request = PromptOrder.promptForBeverage();
+        for (Beverage beverage : request) {
+            currentOrder.addBeverage(beverage);
         }
+    }
 
     /**
      * Method used to process the request to add an item to the current order by using a PromptOrder class method to
      * prompt for chips then loops through the item or items requested and adds them to the current order
      */
     private void processAddChip() {
-            ArrayList<Chips> request = PromptOrder.promptForChips();
-            for (Chips chip : request) {
-                currentOrder.addChip(chip);
-            }
+        ArrayList<Chips> request = PromptOrder.promptForChips();
+        for (Chips chip : request) {
+            currentOrder.addChip(chip);
         }
+    }
 
     /**
      * Method used to process the request to add an item to the current order by using a PromptOrder class method to
@@ -311,5 +313,4 @@ public class UI {
     }
 
 }
-
 

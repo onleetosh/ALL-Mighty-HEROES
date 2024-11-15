@@ -1,4 +1,5 @@
-package com.onleetosh.pluralsight.order.addon;
+package com.onleetosh.pluralsight.addon;
+
 
 public class Chips {
 
@@ -37,6 +38,7 @@ public class Chips {
      */
     @Override
     public String toString() {
-        return " " + bagOfChips + " $" + String.format("%.2f", priceOfChips);
+        return " " + bagOfChips +
+                " $" + String.format("%.2f", priceOfChips);
     }
 }

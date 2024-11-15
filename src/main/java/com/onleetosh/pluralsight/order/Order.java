@@ -1,7 +1,8 @@
 package com.onleetosh.pluralsight.order;
 
-import com.onleetosh.pluralsight.order.addon.*;
-import com.onleetosh.pluralsight.order.sandwich.Sandwich;
+import com.onleetosh.pluralsight.addon.*;
+
+import com.onleetosh.pluralsight.hero.Hero;
 
 import java.util.ArrayList;
 
@@ -10,7 +11,7 @@ public class Order {
     /**
      * Information needed to create an Order object
      */
-    private ArrayList<Sandwich> sandwiches;
+    private ArrayList<Hero> heroes;
     private ArrayList<Beverage> beverages;
     private ArrayList<Chips> chips;
     private ArrayList<Cookie> cookies;
@@ -20,21 +21,21 @@ public class Order {
      * Constructor for empty order
      */
     public Order(){
-        this.sandwiches = new ArrayList<>();
+        this.heroes = new ArrayList<>();
         this.beverages = new ArrayList<>();
         this.chips = new ArrayList<>();
-       this.cookies = new ArrayList<>();
+        this.cookies = new ArrayList<>();
     }
 
 
     /**
      * Constructor for initializing an order
      */
-    public Order(ArrayList<Sandwich> sandwiches,
+    public Order(ArrayList<Hero> heroes,
                  ArrayList<Beverage> beverages,
                  ArrayList<Chips> chips,
                  ArrayList<Cookie> cookies) {
-        this.sandwiches = new ArrayList<>();
+        this.heroes = new ArrayList<>();
         this.beverages = new ArrayList<>();
         this.chips = new ArrayList<>();
         this.cookies = new ArrayList<>();
@@ -42,8 +43,8 @@ public class Order {
     }
 
     // Methods to add sandwiches, drinks, and chips
-    public void addSandwich(Sandwich sandwich) {
-        sandwiches.add(sandwich);
+    public void addSandwich(Hero hero) {
+        heroes.add(hero);
     }
 
     public void addBeverage(Beverage beverage) {
@@ -61,8 +62,8 @@ public class Order {
     /**
      * Getter methods used to get an value
      */
-    public ArrayList<Sandwich> getSandwiches() {
-        return sandwiches;
+    public ArrayList<Hero> getSandwiches() {
+        return heroes;
     }
     public ArrayList<Beverage> getBeverages() {
         return beverages;
@@ -79,7 +80,7 @@ public class Order {
      */
     public double getTotalCost() {
         double totalCost = 0.0;
-        for (Sandwich sandwich : sandwiches) {
+        for (Hero sandwich : heroes) {
             totalCost += sandwich.getTotalCostOfSandwich();
         }
         for (Beverage beverage : beverages) {
@@ -105,30 +106,30 @@ public class Order {
         formatOrder.append("        Order Summary:\n");
         formatOrder.append("===================================\n");
         // Display sandwiches
-        if (sandwiches != null && !sandwiches.isEmpty()) {
+        if (heroes != null && !heroes.isEmpty()) {
             formatOrder.append("          Heroes:\n");
-            for (Sandwich sandwich : sandwiches) {
-                formatOrder.append(sandwich.toString()).append("\n");
+            for (Hero order : heroes) {
+                formatOrder.append(order.toString()).append("\n");
             }
         }
         // Display beverages
         if (beverages != null && !beverages.isEmpty()) {
             formatOrder.append("          Beverages:\n");
-            for (Beverage beverage : beverages) {
-                formatOrder.append(beverage.toString()).append("\n");
+            for (Beverage order : beverages) {
+                formatOrder.append(order.toString()).append("\n");
             }
         }
         // Display chips
         if (chips != null && !chips.isEmpty()) {
             formatOrder.append("             Add on:\n");
-            for (Chips chip : chips) {
-                formatOrder.append(chip.toString()).append("\n");
+            for (Chips order : chips) {
+                formatOrder.append(order.toString()).append("\n");
             }
         }
         // Display cookie
         if (cookies != null && !cookies.isEmpty()) {
-            for (Cookie cookie : cookies) {
-                formatOrder.append(cookie.toString()).append("\n");
+            for (Cookie order : cookies) {
+                formatOrder.append(order.toString()).append("\n");
             }
         }
 
@@ -140,3 +141,4 @@ public class Order {
         return formatOrder.toString();
     }
 }
+
