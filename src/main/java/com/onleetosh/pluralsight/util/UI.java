@@ -56,16 +56,15 @@ public class UI {
     public void displayOrderScreen() {
             while (true) {
                 try {
-                    System.out.println("---------------------------------------------------------------");
-                    System.out.println("                        Place Order ");
-                    System.out.println("---------------------------------------------------------------");
+                    System.out.println("-----------------------------------------------");
+                    System.out.println("                Place Order ");
+                    System.out.println("-----------------------------------------------");
                     System.out.println(" 1 - [Sandwich] \n " +
                                         "2 - [Beverage] \n " +
                                         "3 - [Add On] \n " +
                                         "4 - [View Order] \n \n" +
                                         "5 - [Exit] " );
-                    System.out.println("---------------------------------------------------------------");
-
+                    System.out.println("-----------------------------------------------");
                     int command = Console.PromptForInt(" Enter [1 - 5] to continue: ");
                     switch (command) {
                         case 1 -> processAddSandwich();
@@ -137,10 +136,9 @@ public class UI {
                                      ArrayList<Cookie> cookies) {
 
         double totalCost = 0.0;
-        System.out.println("---------------------------------------------------------------");
-        System.out.println("                      Order Summary");
-        System.out.println("---------------------------------------------------------------");
-
+        System.out.println("-----------------------------------------------");
+        System.out.println("                  Order Summary");
+        System.out.println("-----------------------------------------------");
         // Display sandwiches
         System.out.println(" --- Sandwiches ----");
         if (sandwiches.isEmpty()) {
@@ -183,7 +181,8 @@ public class UI {
                 totalCost += cookie.getPriceOfCookie(); // Add and get cookies total
             }
         }
-        System.out.println("---------------------------------------------------------------");
+
+        System.out.println("-----------------------------------------------");
         // Display the amount due
         System.out.printf("\nAmount due: $%.2f \n", totalCost);
     }
@@ -191,15 +190,14 @@ public class UI {
     private void viewAddOn(){
         while (true) {
             try {
-                System.out.println("---------------------------------------------------------------");
-                System.out.println("                         Add-Ons");
-                System.out.println("---------------------------------------------------------------");
+                System.out.println("-----------------------------------------------");
+                System.out.println("                    Add-Ons");
+                System.out.println("-----------------------------------------------");
                 System.out.println(" 1 - [Chip] \n " +
                                     "2 - [Cookie] \n " +
                                     "3 - [View Order] \n \n " +
                                     "4 - [Go Back]");
-                System.out.println("---------------------------------------------------------------");
-
+                System.out.println("-----------------------------------------------");
                 int command = Console.PromptForInt(" Enter [0 - 3] to continue: ");
                 switch (command) {
                     case 1 -> processAddChip();

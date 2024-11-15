@@ -17,7 +17,7 @@ public class Console {
     }
 
     public static boolean PromptForYesNo(String prompt){
-        System.out.print(prompt + " ( Y for Yes, N for No ) ? " );
+        System.out.print(prompt + " \n( Y for Yes, N for No ) ? " );
         String userInput = input.nextLine().trim();
         return (userInput.equalsIgnoreCase("Y") || userInput.equalsIgnoreCase("YES"));
     }

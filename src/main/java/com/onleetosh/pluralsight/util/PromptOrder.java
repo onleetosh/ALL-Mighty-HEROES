@@ -29,7 +29,7 @@ public class PromptOrder {
 
         while (request < 0) {
             try {
-                request = Console.PromptForInt("How many sandwiches are you ordering?");
+                request = Console.PromptForInt("How many sandwiches are you ordering? ");
             } catch (Exception e) {
                 System.out.println("Please enter valid number ");
             }
@@ -46,7 +46,7 @@ public class PromptOrder {
             sandwichSize = selectedBread.getSizeOfBread();
             selectedToppings = getToppingForPrompt(sandwichSize);
 
-            wantToasted = Console.PromptForYesNo("Do you want to toast?");
+            wantToasted = Console.PromptForYesNo("Do you want to toast? ");
 
             // initialize new Sandwich and add to sandwich order
             Sandwich newSandwich = new Sandwich(sandwichSize, selectedBread, selectedToppings, wantToasted);
@@ -81,7 +81,7 @@ public class PromptOrder {
                 for (int i = 1; i < UI.breadList.size(); i++) {
                     System.out.println(i + ": " + UI.breadList.get(i).getTypeOfBread() + " (" + UI.breadList.get(i).getSizeOfBread() + "\")");
                 }
-                int input = Console.PromptForInt("Enter bread choice (1-" + (UI.breadList.size() - 1) + ")");
+                int input = Console.PromptForInt("Enter bread choice (1-" + (UI.breadList.size() - 1) + ") ");
                 System.out.println("Confirmation: " + UI.breadList.get(input));
                 return input;
             }
@@ -114,7 +114,7 @@ public class PromptOrder {
                 boolean isExtra = false; //default extra topping to false
                 try {
                     // Always prompt for extra topping
-                     isExtra = Console.PromptForYesNo("Do you want extra " + selectedTopping.getTopping() + "?");
+                     isExtra = Console.PromptForYesNo("Do you want extra " + selectedTopping.getTopping() + "? ");
                 }
                 catch (Exception e){
                     System.out.println("Please enter Y or N ");
@@ -154,7 +154,7 @@ public class PromptOrder {
         // Prompt for how many drinks are being added, with validation
         while (!validInput) {
             try {
-                request = Console.PromptForInt("How many drinks are you adding?");
+                request = Console.PromptForInt("How many drinks are you adding? ");
                 if (request >= 0) {
                     validInput = true;
                 }
@@ -192,7 +192,7 @@ public class PromptOrder {
             String cupSize = " ";
             boolean validSize = false;
             do {
-                cupSize = Console.PromptForString("Select cup size: [S]mall, [M]edium, [L]arge");
+                cupSize = Console.PromptForString("Select cup size: [S]mall, [M]edium, [L]arge ");
                 if (cupSize.equalsIgnoreCase("S")) {
                     cupSize = "Small";
                     validSize = true;
@@ -203,7 +203,7 @@ public class PromptOrder {
                     cupSize = "Large";
                     validSize = true;
                 } else {
-                    System.out.println("Invalid size. Please choose [S], [M], or [L].");
+                    System.out.println("Invalid size. Please choose [S], [M], or [L]. ");
                 }
             } while (!validSize);
 
@@ -215,91 +215,6 @@ public class PromptOrder {
         }
 
         return drinkOrder;
-    }
-    public static ArrayList<Beverage> promptForBeverage2() {
-        drinkOrder = new ArrayList<>();
-        int request = 0;
-
-        request = getNumberForBeveragePrompt();
-
-        for (int i = 1; i <= request; i++) {
-            // Loop through the arraylist and display beverage options
-            for (int j = 1; j < UI.beveragesList.size(); j++) {
-                System.out.println(j + ": " + UI.beveragesList.get(j).getTypeOfBeverage());
-            }
-
-            Beverage selectedBeverage = getTypeForBeveragePrompt();
-
-            String cupSize = getSizeForBeveragePrompt();
-
-            // Assign cup size to the selected beverage
-            selectedBeverage.setSizeOfCup(cupSize);
-            drinkOrder.add(selectedBeverage);
-            System.out.println("Update order: " + selectedBeverage);
-        }
-
-        return drinkOrder;
-    }
-
-
-    /**
-     * Helper methods used to prompt user for beverage details
-     */
-    private static int getNumberForBeveragePrompt() {
-        int request = 0;
-        boolean validInput = false;
-        // Prompt for how many drinks are being added, with validation
-        while (!validInput) {
-            try {
-                request = Console.PromptForInt("How many drinks are you adding?");
-                if (request > 0) {
-                    validInput = true;
-                }
-            } catch (Exception e) {
-                System.out.println("Please enter a valid number.");
-            }
-        }
-        return request;
-    }
-
-    public static Beverage getTypeForBeveragePrompt(){
-        // Get user selection for beverage, with validation
-        Beverage selectedBeverage = null;
-        boolean validChoice = false;
-        while (!validChoice) {
-            try {
-                int choice = Console.PromptForInt("Select a beverage (1-" + (UI.beveragesList.size() - 1) + "): ");
-                if (choice >= 0 && choice < UI.beveragesList.size()) {
-                    selectedBeverage = UI.beveragesList.get(choice);
-                    validChoice = true;
-                }
-            } catch (Exception e) {
-                System.out.println("Please enter a (1-" + (UI.beveragesList.size() - 1) + ")");
-            }
-        }
-        return selectedBeverage;
-    }
-
-    private static String getSizeForBeveragePrompt(){
-        String cupSize = " ";
-        boolean validSize = false;
-        do {
-            cupSize = Console.PromptForString("Select cup size: [S]mall, [M]edium, [L]arge");
-            if (cupSize.equalsIgnoreCase("S")) {
-                cupSize = "Small";
-                validSize = true;
-            } else if (cupSize.equalsIgnoreCase("M")) {
-                cupSize = "Medium";
-                validSize = true;
-            } else if (cupSize.equalsIgnoreCase("L")) {
-                cupSize = "Large";
-                validSize = true;
-            } else {
-                System.out.println("Invalid size. Please choose [S], [M], or [L].");
-            }
-        } while (!validSize);
-
-        return cupSize;
     }
 
     /**
