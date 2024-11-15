@@ -215,7 +215,7 @@ public class UI {
             }
         }
     }
-    
+
     /**
      * Method used to process the request of adding an item to the current order by using the PromptOrder method to
      * prompt for heroes then loops through the item or items requested and adds them to the current order
