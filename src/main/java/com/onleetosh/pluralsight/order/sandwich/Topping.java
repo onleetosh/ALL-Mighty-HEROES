@@ -4,8 +4,6 @@
 
 package com.onleetosh.pluralsight.order.sandwich;
 
-import java.util.ArrayList;
-
 public class Topping {
 
     /**
@@ -35,11 +33,8 @@ public class Topping {
     private String topping;
     private String type;
     private double price;
-
     private boolean isPremium;
     private boolean isExtra;
-
-
 
     /**
      * Constructor used to initialize topping object
@@ -52,18 +47,6 @@ public class Topping {
         this.type = type;
         this.isPremium = isPremium;
         this.price = price;
-    }
-    public Topping(String topping,
-                   String type,
-                   boolean isPremium,
-                   double price,
-                   boolean isExtra) {
-        this.topping = topping;
-        this.type = type;
-        this.isPremium = isPremium;
-        this.price = price;
-        this.isExtra = isExtra;
-
     }
 
     /**
@@ -96,7 +79,6 @@ public class Topping {
     public void setType(String type) {
         this.type = type;
     }
-
 
     /**
      * This method is used to adjust the price based on size (4", 8", 12") and premium topping
@@ -154,17 +136,16 @@ public class Topping {
         return " ["+type+"] " + topping + " " + ifPremium + " ";
     }
 
-
     /**
-     * Use toString() return a String format for topping
+     * Use toString() return a String format for topping when displayed
      */
     @Override
     public String toString() {
-        //if extra is true mark as ++ else " REGUlAR AMOUNT "
-        String ifExtra = this.isExtra ? "++" : "    ";
+        //if add extra is true mark as ++ else " REGUlAR AMOUNT "
+        String ifExtra = this.isExtra ? "++" : " ";
         //if premium then mark as Premium else " NOT PREMIUM "
-        String ifPremium = this.isPremium ? "(PREMIUM)" : "       ";
-        return "  " + this.topping + //topping name
+        String ifPremium = this.isPremium ? "(PREMIUM)" : " ";
+        return " " + this.topping + //topping name
                 " " + ifPremium + // Premium or Included
                 " " + ifExtra + // Extra or regular amount
                 " $" + String.format("%.2f", this.price);  //format price

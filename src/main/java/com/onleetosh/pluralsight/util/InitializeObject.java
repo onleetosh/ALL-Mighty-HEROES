@@ -1,31 +1,31 @@
 package com.onleetosh.pluralsight.util;
 
-import com.onleetosh.pluralsight.order.Beverage;
-import com.onleetosh.pluralsight.order.Chips;
-import com.onleetosh.pluralsight.order.Cookie;
+import com.onleetosh.pluralsight.order.addon.*;
 import com.onleetosh.pluralsight.order.sandwich.*;
 
 import java.util.ArrayList;
 
-
-//TODO : initialize more soups, cookies, salad?
 public class InitializeObject {
 
+    /**
+     * Initialize cookie objects and add them to an ArrayList
+     */
     public static ArrayList<Cookie> listOfCookieObjects(){
         UI.cookieList = new ArrayList<Cookie>();
-        UI.cookieList.add(new Cookie("Chocolate Chip", 1.50));
-        UI.cookieList.add(new Cookie("Snickerdoodle", 1.50));
-
+        UI.cookieList.add(new Cookie("Secret Cookie", 1.50));
+        UI.cookieList.add(new Cookie("Chocolate Chuck", 1.50));
+        UI.cookieList.add(new Cookie("Snickerdoodles", 1.50));
+        UI.cookieList.add(new Cookie("Sugar Rush", 1.50));
+        UI.cookieList.add(new Cookie("Oatmeal Raisin", 1.50));
         return  UI.cookieList;
     }
-
     /**
      * Initialize beverage objects and add them to an ArrayList
      */
     public static ArrayList<Beverage> listOfBeverageObjects(){
 
         UI.beveragesList = new ArrayList<Beverage>();
-        UI.beveragesList.add(new Beverage("----"));
+        UI.beveragesList.add(new Beverage("Secret Beverage"));
         UI.beveragesList.add(new Beverage("Seltzer"));
         UI.beveragesList.add(new Beverage("Coke"));
         UI.beveragesList.add(new Beverage("Spirit"));
@@ -45,7 +45,7 @@ public class InitializeObject {
      */
     public static ArrayList<Chips> listOfChipObjects(){
         UI.chipsList = new ArrayList<Chips>();
-        UI.chipsList.add(new Chips("------"));
+        UI.chipsList.add(new Chips("Secret Chips"));
         UI.chipsList.add(new Chips("Rap Snacks, Bar-B-Que"));
         UI.chipsList.add(new Chips("Lay's Classic" ));
         UI.chipsList.add(new Chips("Frito Lay Baked, Classic  "));
@@ -59,13 +59,12 @@ public class InitializeObject {
 
     }
 
-
     /**
      * Initialize bread objects and add them to an ArrayList
      */
     public static ArrayList<Bread> listOfBreadObjects() {
         UI.breadList = new ArrayList<>();
-        UI.breadList .add(new Bread(" ",4));
+        UI.breadList .add(new Bread("Special Roll",8));
         UI.breadList .add(new Bread("white", 4));
         UI.breadList.add(new Bread("white", 8));
         UI.breadList .add(new Bread("white", 12));
@@ -89,7 +88,7 @@ public class InitializeObject {
         UI.heroToppingList = new ArrayList<>();
 
         // Regular toppings
-        UI.heroToppingList.add(new Topping(" "," ",false, 0.0 ));
+        UI.heroToppingList.add(new Topping("spicy pepper ","veggie ",false, 0.0 ));
         UI.heroToppingList.add(new Topping("lettuce", "veggie",  false, 0.0));
         UI.heroToppingList.add(new Topping("tomato", "veggie", false, 0.0));
         UI.heroToppingList.add(new Topping("spinach", "veggie", false, 0.0));

@@ -1,4 +1,4 @@
-package com.onleetosh.pluralsight.order;
+package com.onleetosh.pluralsight.order.addon;
 
 public class Cookie {
 
@@ -9,11 +9,9 @@ public class Cookie {
     private double priceOfCookie;
 
     /**
-     * Value amount for chips
+     * Value amount for cookie
      */
     private double valueAmountForCookie = 1.50;
-
-    private double totalCookieAmount;
 
     /**
      * Constructor used to initialize cookie object
@@ -23,7 +21,9 @@ public class Cookie {
         this.priceOfCookie = valueAmountForCookie;
     }
 
-
+    /**
+     * Getter methods to get a value
+     */
     public String getTypeOfCookie() {
         return typeOfCookie;
     }
@@ -32,11 +32,14 @@ public class Cookie {
         return priceOfCookie;
     }
 
-    public double getTotalCookieAmount() {
-        return totalCookieAmount;
+
+    /**
+     * Use toString() return a String format for cookie when displayed
+     */
+    @Override
+    public String toString(){
+        return typeOfCookie + " $" + String.format("%.2f", priceOfCookie);
     }
-
-
 
 
 }

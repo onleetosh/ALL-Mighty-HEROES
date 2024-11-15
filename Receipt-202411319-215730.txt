@@ -1,4 +1,4 @@
-Receipt Date: 2024-11-13 19:29:01
+Receipt Date: 2024-11-14 21:57:30
 ===================================
        >> ALL Mighty Hero <<
            "DELI-cious! "
@@ -8,9 +8,21 @@ Receipt Date: 2024-11-13 19:29:01
         Order Summary:
 =================================
 Sandwiches:
-Sandwich :  12" rye bread ($8.50), with [ steak (PREMIUM) ,  cheddar (PREMIUM) ,  bacon (PREMIUM) ,  provolone (PREMIUM) ,  american (PREMIUM) ], Toast: NO,  $24.25
+Sandwich: 12" rye bread ($8.50)
+Toppings:
+ american (PREMIUM) ++ $3.15
+ grill chicken (PREMIUM) ++ $4.50
+Toast: NO
+Total Cost: $16.15
+Beverages:
+L  Coke  $2.00
+L  Green Tea  $2.00
+Add on:
+Rap Snacks, Bar-B-Que $1.50
+Oatmeal Raisin $1.5
+Sugar Rush $1.5
 =================================
-Total Price: $24.25
+Total Price: $24.65
 =================================
-        *** MUNCH MUNCH MUNCH *** 
+     *** MUNCH MUNCH MUNCH *** 
 =================================

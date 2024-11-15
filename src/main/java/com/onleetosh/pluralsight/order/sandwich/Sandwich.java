@@ -8,17 +8,13 @@ import java.util.ArrayList;
 
 public class Sandwich {
 
-    // 4", 8", or 12"
+    /**
+     * Information need to create bread object
+     */
     private int sizeOfBread;
-
     private Bread typeOfBread;
-
     private ArrayList<Topping> toppings;
-
-    private ArrayList<Topping> premiumTopping; //
-
     private double totalCostOfSandwich;
-
     private boolean isToast;
 
     /**

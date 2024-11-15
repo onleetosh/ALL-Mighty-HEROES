@@ -1,25 +1,23 @@
-package com.onleetosh.pluralsight.order;
-
-import java.util.ArrayList;
+package com.onleetosh.pluralsight.order.addon;
 
 public class Beverage {
 
+    /**
+     * Information needed to create chip object
+     */
     private String typeOfBeverage;
     private String sizeOfCup;
     private double priceOfBeverage;
 
-    private ArrayList<Beverage> typesOfBeverages;
-
+    /**
+     * Value amounts for the size of beverage
+     */
     private final double priceOfSmallBeverage = 2.00;
     private final double priceOfMediumBeverage = 2.50;
     private final double priceOfLargeBeverage = 3.00;
 
-    public Beverage(ArrayList<Beverage> typesOfBeverages) {
-        this.typesOfBeverages = typesOfBeverages;
-    }
-
     /***
-     * Constructors
+     * Constructors used to create beverage object
      */
     public Beverage(String typeOfBeverage) {
         this.typeOfBeverage = typeOfBeverage;
@@ -27,14 +25,8 @@ public class Beverage {
         this.priceOfBeverage = adjustPriceOfCup(this.sizeOfCup);
     }
 
-    public Beverage(String typeOfBeverage, String sizeOfCup, int priceOfBeverage) {
-        this.typeOfBeverage = typeOfBeverage;
-        this.sizeOfCup = sizeOfCup;
-        this.priceOfBeverage = adjustPriceOfCup(this.sizeOfCup);
-    }
-
     /***
-     * Getter
+     * Getter method used to get a value
      */
     public String getTypeOfBeverage() {
         return typeOfBeverage;
@@ -49,7 +41,7 @@ public class Beverage {
     }
 
     /***
-     * Setters
+     * Setters methods used to set a value
      */
     public void setTypeOfBeverage(String typeOfBeverage) {
         this.typeOfBeverage = typeOfBeverage;
@@ -60,7 +52,6 @@ public class Beverage {
         this.priceOfBeverage = adjustPriceOfCup(sizeOfCup); // update price
     }
 
-
     /***
      * Adjust the price of cup based on size
      */
@@ -68,7 +59,6 @@ public class Beverage {
         if(size.equalsIgnoreCase("Small")){
             return  priceOfSmallBeverage;
         }
-
         else if (size.equalsIgnoreCase("Medium")){
             return priceOfMediumBeverage;
         }
@@ -80,6 +70,9 @@ public class Beverage {
         }
     }
 
+    /**
+     * Use toString() return a String format for beverage when displayed
+     */
     @Override
     public String toString(){
 

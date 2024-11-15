@@ -1,8 +1,4 @@
-/**
- *  Chips encapsulates the data required to initialize a chip object.
- */
-
-package com.onleetosh.pluralsight.order;
+package com.onleetosh.pluralsight.order.addon;
 
 public class Chips {
 
@@ -15,7 +11,6 @@ public class Chips {
     /**
      * Value amount for chips
      */
-
     private final double valueAmountForChips = 1.50;
 
     /**
@@ -26,6 +21,9 @@ public class Chips {
         this.priceOfChips = valueAmountForChips;
     }
 
+    /**
+     * Getter methods to get a value
+     */
     public String getBagOfChips() {
         return bagOfChips;
     }
@@ -34,6 +32,9 @@ public class Chips {
         return priceOfChips;
     }
 
+    /**
+     * Use toString() return a String format for chip when displayed
+     */
     @Override
     public String toString() {
         return  bagOfChips + " $" + String.format("%.2f", priceOfChips);

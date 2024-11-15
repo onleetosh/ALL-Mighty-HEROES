@@ -1,5 +1,6 @@
 package com.onleetosh.pluralsight.order;
 
+import com.onleetosh.pluralsight.order.addon.*;
 import com.onleetosh.pluralsight.order.sandwich.Sandwich;
 
 import java.util.ArrayList;
@@ -19,13 +20,18 @@ public class Order {
         this.sandwiches = new ArrayList<>();
         this.beverages = new ArrayList<>();
         this.chips = new ArrayList<>();
-       // this.cookies = new ArrayList<>();
+       this.cookies = new ArrayList<>();
     }
 
-    public Order(ArrayList<Sandwich> sandwiches, ArrayList<Beverage> beverages, ArrayList<Chips> chips) {
+    public Order(ArrayList<Sandwich> sandwiches,
+                 ArrayList<Beverage> beverages,
+                 ArrayList<Chips> chips,
+                 ArrayList<Cookie> cookies) {
         this.sandwiches = new ArrayList<>();
         this.beverages = new ArrayList<>();
         this.chips = new ArrayList<>();
+        this.cookies = new ArrayList<>();
+
     }
 
     // Methods to add sandwiches, drinks, and chips
@@ -41,21 +47,25 @@ public class Order {
         chips.add(chip);
     }
 
+    public void addCookie(Cookie cookie) {
+        cookies.add(cookie);
+    }
+
     /**
      * Getter methods used to get an value
      */
     public ArrayList<Sandwich> getSandwiches() {
         return sandwiches;
     }
-
     public ArrayList<Beverage> getBeverages() {
         return beverages;
     }
-
     public ArrayList<Chips> getChips() {
         return chips;
     }
-
+    public ArrayList<Cookie> getCookies() {
+        return cookies;
+    }
 
     /**
      * @return the total amount of an order by incrementing all objects created
@@ -70,6 +80,9 @@ public class Order {
         }
         for (Chips chip : chips) {
             totalCost += chip.getPriceOfChips();
+        }
+        for (Cookie cookie : cookies) {
+            totalCost += cookie.getPriceOfCookie();
         }
         return totalCost;
     }
@@ -100,9 +113,15 @@ public class Order {
         }
         // Display chips
         if (chips != null && !chips.isEmpty()) {
-            formatOrder.append("Chips:\n");
+            formatOrder.append("Add on:\n");
             for (Chips chip : chips) {
                 formatOrder.append(chip.toString()).append("\n");
+            }
+        }
+        // Display cookie
+        if (cookies != null && !cookies.isEmpty()) {
+            for (Cookie cookie : cookies) {
+                formatOrder.append(cookie.toString()).append("\n");
             }
         }
 
