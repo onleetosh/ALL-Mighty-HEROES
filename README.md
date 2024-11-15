@@ -1,8 +1,8 @@
 <img width="800" alt="Screenshot 2024-11-14 at 11 38 23 PM" src="https://github.com/user-attachments/assets/b276e921-26f0-492b-8cd2-cbcc3007907d" height="400">
 
 ALL MIGHTY HEROES is a command-line Java application designed to stimulate a food order;
-and gives the user the ability to make a sandwich or request add-ons like beverage, chips, and cookies. 
-The application provides user friendly interaction with the ability to add multiple items to the
+and gives a user the ability to make a sandwich or request add-ons (beverage, chips, and cookies.) 
+The application provides user friendly experience and allows them to add multiple items to the
 order and generates a receipt showing the order summary and total amount.
 
 # Features
