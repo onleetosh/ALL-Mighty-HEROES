@@ -106,21 +106,21 @@ public class Order {
         formatOrder.append("===================================\n");
         // Display sandwiches
         if (sandwiches != null && !sandwiches.isEmpty()) {
-            formatOrder.append("Sandwiches:\n");
+            formatOrder.append("         Sandwiches:\n");
             for (Sandwich sandwich : sandwiches) {
                 formatOrder.append(sandwich.toString()).append("\n");
             }
         }
         // Display beverages
         if (beverages != null && !beverages.isEmpty()) {
-            formatOrder.append("Beverages:\n");
+            formatOrder.append("          Beverages:\n");
             for (Beverage beverage : beverages) {
                 formatOrder.append(beverage.toString()).append("\n");
             }
         }
         // Display chips
         if (chips != null && !chips.isEmpty()) {
-            formatOrder.append("Add on:\n");
+            formatOrder.append("             Add on:\n");
             for (Chips chip : chips) {
                 formatOrder.append(chip.toString()).append("\n");
             }
@@ -134,7 +134,7 @@ public class Order {
 
         // Display total cost
         formatOrder.append("===================================\n");
-        formatOrder.append("Total Price: $").append(String.format("%.2f", getTotalCost())).append("\n");
+        formatOrder.append(  "Total Price: $").append(String.format("%.2f", getTotalCost())).append("\n");
         formatOrder.append("===================================\n");
 
         return formatOrder.toString();

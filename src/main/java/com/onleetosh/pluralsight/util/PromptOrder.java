@@ -54,7 +54,9 @@ public class PromptOrder {
 
             //confirm sandwich was created
             System.out.println("\nSandwich " + i + " confirmed");
-            System.out.println("Bread: " + selectedBread.getTypeOfBread() + " | Size: " + sandwichSize + "\"");
+            System.out.println("Bread: " + selectedBread.getTypeOfBread() +
+                            " | Size: " + sandwichSize + "\"" +
+                            " $" + selectedBread.getPrice());
             for (Topping topping : selectedToppings) {
                 System.out.println(topping);
             }
@@ -194,13 +196,13 @@ public class PromptOrder {
             do {
                 cupSize = Console.PromptForString("Select cup size: [S]mall, [M]edium, [L]arge ");
                 if (cupSize.equalsIgnoreCase("S")) {
-                    cupSize = "Small";
+                    cupSize = "S";
                     validSize = true;
                 } else if (cupSize.equalsIgnoreCase("M")) {
-                    cupSize = "Medium";
+                    cupSize = "M";
                     validSize = true;
                 } else if (cupSize.equalsIgnoreCase("L")) {
-                    cupSize = "Large";
+                    cupSize = "L";
                     validSize = true;
                 } else {
                     System.out.println("Invalid size. Please choose [S], [M], or [L]. ");
