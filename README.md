@@ -45,3 +45,5 @@ After making a selections, user can see a final receipt with a complete summary 
 # Preview
 <img width="523" alt="Screenshot 2024-11-15 at 8 04 14 AM" src="https://github.com/user-attachments/assets/03324abd-f075-481c-8b8e-2d6aa9839e28">
 
+# Structure 
+<img width="849" alt="Structure" src="https://github.com/user-attachments/assets/29198661-9aa0-47c6-8939-23fdb291dc60">
