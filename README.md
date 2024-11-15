@@ -29,16 +29,6 @@ git clone https://github.com/your-username/ALL-MIGHTY-HEROES.git
 # Author
 Tosh
 
-# Usage
-Start the program and follow the on-screen instructions to place an order.
-Select between the following options:
-- Sandwich
-- Beverage
-- Add On
-- View Order
-- Exit 
-After making a selections, user can see a final receipt with a complete summary of the order and the total amount due.
-
 # Acknowledgments
 - https://www.w3resource.com/index.php
 - https://stackoverflow.com/
