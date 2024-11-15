@@ -67,12 +67,12 @@ public class InitializeObject {
     public static ArrayList<Bread> listOfBreadObjects() {
         UI.breadList = new ArrayList<>();
         UI.breadList .add(new Bread("Special Roll",8));
-        UI.breadList .add(new Bread("white", 4));
-        UI.breadList.add(new Bread("white", 8));
-        UI.breadList .add(new Bread("white", 12));
-        UI.breadList .add(new Bread("wheat", 4));
-        UI.breadList .add(new Bread("wheat", 8));
-        UI.breadList .add(new Bread("wheat", 12));
+        UI.breadList .add(new Bread("italian", 4));
+        UI.breadList.add(new Bread("italian", 8));
+        UI.breadList .add(new Bread("italian", 12));
+        UI.breadList .add(new Bread("honey wheat", 4));
+        UI.breadList .add(new Bread("honey wheat", 8));
+        UI.breadList .add(new Bread("honey wheat", 12));
         UI.breadList .add(new Bread("wrap", 4));
         UI.breadList .add(new Bread("wrap", 8));
         UI.breadList .add(new Bread("wrap", 12));
@@ -89,7 +89,6 @@ public class InitializeObject {
     public static ArrayList<Topping> listOfToppingObjects() {
         UI.heroToppingList = new ArrayList<>();
 
-        // Regular toppings
         UI.heroToppingList.add(new Topping("spicy pepper ","veggie ",false, 0.0 ));
         UI.heroToppingList.add(new Topping("lettuce", "veggie",  false, 0.0));
         UI.heroToppingList.add(new Topping("tomato", "veggie", false, 0.0));
@@ -100,7 +99,7 @@ public class InitializeObject {
         UI.heroToppingList.add(new Topping("cucumber", "veggie", false, 0.0));
         UI.heroToppingList.add(new Topping("pickles", "veggie", false, 0.0));
 
-        // Sauces
+
         UI.heroToppingList.add(new Topping("honey mustard", "sauce", false, 0.0)); //5
         UI.heroToppingList.add(new Topping("ranch", "dressing", false, 0.0)); //7
         UI.heroToppingList.add(new Topping("mayo", "sauce", false, 0.0)); //8
@@ -110,7 +109,6 @@ public class InitializeObject {
         UI.heroToppingList.add(new Topping("vinegar", "dressing", false, 0.0)); //10
         UI.heroToppingList.add(new Topping("ranch", "dressing", false, 0.0)); //7
 
-        // Premium toppings (Meats and Cheese)
         UI.heroToppingList.add(new Topping("prosciutto", "meat", true, 1.00)); //12
         UI.heroToppingList.add(new Topping("honey turkey", "meat", true, 1.00)); //12
         UI.heroToppingList.add(new Topping("grill chicken", "meat", true, 1.00)); //11
@@ -128,6 +126,8 @@ public class InitializeObject {
 
         return UI.heroToppingList;
     }
+
+
 
 
 }

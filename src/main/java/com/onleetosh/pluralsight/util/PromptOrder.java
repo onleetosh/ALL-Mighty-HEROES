@@ -29,13 +29,13 @@ public class PromptOrder {
 
         while (request < 0) {
             try {
-                request = Console.PromptForInt("How many sandwiches are you ordering? ");
+                request = Console.PromptForInt("How many heroes are you ordering? ");
             } catch (Exception e) {
                 System.out.println("Please enter valid number ");
             }
         }
         //output requested number of sandwiches to build
-        System.out.println("You are ordering " + request + " sandwiches.");
+        System.out.println("You are ordering " + request + " heroes.");
 
         //loop through and build sandwich <= requested amount
         for (int i = 1; i <= request; i++) {
@@ -53,7 +53,7 @@ public class PromptOrder {
             sandwichOrder.add(newSandwich);
 
             //confirm sandwich was created
-            System.out.println("\nSandwich " + i + " confirmed");
+            System.out.println("\nHero " + i + " confirmed");
             System.out.println("Bread: " + selectedBread.getTypeOfBread() +
                             " | Size: " + sandwichSize + "\"" +
                             " $" + selectedBread.getPrice());

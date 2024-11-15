@@ -59,7 +59,7 @@ public class UI {
                     System.out.println("-----------------------------------------------");
                     System.out.println("                Place Order ");
                     System.out.println("-----------------------------------------------");
-                    System.out.println(" 1 - [Sandwich] \n " +
+                    System.out.println(" 1 - [Hero] \n " +
                                         "2 - [Beverage] \n " +
                                         "3 - [Add On] \n " +
                                         "4 - [View Order] \n \n" +
@@ -140,7 +140,7 @@ public class UI {
         System.out.println("                  Order Summary");
         System.out.println("-----------------------------------------------");
         // Display sandwiches
-        System.out.println(" --- Sandwiches ----");
+        System.out.println(" --- Heroes ----");
         if (sandwiches.isEmpty()) {
             System.out.println("No sandwiches added.");
         } else {

@@ -106,7 +106,7 @@ public class Order {
         formatOrder.append("===================================\n");
         // Display sandwiches
         if (sandwiches != null && !sandwiches.isEmpty()) {
-            formatOrder.append("         Sandwiches:\n");
+            formatOrder.append("          Heroes:\n");
             for (Sandwich sandwich : sandwiches) {
                 formatOrder.append(sandwich.toString()).append("\n");
             }
